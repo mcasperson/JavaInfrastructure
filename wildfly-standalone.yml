@@ -1,0 +1,9 @@
+---
+- name: wildfly standalone
+  hosts: tag_Appplication_WildflyStandalone
+  remote_user: centos
+  become: true
+  become_user: root
+
+  roles:
+    - wildflystandalone
