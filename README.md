@@ -26,8 +26,13 @@ Configure the AWS CLI locally with your credentials:
 aws configure
 ```
 
-Run the role with a command line:
+Run the role from the command line:
 
 ```
 ansible-playbook -i ec2.py --private-key /key/location/mykey.pem bamboo.yml
 ```
+
+## Troubleshooting
+
+If you get a message like `skipping: no hosts matched`, force the ec2 inventory script to
+refresh by running `./ec2.py --refresh-cache`.

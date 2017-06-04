@@ -1,7 +1,7 @@
 ---
   - name: Create WildFly User
     user:
-      name: {{wildfly_user}}
+      name: "{{wildfly_user}}"
 
   - name: Stop Existing Service
     service:
@@ -28,7 +28,7 @@
 
   - name: Symlink WildFly Dir
     file:
-        src: "/opt/wildfly-"
+        src: "/opt/{{wildfly_versioned_dir}}"
         dest: "{{wildfly_install_dir}}"
         state: link
 
