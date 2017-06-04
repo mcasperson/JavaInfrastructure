@@ -26,6 +26,14 @@
         dest: /opt
         copy: no
 
+  - name: Set WildFly Directory Permissions
+    file:
+      state: directory
+      path: "/opt/{{wildfly_versioned_dir}}"
+      owner: "{{wildfly_user}}"
+      group: "{{wildfly_user}}"
+      recurse: true
+
   - name: Symlink WildFly Dir
     file:
         src: "/opt/{{wildfly_versioned_dir}}"
@@ -60,7 +68,15 @@
 
   #- name: Add Vault
 
-  #- name: Add Management Users
+  - name: Copy Modified Configuration
+    template:
+      src: standalone.xml
+      dest: "{{wildfly_install_dir}}/standalone/configuration/standalone.xml"
+      owner: "{{wildfly_user}}"
+      group: "{{wildfly_user}}"
+
+  - name: Add Management Users
+    command: "{{wildfly_install_dir}}/bin/add-user.sh {{wildfly_admin_user}} {{wildfly_admin_password}}"
 
   - name: Add Wildfly Service
     template:
@@ -70,8 +86,8 @@
       group: root
       mode: 0755
 
-  #- name: Start Service
-  #  service:
-  #    name: wildfly
-  #    enabled: yes
-  #    state: restarted
+  - name: Start Service
+    service:
+      name: wildfly
+      enabled: yes
+      state: restarted
