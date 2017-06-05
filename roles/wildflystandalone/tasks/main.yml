@@ -70,7 +70,7 @@
 
   - name: Copy Modified Configuration
     template:
-      src: standalone.xml
+      src: standalone-11-0-0-Alpha1.xml
       dest: "{{wildfly_install_dir}}/standalone/configuration/standalone.xml"
       owner: "{{wildfly_user}}"
       group: "{{wildfly_user}}"
