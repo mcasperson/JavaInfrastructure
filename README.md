@@ -5,6 +5,8 @@ servers and CI servers.
 
 ## How to run
 
+The instances being configures are based on Centos 7.
+
 Tag EC2 instances with the `Application` tag set to one of the following:
 * Bamboo
 * BambooAgent
@@ -12,6 +14,8 @@ Tag EC2 instances with the `Application` tag set to one of the following:
 * Bamboo5Agent
 * Tomcat
 * WildflyStandalone
+* WildflyDC
+* WildflySlave
 
 Install Ansible and Boto:
 
@@ -36,3 +40,18 @@ ansible-playbook -i ec2.py --private-key /key/location/mykey.pem bamboo.yml
 
 If you get a message like `skipping: no hosts matched`, force the ec2 inventory script to
 refresh by running `./ec2.py --refresh-cache`.
+
+If you know the IP addresses of the EC2 instances you can add them to the `hosts` file, which
+looks like this:
+```
+[tag_Appplication_WildflyDC]
+0.0.0.0
+
+[tag_Appplication_WildflySlave]
+0.0.0.0
+```
+ 
+Then use the hosts file with the command:
+```
+ansible-playbook -i hosts --private-key /key/location/mykey.pem bamboo.yml
+```

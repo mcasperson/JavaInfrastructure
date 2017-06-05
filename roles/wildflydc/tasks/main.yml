@@ -22,8 +22,15 @@
 
   - name: Copy Modified Configuration
     template:
-      src: standalone-11-0-0-Alpha1.xml
-      dest: "{{wildfly_install_dir}}/standalone/configuration/standalone.xml"
+      src: domain-11-0-0-Alpha1.xml
+      dest: "{{wildfly_install_dir}}/domain/configuration/domain.xml"
+      owner: "{{wildfly_user}}"
+      group: "{{wildfly_user}}"
+
+  - name: Copy Modified Configuration
+    template:
+      src: host-master-11-0-0-Alpha1.xml
+      dest: "{{wildfly_install_dir}}/domain/configuration/host-master.xml"
       owner: "{{wildfly_user}}"
       group: "{{wildfly_user}}"
 

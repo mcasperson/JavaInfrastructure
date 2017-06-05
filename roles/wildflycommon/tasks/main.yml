@@ -1,0 +1,60 @@
+---
+  - name: Create WildFly User
+    user:
+      name: "{{wildfly_user}}"
+
+  - name: Stop Existing Service
+    service:
+      name: wildfly
+      enabled: yes
+      state: stopped
+    ignore_errors: yes
+
+  - name: Kill Existing Processes
+    command: "pkill -9 -U {{wildfly_user}}"
+    ignore_errors: yes
+
+  - name: Download Wildfly Distribution
+    get_url:
+        url: "{{wildfly_download}}"
+        dest: /tmp/wildfly.tar.gz
+        mode: 0440
+
+  - name: Extract WildFly
+    unarchive:
+        src: /tmp/wildfly.tar.gz
+        dest: /opt
+        copy: no
+
+  - name: Set WildFly Directory Permissions
+    file:
+      state: directory
+      path: "/opt/{{wildfly_versioned_dir}}"
+      owner: "{{wildfly_user}}"
+      group: "{{wildfly_user}}"
+      recurse: true
+
+  - name: Symlink WildFly Dir
+    file:
+        src: "/opt/{{wildfly_versioned_dir}}"
+        dest: "{{wildfly_install_dir}}"
+        state: link
+
+  - name: Create Logging Directory
+    file:
+      state: directory
+      path: "{{wildfly_logging_dir}}"
+      owner: "{{wildfly_user}}"
+      group: "{{wildfly_user}}"
+      recurse: true
+
+  - name: Add Management Users
+    command: "{{wildfly_install_dir}}/bin/add-user.sh {{wildfly_admin_user}} {{wildfly_admin_password}}"
+
+  - name: Add Wildfly Service
+    template:
+      src: wildfly-init-redhat.sh
+      dest: /etc/init.d/wildfly
+      owner: root
+      group: root
+      mode: 0755
