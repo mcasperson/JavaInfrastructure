@@ -5,4 +5,4 @@ wildfly_versioned_dir: wildfly-11.0.0.Alpha1
 wildfly_install_dir: /opt/wildfly
 wildfly_logging_dir: /var/log/wildfly
 wildfly_admin_user: admin
-wildfly_admin_password: admin
+wildfly_slave_username: slave

@@ -53,6 +53,9 @@
   - name: Add Management Users
     command: "{{wildfly_install_dir}}/bin/add-user.sh {{wildfly_admin_user}} {{wildfly_admin_password}}"
 
+  - name: Add Slave Users
+    command: "{{wildfly_install_dir}}/bin/add-user.sh {{wildfly_slave_username}} {{wildfly_slave_password}}"
+
   - name: Add Wildfly Service
     template:
       src: wildfly-init-redhat.sh

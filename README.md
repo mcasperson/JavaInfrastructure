@@ -53,9 +53,18 @@ org.jboss.security.vault.SecurityVaultException: java.lang.RuntimeException: PBO
 
 ### Domain Controller S3 Discovery
 
-The domain controllers and slaves need to be able to find each other via a central S3 bucket. The credentials
-for this bucket are defined in host-master-11-0-0-Alpha1.xml, and these credentials need to belong to a IAM
-user with the following permissions to allow access to the bucket and its subfolders.
+The domain controllers and slaves need to be able to find each other via a central S3 bucket. The access and secret keys
+for this bucket are defined in host-master-11-0-0-Alpha1.xml and host-slave-11-0-0-Alpha1.xml:
+
+```
+<discovery-option name="s3-discovery" code="org.jboss.as.host.controller.discovery.S3Discovery" module="org.jboss.as.host-controller">
+    <property name="access-key" value="${VAULT::MyVault::s3_access_key::1}"/>
+    <property name="secret-access-key" value="${VAULT::MyVault::s3_secret_key::1}"/>
+    <property name="location" value="${VAULT::MyVault::s3_bucket::1}"/>
+</discovery-option>
+```
+
+These credentials need to belong to a IAM user with the following permissions to allow access to the bucket and its subfolders.
 
 ```
 {

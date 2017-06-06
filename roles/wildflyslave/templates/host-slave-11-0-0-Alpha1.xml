@@ -19,8 +19,8 @@
         <security-realms>
             <security-realm name="ManagementRealm">
                 <server-identities>
-                    <!-- Replace this with either a base64 password of your own, or use a vault with a vault expression -->
-                    <secret value="c2xhdmVfdXMzcl9wYXNzd29yZA=="/>
+                    <!-- CHANGE: Add the slave password -->
+                    <secret value="${VAULT::MyVault::wildfly_slave_password::1}"/>
                 </server-identities>
                 <authentication>
                     <local default-user="$local" skip-group-loading="true"/>
@@ -71,7 +71,7 @@
         </management-interfaces>
     </management>
     <domain-controller>
-        <remote security-realm="ManagementRealm">
+        <remote security-realm="ManagementRealm" username="{{wildfly_slave_username}}">
             <discovery-options>
                 <discovery-option name="s3-discovery" code="org.jboss.as.host.controller.discovery.S3Discovery" module="org.jboss.as.host-controller">
                     <property name="access-key" value="${VAULT::MyVault::s3_access_key::1}"/>
@@ -83,7 +83,8 @@
     </domain-controller>
     <interfaces>
         <interface name="management">
-            <inet-address value="${jboss.bind.address.management:127.0.0.1}"/>
+            <!-- CHANGE: Bind to IP address -->
+            <inet-address value="{{ansible_default_ipv4.address}}"/>
         </interface>
         <interface name="public">
             <inet-address value="${jboss.bind.address:127.0.0.1}"/>

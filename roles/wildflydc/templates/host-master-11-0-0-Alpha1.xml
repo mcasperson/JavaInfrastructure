@@ -83,8 +83,8 @@
     </domain-controller>
     <interfaces>
         <interface name="management">
-            <!-- CHANGE: Bind to any IP address -->
-            <any-address/>
+            <!-- CHANGE: Bind to IP address -->
+            <inet-address value="{{ansible_default_ipv4.address}}"/>
         </interface>
     </interfaces>
     <jvms>
