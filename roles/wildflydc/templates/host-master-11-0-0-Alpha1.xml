@@ -6,6 +6,15 @@
         <extension module="org.wildfly.extension.core-management"/>
         <extension module="org.wildfly.extension.elytron"/>
     </extensions>
+    <!-- CHANGE: Add the vault -->
+    <vault>
+        <vault-option name="KEYSTORE_URL" value="{{wildfly_install_dir}}/vault.keystore"/>
+        <vault-option name="KEYSTORE_PASSWORD" value="{{masked_vault_password}}"/>
+        <vault-option name="KEYSTORE_ALIAS" value="vault"/>
+        <vault-option name="SALT" value="{{salt}}"/>
+        <vault-option name="ITERATION_COUNT" value="50"/>
+        <vault-option name="ENC_FILE_DIR" value="{{wildfly_install_dir}}/vault/"/>
+    </vault>
     <management>
         <security-realms>
             <security-realm name="ManagementRealm">
