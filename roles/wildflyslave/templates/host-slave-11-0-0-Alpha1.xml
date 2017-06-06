@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
-<host xmlns="urn:jboss:domain:5.0">
+<!-- CHANGE: Use machine id as slave name -->
+<host xmlns="urn:jboss:domain:5.0" name="wildfly-slave-{{ansible_machine_id}}">
     <extensions>
         <extension module="org.jboss.as.jmx"/>
         <extension module="org.wildfly.extension.core-management"/>
