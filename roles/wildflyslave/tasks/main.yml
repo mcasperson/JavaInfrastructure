@@ -1,0 +1,41 @@
+---
+
+  - name: Set WildFly Configuration Settings
+    template:
+      src: wildfly.conf
+      dest: /etc/default/wildfly
+      owner: "{{wildfly_user}}"
+      group: "{{wildfly_user}}"
+      mode: 0644
+
+  #- name: Add Additional JMX Monitoring
+
+  #- name: Add Java Memory Logging
+
+  #- name: Add HTTPS Key
+
+  #- name: Secure Admin Console
+
+  #- name: Generate Vault
+
+  #- name: Add Vault
+
+  - name: Copy Modified Configuration
+    template:
+      src: domain-11-0-0-Alpha1.xml
+      dest: "{{wildfly_install_dir}}/domain/configuration/domain.xml"
+      owner: "{{wildfly_user}}"
+      group: "{{wildfly_user}}"
+
+  - name: Copy Modified Configuration
+    template:
+      src: host-slave-11-0-0-Alpha1.xml
+      dest: "{{wildfly_install_dir}}/domain/configuration/host-slave.xml"
+      owner: "{{wildfly_user}}"
+      group: "{{wildfly_user}}"
+
+  - name: Start Service
+    service:
+      name: wildfly
+      enabled: yes
+      state: restarted

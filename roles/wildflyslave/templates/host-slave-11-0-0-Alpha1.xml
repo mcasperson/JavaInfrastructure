@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
-<host xmlns="urn:jboss:domain:5.0" name="master">
+<host xmlns="urn:jboss:domain:5.0">
     <extensions>
         <extension module="org.jboss.as.jmx"/>
         <extension module="org.wildfly.extension.core-management"/>
@@ -18,6 +18,10 @@
     <management>
         <security-realms>
             <security-realm name="ManagementRealm">
+                <server-identities>
+                    <!-- Replace this with either a base64 password of your own, or use a vault with a vault expression -->
+                    <secret value="c2xhdmVfdXMzcl9wYXNzd29yZA=="/>
+                </server-identities>
                 <authentication>
                     <local default-user="$local" skip-group-loading="true"/>
                     <properties path="mgmt-users.properties" relative-to="jboss.domain.config.dir"/>
@@ -64,14 +68,10 @@
             <native-interface security-realm="ManagementRealm">
                 <socket interface="management" port="${jboss.management.native.port:9999}"/>
             </native-interface>
-            <http-interface security-realm="ManagementRealm">
-                <http-upgrade enabled="true"/>
-                <socket interface="management" port="${jboss.management.http.port:9990}"/>
-            </http-interface>
         </management-interfaces>
     </management>
     <domain-controller>
-        <local>
+        <remote security-realm="ManagementRealm">
             <discovery-options>
                 <discovery-option name="s3-discovery" code="org.jboss.as.host.controller.discovery.S3Discovery" module="org.jboss.as.host-controller">
                     <property name="access-key" value="${VAULT::MyVault::s3_access_key::1}"/>
@@ -79,12 +79,14 @@
                     <property name="location" value="${VAULT::MyVault::s3_bucket::1}"/>
                 </discovery-option>
             </discovery-options>
-        </local>
+        </remote>
     </domain-controller>
     <interfaces>
         <interface name="management">
-            <!-- CHANGE: Bind to any IP address -->
-            <any-address/>
+            <inet-address value="${jboss.bind.address.management:127.0.0.1}"/>
+        </interface>
+        <interface name="public">
+            <inet-address value="${jboss.bind.address:127.0.0.1}"/>
         </interface>
     </interfaces>
     <jvms>
@@ -97,6 +99,16 @@
             </jvm-options>
         </jvm>
     </jvms>
+    <servers>
+        <server name="server-one" group="main-server-group"/>
+        <server name="server-two" group="other-server-group">
+            <!--
+              ~  server-two avoids port conflicts by incrementing the ports in
+              ~                  the default socket-group declared in the server-group 
+              -->
+            <socket-bindings port-offset="150"/>
+        </server>
+    </servers>
     <profile>
         <subsystem xmlns="urn:jboss:domain:core-management:1.0"/>
         <subsystem xmlns="urn:jboss:domain:jmx:1.3">

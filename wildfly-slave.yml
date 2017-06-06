@@ -1,0 +1,9 @@
+---
+- name: wildfly slave
+  hosts: tag_Appplication_WildflySlave
+  remote_user: centos
+  become: true
+  become_user: root
+
+  roles:
+    - wildflyslave

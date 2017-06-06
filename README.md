@@ -38,6 +38,7 @@ ansible-playbook -i ec2.py --private-key /key/location/mykey.pem --vault-passwor
 
 ## Notes
 
+### Keystore
 The WildFly vault keystore needs to be created as a JCEKS store type i.e.
 
 ```
@@ -48,6 +49,31 @@ If you create the wrong kind of keystore, you may see an error like:
 
 ```
 org.jboss.security.vault.SecurityVaultException: java.lang.RuntimeException: PBOX00137: Security Vault does not contain SecretKey entry under alias (vault)
+```
+
+### Domain Controller S3 Discovery
+
+The domain controllers and slaves need to be able to find each other via a central S3 bucket. The credentials
+for this bucket are defined in host-master-11-0-0-Alpha1.xml, and these credentials need to belong to a IAM
+user with the following permissions to allow access to the bucket and its subfolders.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "id goes here",
+            "Effect": "Allow",
+            "Action": [
+                "s3:*"
+            ],
+            "Resource": [
+                "arn:aws:s3:::bucketname",
+                "arn:aws:s3:::bucketname/*"
+            ]
+        }
+    ]
+}
 ```
 
 ## Troubleshooting
