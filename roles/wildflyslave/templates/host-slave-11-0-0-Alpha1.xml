@@ -88,7 +88,8 @@
             <inet-address value="{{ansible_default_ipv4.address}}"/>
         </interface>
         <interface name="public">
-            <inet-address value="${jboss.bind.address:127.0.0.1}"/>
+            <!-- CHANGE: Bind to IP address -->
+            <inet-address value="{{ansible_default_ipv4.address}}"/>
         </interface>
     </interfaces>
     <jvms>
