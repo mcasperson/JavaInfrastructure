@@ -1,4 +1,6 @@
 ---
+  - include_vars: encrypted.yml
+
   - name: Create WildFly User
     user:
       name: "{{wildfly_user}}"
@@ -58,3 +60,15 @@
       owner: root
       group: root
       mode: 0755
+
+  - name: copy vault ketstore
+    copy:
+      src: files/vault.keystore
+      dest: "{{wildfly_install_dir}}/vault.keystore"
+      owner: "{{wildfly_user}}"
+      group: "{{wildfly_user}}"
+      mode: 0644
+
+  - name: add passwords to vault
+    command: "{{wildfly_install_dir}}/bin/vault.sh -k {{wildfly_install_dir}}/vault.keystore -p {{vault_password}} -e {{wildfly_install_dir}}/vault -i 50 -s {{salt}} -v vault -b MyVault -a {{item.name}} -x {{item.password}}"
+    with_items: "{{passwords}}"

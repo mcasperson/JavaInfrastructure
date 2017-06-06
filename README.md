@@ -33,7 +33,21 @@ aws configure
 Run the role from the command line:
 
 ```
-ansible-playbook -i ec2.py --private-key /key/location/mykey.pem bamboo.yml
+ansible-playbook -i ec2.py --private-key /key/location/mykey.pem --vault-password-file ~/password.txt bamboo.yml
+```
+
+## Notes
+
+The WildFly vault keystore needs to be created as a JCEKS store type i.e.
+
+```
+keytool -genseckey -storetype jceks -alias vault -keyalg aes -keysize 256 -sigalg SHA1withRSA -keystore vault.keystore
+```
+
+If you create the wrong kind of keystore, you may see an error like:
+
+```
+org.jboss.security.vault.SecurityVaultException: java.lang.RuntimeException: PBOX00137: Security Vault does not contain SecretKey entry under alias (vault)
 ```
 
 ## Troubleshooting
