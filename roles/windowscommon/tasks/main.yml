@@ -11,14 +11,14 @@
       state: present
 
   - name: Create download directory
-    file:
-      path: "C:\\Apps"
+    win_file:
+      path: C:\Apps
       state: directory
 
   - name: Download SDK
-    get_url:
+    win_get_url:
       url: "https://sdkrepo.atlassian.com/win-signed/sdk-installer-6.2.14.exe"
-      dest: "C:\\Apps\\sdk-installer-6.2.14.exe"
+      dest: C:\Apps\sdk-installer-6.2.14.exe
 
   - name: Install SDK
-    win_command: "C:\\Apps\\sdk-installer-6.2.14.exe -q -overwrite"
+    win_command: C:\Apps\sdk-installer-6.2.14.exe -q -overwrite
