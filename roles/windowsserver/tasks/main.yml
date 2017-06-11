@@ -21,24 +21,10 @@
         Source: Ansible
     register: windows_server_ec2
 
-  - name: Get the Administrator password
-    ec2_win_password:
-      instance_id: "{{windows_server_ec2.instances[0].id}}"
-      region: us-east-1
-      key_file: "{{key_file}}"
-      wait: true
-      wait_timeout: 600
-    register: windows_password
-
   - name: Add Host to Inventory
     add_host:
       name: "{{ windows_server_ec2.instances[0].public_ip }}"
-      groups: created_nodes
-      ansible_user: Administrator
-      ansible_port: 5986
-      ansible_password: "{{windows_password.win_password}}"
-      ansible_connection: winrm
-      ansible_winrm_server_cert_validation: ignore
+      groups: tag_Appplication_OctopusDeploy
 
   - name: Wait for WinRM to answer on all hosts
     wait_for:
