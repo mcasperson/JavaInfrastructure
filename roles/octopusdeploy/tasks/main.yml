@@ -42,9 +42,6 @@
       creates: C:\Octopus\Applications
     register: api_key
 
-  - debug:
-      msg: "{{api_key}}"
-
   - name: Copy Octopus Tentacle Install Script
     win_template:
       src: OctopusTentacle.ps1
@@ -54,3 +51,7 @@
     win_shell: C:\Apps\OctopusTentacle.ps1
     args:
       creates: C:\Octopus\Applications
+    register: create_tentacle
+
+  - debug:
+      msg: "{{create_tentacle}}"
