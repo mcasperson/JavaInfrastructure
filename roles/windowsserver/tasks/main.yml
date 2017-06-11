@@ -1,0 +1,24 @@
+---
+
+- name: Create Windows Server
+  ec2:
+    key_name: OctopusVirginia
+    instance_type: m3.medium
+    image:  ami-ae7bfdb8
+    wait: yes
+    group: OctopusHttp
+    count: 1
+    region: us-east-1
+    instance_tags:
+      Appplication: OctopusDeploy
+      Domain: None
+      Environment: Test
+      LifeTime: Permanent
+      Name: Octopus Deploy
+      OwnerContact: "@matthew.casperson"
+      Source: Ansible
+  register: windows_server_ec2
+
+- name: Add Host to Inventory
+  add_host:
+    name: "{{ windows_server_ec2.instances[0].public_ip }}"

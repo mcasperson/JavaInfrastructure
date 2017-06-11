@@ -1,0 +1,9 @@
+---
+- name: Octopus Deploy
+  hosts: tag_Appplication_OctopusDeploy
+  remote_user: centos
+  become: true
+  become_user: root
+
+  roles:
+    - octopusdeploy
