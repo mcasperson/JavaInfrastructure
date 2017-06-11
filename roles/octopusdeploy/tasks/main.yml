@@ -30,6 +30,10 @@
     win_shell: C:\Apps\OctopusDeploy.ps1
     args:
       creates: C:\Octopus
+    register: deploy_server
+
+  - debug:
+      msg: "{{deploy_server}}"
 
   - name: Copy Octopus API Key Create Script
     win_template:
