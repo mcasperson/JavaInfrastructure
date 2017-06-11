@@ -1,1 +1,15 @@
 ---
+  - name: Install SQL Server Express
+    win_chocolatey:
+      name: sql-server-express
+      state: present
+
+  - name: Install Octopus CLI Tools
+    win_chocolatey:
+      name: octopustools
+      state: present
+
+  - name: Install Octopus Deploy
+    win_chocolatey:
+      name: octopusdeploy
+      state: present

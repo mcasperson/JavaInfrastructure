@@ -30,9 +30,6 @@
       wait_timeout: 600
     register: windows_password
 
-  - debug:
-      msg: "{{windows_password}}"
-
   - name: Add Host to Inventory
     add_host:
       name: "{{ windows_server_ec2.instances[0].public_ip }}"
