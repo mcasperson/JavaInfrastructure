@@ -1,4 +1,6 @@
 ---
+  - include_vars: encrypted.yml
+
   - name: Install SQL Server Express
     win_chocolatey:
       name: mssqlserver2014express
@@ -18,3 +20,37 @@
     win_chocolatey:
       name: octopusdeploy.tentacle
       state: present
+
+  - name: Copy Octopus Server Creation Script
+    win_template:
+      src: OctopusDeploy.ps1
+      dest: C:\Apps\OctopusDeploy.ps1
+
+  - name: Install Octospus Deploy Server
+    win_shell: C:\Apps\OctopusDeploy.ps1
+    args:
+      creates: C:\Octopus
+
+  - name: Copy Octopus API Key Create Script
+    win_template:
+      src: ApiKey.ps1
+      dest: C:\Apps\ApiKey.ps1
+
+  - name: Create API key
+    win_shell: C:\Apps\ApiKey.ps1
+    args:
+      creates: C:\Octopus\Applications
+    register: api_key
+
+  - debug:
+      msg: "{{api_key}}"
+
+  - name: Copy Octopus Tentacle Install Script
+    win_template:
+      src: OctopusTentacle.ps1
+      dest: C:\Apps\OctopusTentacle.ps1
+
+  - name: Install Tentacle
+    win_shell: C:\Apps\OctopusTentacle.ps1
+    args:
+      creates: C:\Octopus\Applications
