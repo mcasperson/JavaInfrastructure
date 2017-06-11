@@ -1,9 +1,17 @@
 ---
+- name: Octopus Deploy Windows Server
+  hosts:
+    - 127.0.0.1
+  become: false
+  gather_facts: false
+
+  roles:
+    - windowsserver
+
 - name: Octopus Deploy
-  hosts: tag_Appplication_OctopusDeploy
-  remote_user: centos
-  become: true
-  become_user: root
+  hosts: created_nodes
+  become: false
+  gather_facts: false
 
   roles:
     - octopusdeploy
