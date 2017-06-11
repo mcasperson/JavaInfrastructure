@@ -3,7 +3,7 @@
   - name: Create Windows Server
     ec2:
       key_name: OctopusVirginia
-      instance_type: m3.medium
+      instance_type: m3.xlarge
       image: "{{win_ami}}"
       wait: yes
       wait_timeout: 600

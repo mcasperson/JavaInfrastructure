@@ -10,6 +10,11 @@
       name: groovy
       state: present
 
+  - name: Install Chrome
+    win_chocolatey:
+      name: googlechrome
+      state: present
+
   - name: Create download directory
     win_file:
       path: C:\Apps

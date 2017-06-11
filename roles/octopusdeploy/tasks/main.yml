@@ -38,9 +38,22 @@
 
   - name: Create API key
     win_shell: C:\Apps\ApiKey.ps1
-    args:
-      creates: C:\Octopus\Applications
     register: api_key
+
+  - debug:
+      msg: "{{api_key}}"
+
+  - name: Copy Octopus Environment Create Script
+    win_template:
+      src: OctopusEnvironment.ps1
+      dest: C:\Apps\OctopusEnvironment.ps1
+
+  - name: Create Environment
+    win_shell: C:\Apps\OctopusEnvironment.ps1
+    register: create_environment
+
+  - debug:
+      msg: "{{create_environment}}"
 
   - name: Copy Octopus Tentacle Install Script
     win_template:
