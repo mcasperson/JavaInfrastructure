@@ -1,1 +1,6 @@
 ---
+
+  - name: Install useful packages
+    win_chocolatey:
+      name: jdk8
+      state: present

@@ -3,6 +3,7 @@
   hosts:
     - 127.0.0.1
   become: false
+  gather_facts: false
 
   roles:
     - windowsserver
