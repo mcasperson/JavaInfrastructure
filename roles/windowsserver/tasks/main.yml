@@ -25,10 +25,13 @@
     ec2_win_password:
       instance_id: "{{windows_server_ec2.instances[0].id}}"
       region: us-east-1
-      key_file: "/mnt/c/Users/matth/Downloads/OctopusVirginia.pem"
+      key_file: "{{key_file}}"
       wait: true
       wait_timeout: 600
     register: windows_password
+
+  - debug:
+      msg: "{{windows_password}}"
 
   - name: Add Host to Inventory
     add_host:
@@ -36,7 +39,7 @@
       groups: created_nodes
       ansible_user: Administrator
       ansible_port: 5986
-      ansible_password: "{{windows_password}}"
+      ansible_password: "{{windows_password.win_password}}"
       ansible_connection: winrm
       ansible_winrm_server_cert_validation: ignore
 

@@ -1,3 +1,4 @@
 ---
 win_initial_password: mypassword
 win_ami: ami-f1b5cfe7
+key_file: /mnt/c/Users/matth/Downloads/OctopusVirginia.pem
