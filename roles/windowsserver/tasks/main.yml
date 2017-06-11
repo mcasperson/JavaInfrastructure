@@ -29,3 +29,9 @@
       ansible_port: 5986
       ansible_connection: winrm
       ansible_winrm_server_cert_validation: ignore
+
+  - name: wait for WinRM to answer on all hosts
+    wait_for:
+      port: 5986
+      host: "{{ windows_server_ec2.instances[0].public_ip }}"
+      timeout: 300
