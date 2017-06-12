@@ -5,6 +5,7 @@
     win_chocolatey:
       name: mssqlserver2014express
       state: present
+      timeout: 10000
 
   - name: Install Octopus CLI Tools
     win_chocolatey:
