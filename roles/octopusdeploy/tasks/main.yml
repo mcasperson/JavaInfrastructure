@@ -1,11 +1,13 @@
 ---
   - include_vars: encrypted.yml
 
+  - name: Download SQL Server Express 2016
+    win_get_url:
+      url: "https://s3.amazonaws.com/bamboo-support/SQLEXPR_x64_ENU.exe"
+      dest: C:\Apps\SQLEXPR_x64_ENU.exe
+
   - name: Install SQL Server Express
-    win_chocolatey:
-      name: mssqlserver2014express
-      state: present
-      timeout: 10000
+    win_command: C:\Apps\SQLEXPR_x64_ENU.exe /qs /ACTION=Install /FEATURES=SQL /INSTANCENAME=MSSQLSERVER /SQLSVCACCOUNT="Administrator" /SQLSVCPASSWORD="{{win_initial_password}}" /SQLSYSADMINACCOUNTS="Administrator" /AGTSVCACCOUNT="NT AUTHORITY\Network Service" /SQLSVCINSTANTFILEINIT="True" /IACCEPTSQLSERVERLICENSETERMS
 
   - name: Install Octopus CLI Tools
     win_chocolatey:
