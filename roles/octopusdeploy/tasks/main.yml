@@ -6,8 +6,16 @@
       url: "https://s3.amazonaws.com/bamboo-support/SQLEXPR_x64_ENU.exe"
       dest: C:\Apps\SQLEXPR_x64_ENU.exe
 
+  - name: Copy SQL Install Script
+    win_template:
+      src: sqlexpress2016.ini
+      dest: C:\Apps\sqlexpress2016.ini
+
+  - name: Extract SQL Server Express
+    win_command: C:\Apps\SQLEXPR_x64_ENU.exe SQLEXPR_x64_ENU.exe /q /x:C:\Apps\SqlServerExpress
+
   - name: Install SQL Server Express
-    win_command: C:\Apps\SQLEXPR_x64_ENU.exe /qs /ACTION=Install /FEATURES=SQL /INSTANCENAME=MSSQLSERVER /SQLSVCACCOUNT="Administrator" /SQLSVCPASSWORD="{{win_initial_password}}" /SQLSYSADMINACCOUNTS="Administrator" /AGTSVCACCOUNT="NT AUTHORITY\Network Service" /SQLSVCINSTANTFILEINIT="True" /IACCEPTSQLSERVERLICENSETERMS
+    win_command: C:\Apps\SQLEXPR_x64_ENU.exe /Q /ACTION=INSTALL /IACCEPTSQLSERVERLICENSETERMS /ConfigurationFile="C:\Apps\sqlexpress2016.ini"
 
   - name: Install Octopus CLI Tools
     win_chocolatey:
