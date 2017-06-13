@@ -6,4 +6,4 @@
   become_user: root
 
   roles:
-    - wildflyslave
+    - linx-wildfly-slave

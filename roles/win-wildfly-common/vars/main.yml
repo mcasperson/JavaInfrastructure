@@ -1,0 +1,2 @@
+---
+wildfly_install_dir: "C:\\{{wildfly_versioned_dir}}"

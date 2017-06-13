@@ -1,0 +1,25 @@
+---
+  - name: Download Wildfly Distribution
+    win_get_url:
+        url: "{{wildfly_download_zip}}"
+        dest: C:\Apps\wildfly.zip
+
+  - name: Extract WildFly
+    win_unzip:
+        src: C:\Apps\wildfly.zip
+        dest: C:\
+
+  - name: Add Management Users
+    win_command: "{{wildfly_install_dir}}/bin/add-user.bat {{wildfly_admin_user}} {{wildfly_admin_password}}"
+
+  - name: Add Slave Users
+    win_command: "{{wildfly_install_dir}}/bin/add-user.bat {{wildfly_slave_username}} {{wildfly_slave_password}}"
+
+  - name: copy vault keystore
+    copy:
+      src: files/vault.keystore
+      dest: "{{wildfly_install_dir}}/vault.keystore"
+
+  - name: add passwords to vault
+    win_command: "{{wildfly_install_dir}}/bin/vault.bat -k {{wildfly_install_dir}}/vault.keystore -p {{vault_password}} -e {{wildfly_install_dir}}/vault -i 50 -s {{salt}} -v vault -b MyVault -a {{item.name}} -x {{item.password}}"
+    with_items: "{{passwords}}"

@@ -1,4 +1,4 @@
 ---
 dependencies:
-  - { role: linuxcommon }
-  - { role: bamboocommon }
+  - { role: linux-common }
+  - { role: bamboo-common }

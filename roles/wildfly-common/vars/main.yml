@@ -1,0 +1,6 @@
+---
+wildfly_download: https://s3.amazonaws.com/bamboo-support/wildfly-11.0.0.Alpha1.tar.gz
+wildfly_download_zip: https://s3.amazonaws.com/bamboo-support/wildfly-11.0.0.Alpha1.zip
+wildfly_versioned_dir: wildfly-11.0.0.Alpha1
+wildfly_admin_user: admin
+wildfly_slave_username: slave
