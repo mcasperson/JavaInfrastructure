@@ -11,6 +11,12 @@
       state: stopped
     ignore_errors: yes
 
+  - name: Stop Existing Standalone Service
+    win_service:
+      name: "{{wildfly_standalone_service}}"
+      state: stopped
+    ignore_errors: yes
+
   - name: Download Wildfly Distribution
     win_get_url:
         url: "{{wildfly_download_zip}}"

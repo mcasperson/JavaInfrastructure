@@ -4,3 +4,24 @@
     win_template:
       src: "{{playbook_dir}}/templates/wildfly/standalone-11-0-0-Alpha1.xml"
       dest: "{{wildfly_install_dir}}\\standalone\\configuration\\standalone.xml"
+
+  - name: Install Slave Service
+    win_command: "{{wildfly_install_dir}}\\bin\\service\\service.bat install /startup /name \"{{wildfly_standalone_service}}\" /hostconfig host-slave.xml"
+
+  - name: Start Domain Controller Service
+    win_service:
+      name: "{{wildfly_domain_controller_service}}"
+      state: started
+    ignore_errors: yes
+
+  - name: Start Slave Service
+    win_service:
+      name: "{{wildfly_slave_service}}"
+      state: started
+    ignore_errors: yes
+
+  - name: Start Standalone Service
+    win_service:
+      name: "{{wildfly_standalone_service}}"
+      state: started
+    ignore_errors: yes
