@@ -1,9 +1,18 @@
 ---
-  - name: Stop Existing Wildfly Service
-    win_service:
-      name: "{{service_name}}"
-      state: stopped
-    ignore_errors: yes
+#  - name: Ensure Wildfly Service User is Present
+#    win_user:
+#      name: "{{wildfly_role}}"
+#      password: "{{service_password}}"
+#      state: present
+
+#  - name: Stop Existing Wildfly Service
+#    win_service:
+#      name: "{{service_name}}"
+#      state: stopped
+#    ignore_errors: yes
+
+  - name: Stop existing service (because using win_service seems to hang)
+    win_shell: "&taskkill /f /fi \"USERNAME eq {{wildfly_role}}\""
 
   - name: Download Wildfly Distribution
     win_get_url:
@@ -38,3 +47,11 @@
 
   - name: Copy service files into bin
     win_command: "xcopy {{wildfly_install_dir}}\\docs\\contrib\\scripts\\service {{wildfly_install_dir}}\\bin\\service /E /Y"
+
+#  - name: Give permissions to wildfly user
+#    win_acl:
+#      path: "C:\\{{wildfly_role}}"
+#      user: "{{wildfly_role}}"
+#      rights: FullControl
+#      type: allow
+#     state: present

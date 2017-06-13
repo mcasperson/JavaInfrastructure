@@ -1,5 +1,4 @@
 ---
-
   - name: Copy Modified Configuration
     template:
       src: "{{playbook_dir}}/templates/wildfly/host-slave-11-0-0-Alpha1.xml"
