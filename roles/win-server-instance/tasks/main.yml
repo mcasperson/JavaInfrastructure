@@ -35,17 +35,3 @@
       port: 5986
       host: "{{ windows_server_ec2.instances[0].public_ip }}"
       timeout: 600
-
-  - name: Disable UAC
-    win_shell: New-ItemProperty -Path HKLM:Software\Microsoft\Windows\CurrentVersion\policies\system -Name EnableLUA -PropertyType DWord -Value 0 -Force
-
-  - name: Reboot Server
-    win_reboot:
-      shutdown_timeout_sec: 3600
-      reboot_timeout_sec: 3600
-
-  - name: Wait for WinRM to answer on all hosts
-    wait_for:
-      port: 5986
-      host: "{{ windows_server_ec2.instances[0].public_ip }}"
-      timeout: 600

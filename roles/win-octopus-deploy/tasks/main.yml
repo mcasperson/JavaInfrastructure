@@ -2,6 +2,14 @@
   - include_vars: encrypted.yml
   - include_vars: main.yml
 
+  - name: Disable UAC
+    win_shell: New-ItemProperty -Path HKLM:Software\Microsoft\Windows\CurrentVersion\policies\system -Name EnableLUA -PropertyType DWord -Value 0 -Force
+
+  - name: Reboot Server
+    win_reboot:
+      shutdown_timeout_sec: 3600
+      reboot_timeout_sec: 3600
+
   # This is to get around permission issues that cause
   # "There was an error generating the XML document" errors
   # when installing SQL Server
