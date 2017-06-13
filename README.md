@@ -86,6 +86,25 @@ To deploy a combined playbook, run the command:
 ansible-playbook --private-key /key/location/mykey.pem --vault-password-file ~/password.txt win-OD-WF-with-server.yml
 ```
 
+## Deployment Details
+
+The various services that can be deployed by the playbooks in the repo have
+been configured to work on different ports to allow them to be installed
+side by side.
+
+### Wildfly Domain Controller
+Admin interface: http://<public ip address>:19990
+
+### Wildfly Slave
+Web interface: http://<public ip address>:10080
+
+### Wildfly Standalone
+Web Interface: http://localhost:9080
+Admin interface: http://localhost:9990
+
+### Octopus Deploy
+Web interface: http://localhost:80
+
 ## Notes
 
 ### Keystore

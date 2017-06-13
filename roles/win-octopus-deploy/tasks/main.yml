@@ -2,6 +2,17 @@
   - include_vars: encrypted.yml
   - include_vars: main.yml
 
+  # This is to get around permission issues that cause
+  # "There was an error generating the XML document" errors
+  # when installing SQL Server
+  - name: Create admin user to install SQL Express
+    win_user:
+      name: sqlexpress_install
+      password: "{{sql_install_user_password}}"
+      state: present
+      groups:
+        - Administrators
+
   - name: Download SQL Server Express 2016
     win_get_url:
       url: "https://s3.amazonaws.com/bamboo-support/SQLEXPR_x64_ENU.exe"
@@ -17,7 +28,8 @@
       src: SQLInstall.ps1
       dest: C:\Apps\SQLInstall.ps1
 
-  # You can find logs of the attempted installs at C:\Program Files\Microsoft SQL Server\130\Setup Bootstrap\Log
+  # You can find logs of the attempted installs at
+  # C:\Program Files\Microsoft SQL Server\130\Setup Bootstrap\Log
   - name: Install SQL Express
     win_shell: C:\Apps\SQLInstall.ps1
     args:

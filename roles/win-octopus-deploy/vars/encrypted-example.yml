@@ -1,3 +1,4 @@
 ---
 octopus_admin_username: "Octopus Deploy admin username"
 octopus_admin_password: "Octopus Deploy admin password"
+sql_install_user_password: "The password for the admin user created to install SQL Express"

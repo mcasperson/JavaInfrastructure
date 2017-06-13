@@ -47,7 +47,7 @@
       state: directory
 
   - name: Copy service files into bin
-    win_command: "xcopy {{wildfly_install_dir}}\\docs\\contrib\\scripts\\service {{wildfly_install_dir}}\\bin\\service /E /Y"
+    win_shell: "&xcopy \"{{wildfly_install_dir}}\\docs\\contrib\\scripts\\service\" \"{{wildfly_install_dir}}\\bin\\service\" /E /Y"
 
   - name: Copy Domain Controller Configuration
     template:
