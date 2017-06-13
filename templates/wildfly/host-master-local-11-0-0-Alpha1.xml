@@ -71,15 +71,7 @@
         </management-interfaces>
     </management>
     <domain-controller>
-        <local>
-            <discovery-options>
-                <discovery-option name="s3-discovery" code="org.jboss.as.host.controller.discovery.S3Discovery" module="org.jboss.as.host-controller">
-                    <property name="access-key" value="${VAULT::MyVault::s3_access_key::1}"/>
-                    <property name="secret-access-key" value="${VAULT::MyVault::s3_secret_key::1}"/>
-                    <property name="location" value="${VAULT::MyVault::s3_bucket::1}"/>
-                </discovery-option>
-            </discovery-options>
-        </local>
+        <local/>
     </domain-controller>
     <interfaces>
         <interface name="management">

@@ -40,10 +40,7 @@
       dest: C:\Apps
 
   - name: Install JCE
-    win_copy:
-      src: C:\Apps\UnlimitedJCEPolicyJDK8\
-      dest: C:\Program Files\Java\jdk1.8.0_131\jre\lib\security
-      force: true
+    win_command: "xcopy C:\\Apps\\UnlimitedJCEPolicyJDK8 \"C:\\Program Files\\Java\\jdk1.8.0_131\\jre\\lib\\security\" /E /Y"
 
 #  - name: Download SDK
 #    win_get_url:

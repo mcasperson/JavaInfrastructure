@@ -11,8 +11,8 @@
 #      state: stopped
 #    ignore_errors: yes
 
-  - name: Stop existing service (because using win_service seems to hang)
-    win_shell: "&taskkill /f /fi \"USERNAME eq {{wildfly_role}}\""
+#  - name: Stop existing service (because using win_service seems to hang)
+#    win_shell: "&taskkill /f /fi \"USERNAME eq {{wildfly_role}}\""
 
   - name: Download Wildfly Distribution
     win_get_url:
@@ -39,6 +39,7 @@
   - name: add passwords to vault
     win_command: "{{wildfly_install_dir}}/bin/vault.bat -k {{wildfly_install_dir}}/vault.keystore -p {{vault_password}} -e {{wildfly_install_dir}}/vault -i 50 -s {{salt}} -v vault -b MyVault -a {{item.name}} -x {{item.password}}"
     with_items: "{{passwords}}"
+    no_log: true
 
   - name: Create services directory
     win_file:
@@ -47,6 +48,36 @@
 
   - name: Copy service files into bin
     win_command: "xcopy {{wildfly_install_dir}}\\docs\\contrib\\scripts\\service {{wildfly_install_dir}}\\bin\\service /E /Y"
+
+  - name: Copy Domain Controller Configuration
+    template:
+      src: "{{playbook_dir}}/templates/wildfly/domain-11-0-0-Alpha1.xml"
+      dest: "{{wildfly_install_dir}}/domain/configuration/domain.xml"
+
+  - name: Copy Domain Controller Configuration
+    template:
+      src: "{{playbook_dir}}/templates/wildfly/host-master-11-0-0-Alpha1.xml"
+      dest: "{{wildfly_install_dir}}/domain/configuration/host-master.xml"
+
+  - name: Copy Domain Controller Configuration
+    template:
+      src: "{{playbook_dir}}/templates/wildfly/host-master-local-11-0-0-Alpha1.xml"
+      dest: "{{wildfly_install_dir}}/domain/configuration/host-master-local.xml"
+
+  - name: Copy Slave Configuration
+    template:
+      src: "{{playbook_dir}}/templates/wildfly/host-slave-11-0-0-Alpha1.xml"
+      dest: "{{wildfly_install_dir}}/domain/configuration/host-slave.xml"
+
+  - name: Copy Slave Configuration
+    template:
+      src: "{{playbook_dir}}/templates/wildfly/host-slave-local-11-0-0-Alpha1.xml"
+      dest: "{{wildfly_install_dir}}/domain/configuration/host-slave-local.xml"
+
+  - name: Copy Standalone Configuration
+    win_template:
+      src: "{{playbook_dir}}/templates/wildfly/standalone-11-0-0-Alpha1.xml"
+      dest: "{{wildfly_install_dir}}\\standalone\\configuration\\standalone.xml"
 
 #  - name: Give permissions to wildfly user
 #    win_acl:

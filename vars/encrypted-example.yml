@@ -1,0 +1,11 @@
+---
+vault_password: "The WildFly Vault Password"
+masked_vault_password: "The masked WildFly Vault password returned by the vault script"
+salt: "The WildFly vault salt value"
+wildfly_admin_password: "The WildFly admin console password"
+wildfly_slave_password: "The WildFly slave account password"
+passwords:
+    - { name: 's3_bucket', password: 'The S3 bucket used for domain discovery' }
+    - { name: 's3_access_key', password: 'The AWS Access Key used to access the s3_bucket' }
+    - { name: 's3_secret_key', password: 'The AWS Secret Key used to access the s3 bucket' }
+    - { name: 'wildfly_slave_password', password: "{{wildfly_slave_password}}" }

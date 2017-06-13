@@ -28,7 +28,7 @@
   - name: Add Host to Inventory
     add_host:
       name: "{{ windows_server_ec2.instances[0].public_ip }}"
-      groups: tag_Appplication_OctopusDeploy
+      groups: windows_server
 
   - name: Wait for WinRM to answer on all hosts
     wait_for:

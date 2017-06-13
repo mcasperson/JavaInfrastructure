@@ -1,4 +1,3 @@
 ---
-  - include_vars: encrypted.yml
-  - include_vars: main.yml
+  - include_vars: "{{playbook_dir}}/vars/encrypted.yml"
   - include_vars: "{{playbook_dir}}/vars/wildfly.yml"

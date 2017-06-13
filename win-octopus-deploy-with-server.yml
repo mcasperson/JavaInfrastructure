@@ -9,7 +9,7 @@
     - win-server-instance
 
 - name: Octopus Deploy
-  hosts: tag_Appplication_OctopusDeploy
+  hosts: windows_server
   become: false
   gather_facts: false
 

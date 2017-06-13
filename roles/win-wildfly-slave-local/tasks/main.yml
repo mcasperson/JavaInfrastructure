@@ -1,0 +1,10 @@
+---
+
+  - name: Install Slave Service
+    win_command: "{{wildfly_install_dir}}\\bin\\service\\service.bat install /startup /name \"{{wildfly_slave_service}}\" /host /hostconfig host-slave-local.xml"
+
+  - name: Start Slave Service
+    win_service:
+      name: "{{wildfly_slave_service}}"
+      state: started
+    ignore_errors: yes

@@ -1,3 +1,10 @@
 ---
+wildfly_download: https://s3.amazonaws.com/bamboo-support/wildfly-11.0.0.Alpha1.tar.gz
+wildfly_download_zip: https://s3.amazonaws.com/bamboo-support/wildfly-11.0.0.Alpha1.zip
+wildfly_versioned_dir: wildfly-11.0.0.Alpha1
+wildfly_admin_user: admin
+wildfly_slave_username: slave
 wildfly_standalone_port_offset: 1000
 wildfly_slave_port_offset: 2000
+wildfly_domaincontroller_management_native_port: 19999
+wildfly_domaincontroller_management_http_port: 19990
