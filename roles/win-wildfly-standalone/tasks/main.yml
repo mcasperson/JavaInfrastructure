@@ -2,5 +2,5 @@
 
   - name: Copy Modified Configuration
     win_template:
-      src: group_templates\wildfly\standalone-11-0-0-Alpha1.xml
+      src: "{{playbook_dir}}/templates/wildfly/standalone-11-0-0-Alpha1.xml"
       dest: "{{wildfly_install_dir}}\\standalone\\configuration\\standalone.xml"

@@ -1,0 +1,4 @@
+---
+wildfly_standalone_port_offset: 1000
+wildfly_slave_port_offset: 2000
+wildfly_domain_controller_port_offset: 3000
