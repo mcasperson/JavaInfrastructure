@@ -1,0 +1,7 @@
+---
+- name: wildfly standalone
+  hosts: tag_Appplication_WinWildflySlave
+  become: false
+
+  roles:
+    - win-wildfly-slave

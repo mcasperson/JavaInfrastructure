@@ -1,0 +1,8 @@
+---
+
+  - name: Copy Modified Configuration
+    template:
+      src: "{{playbook_dir}}/templates/wildfly/host-slave-11-0-0-Alpha1.xml"
+      dest: "{{wildfly_install_dir}}/domain/configuration/host-slave.xml"
+      owner: "{{wildfly_user}}"
+      group: "{{wildfly_user}}"

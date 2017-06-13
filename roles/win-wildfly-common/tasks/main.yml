@@ -7,7 +7,7 @@
   - name: Extract WildFly
     win_unzip:
         src: C:\Apps\wildfly.zip
-        dest: C:\
+        dest: "C:\\{{wildfly_role}}"
         creates: "{{wildfly_install_dir}}"
 
   - name: Add Management Users
