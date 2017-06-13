@@ -9,3 +9,6 @@
     template:
       src: "{{playbook_dir}}/templates/wildfly/host-master-11-0-0-Alpha1.xml"
       dest: "{{wildfly_install_dir}}/domain/configuration/host-master.xml"
+
+  - name: Install Domain Controller Service
+    win_command: "{{wildfly_install_dir}}\\bin\\service\\service.bat install /startup /name \"WildFlyDomainController\" /hostconfig host-master.xml"
