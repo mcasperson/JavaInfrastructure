@@ -11,4 +11,4 @@
       dest: "{{wildfly_install_dir}}/domain/configuration/host-master.xml"
 
   - name: Install Domain Controller Service
-    win_command: "{{wildfly_install_dir}}\\bin\\service\\service.bat install /startup /name \"WildFlyDomainController\" /hostconfig host-master.xml"
+    win_command: "{{wildfly_install_dir}}\\bin\\service\\service.bat install /startup /name \"{{wildfly_domain_controller_service}}\" /hostconfig host-master.xml"

@@ -6,4 +6,4 @@
       dest: "{{wildfly_install_dir}}/domain/configuration/host-slave.xml"
 
   - name: Install Slave Service
-    win_command: "{{wildfly_install_dir}}\\bin\\service\\service.bat install /startup /name \"WildFlySlave\" /hostconfig host-slave.xml"
+    win_command: "{{wildfly_install_dir}}\\bin\\service\\service.bat install /startup /name \"{{wildfly_slave_service}}\" /hostconfig host-slave.xml"

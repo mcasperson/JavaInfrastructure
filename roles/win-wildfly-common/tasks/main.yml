@@ -1,4 +1,16 @@
 ---
+  - name: Stop Existing Domain Controller Service
+    win_service:
+      name: "{{wildfly_domain_controller_service}}"
+      state: stopped
+    ignore_errors: yes
+
+  - name: Stop Existing Slave Service
+    win_service:
+      name: "{{wildfly_slave_service}}"
+      state: stopped
+    ignore_errors: yes
+
   - name: Download Wildfly Distribution
     win_get_url:
         url: "{{wildfly_download_zip}}"

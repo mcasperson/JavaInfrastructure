@@ -1,2 +1,4 @@
 ---
 wildfly_install_dir: "C:\\{{wildfly_role}}\\{{wildfly_versioned_dir}}"
+wildfly_domain_controller_service: WildFlyDomainController
+wildfly_slave_service: WildFlySlave
