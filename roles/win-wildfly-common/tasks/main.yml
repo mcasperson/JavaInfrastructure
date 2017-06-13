@@ -8,6 +8,7 @@
     win_unzip:
         src: C:\Apps\wildfly.zip
         dest: C:\
+        creates: "{{wildfly_install_dir}}"
 
   - name: Add Management Users
     win_command: "{{wildfly_install_dir}}/bin/add-user.bat {{wildfly_admin_user}} {{wildfly_admin_password}}"
@@ -16,8 +17,8 @@
     win_command: "{{wildfly_install_dir}}/bin/add-user.bat {{wildfly_slave_username}} {{wildfly_slave_password}}"
 
   - name: copy vault keystore
-    copy:
-      src: files/vault.keystore
+    win_copy:
+      src: group_files/wildfly/vault.keystore
       dest: "{{wildfly_install_dir}}/vault.keystore"
 
   - name: add passwords to vault
