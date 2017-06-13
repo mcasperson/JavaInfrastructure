@@ -11,10 +11,20 @@
     args:
       creates: C:\Apps\SqlServerExpress
 
-  - name: Install SQL Server Express
-    win_command: C:\Apps\SqlServerExpress\Setup.exe /Q /UPDATEENABLED=False /SQLSYSADMINACCOUNTS=Administrator /ACTION=INSTALL /FEATURES=SQLENGINE /INSTANCENAME="SQLEXPRESS" /INSTANCEID="SQLEXPRESS" /IACCEPTSQLSERVERLICENSETERMS
+  - name: Copy SQL Server Install Script
+    win_template:
+      src: SQLInstall.ps1
+      dest: C:\Apps\SQLInstall.ps1
+
+  # You can find logs of the attempted installs at C:\Program Files\Microsoft SQL Server\130\Setup Bootstrap\Log
+  - name: Install SQL Express
+    win_shell: C:\Apps\SQLInstall.ps1
     args:
-      creates: C:\Program Files (x86)\Microsoft SQL Server
+      creates: C:\Program Files\Microsoft SQL Server\MSSQL13.SQLEXPRESS
+
+  - name: Give the server some time to start
+    pause:
+      seconds: 30
 
   - name: Install Octopus CLI Tools
     win_chocolatey:

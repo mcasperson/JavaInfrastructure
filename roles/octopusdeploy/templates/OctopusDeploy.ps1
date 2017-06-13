@@ -5,3 +5,4 @@ Start-Process -FilePath "C:\Program Files\Octopus Deploy\Octopus\Octopus.Server.
 Start-Process -FilePath "C:\Program Files\Octopus Deploy\Octopus\Octopus.Server.exe" -ArgumentList "service --instance `"OctopusServer`" --stop" -Wait
 Start-Process -FilePath "C:\Program Files\Octopus Deploy\Octopus\Octopus.Server.exe" -ArgumentList "admin --instance `"OctopusServer`" --username `"admin`" --email `"a@a.com`" --password `"Password01!`"" -Wait
 Start-Process -FilePath "C:\Program Files\Octopus Deploy\Octopus\Octopus.Server.exe" -ArgumentList "service --instance `"OctopusServer`" --install --reconfigure --start --dependOn `"MSSQL`$SQLEXPRESS`"" -Wait
+
