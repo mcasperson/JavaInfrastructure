@@ -15,6 +15,11 @@
       name: googlechrome
       state: present
 
+  - name: Install Notepad ++
+    win_chocolatey:
+      name: notepadplusplus.install
+      state: present
+
   - name: Create download directory
     win_file:
       path: C:\Apps

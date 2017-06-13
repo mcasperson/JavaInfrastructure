@@ -22,10 +22,6 @@
     args:
       creates: C:\Program Files\Microsoft SQL Server\MSSQL13.SQLEXPRESS
 
-  - name: Give the server some time to start
-    pause:
-      seconds: 30
-
   - name: Install Octopus CLI Tools
     win_chocolatey:
       name: octopustools
@@ -46,7 +42,7 @@
       src: OctopusDeploy.ps1
       dest: C:\Apps\OctopusDeploy.ps1
 
-  - name: Install Octospus Deploy Server
+  - name: Install Octopus Deploy Server
     win_shell: C:\Apps\OctopusDeploy.ps1
     args:
       creates: C:\Octopus
