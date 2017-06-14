@@ -12,6 +12,14 @@
   roles:
     - win-server-instance
 
+- name: Windows Instance Prep
+  hosts: windows_server
+  become: false
+  gather_facts: false
+
+  roles:
+    - win-common
+
 - name: Octopus Deploy
   hosts: windows_server
   become: false
