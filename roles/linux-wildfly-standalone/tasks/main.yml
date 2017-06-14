@@ -4,8 +4,8 @@
     template:
       src: wildfly.conf
       dest: /etc/default/wildfly
-      owner: "{{wildfly_user}}"
-      group: "{{wildfly_user}}"
+      owner: "{{wildfly_role}}"
+      group: "{{wildfly_role}}"
       mode: 0644
 
   #- name: Add Additional JMX Monitoring
@@ -24,8 +24,8 @@
     template:
       src: "{{playbook_dir}}/templates/wildfly/standalone-11-0-0-Alpha1.xml"
       dest: "{{wildfly_install_dir}}/standalone/configuration/standalone.xml"
-      owner: "{{wildfly_user}}"
-      group: "{{wildfly_user}}"
+      owner: "{{wildfly_role}}"
+      group: "{{wildfly_role}}"
 
   - name: Start Service
     service:

@@ -3,7 +3,7 @@
 
   - name: "Create WildFly User {{wildfly_role}}"
     user:
-      name: "{{wildfly_user}}"
+      name: "{{wildfly_role}}"
 
   - name: "Stop Existing Service {{wildfly_role}}"
     service:
@@ -13,7 +13,7 @@
     ignore_errors: yes
 
   - name: "Kill Existing Processes {{wildfly_role}}"
-    command: "pkill -9 -U {{wildfly_user}}"
+    command: "pkill -9 -U {{wildfly_role}}"
     ignore_errors: yes
 
   - name: "Download Wildfly Distribution {{wildfly_role}}"
@@ -37,8 +37,8 @@
     file:
       state: directory
       path: "/opt/{{wildfly_role}}"
-      owner: "{{wildfly_user}}"
-      group: "{{wildfly_user}}"
+      owner: "{{wildfly_role}}"
+      group: "{{wildfly_role}}"
       recurse: true
 
   - name: "Symlink WildFly Dir {{wildfly_role}}"
@@ -51,8 +51,8 @@
     file:
       state: directory
       path: "{{wildfly_logging_dir}}"
-      owner: "{{wildfly_user}}"
-      group: "{{wildfly_user}}"
+      owner: "{{wildfly_role}}"
+      group: "{{wildfly_role}}"
       recurse: true
 
   - name: "Add Management Users {{wildfly_role}}"
@@ -73,8 +73,8 @@
     copy:
       src: group_files/wildfly/vault.keystore
       dest: "{{wildfly_install_dir}}/vault.keystore"
-      owner: "{{wildfly_user}}"
-      group: "{{wildfly_user}}"
+      owner: "{{wildfly_role}}"
+      group: "{{wildfly_role}}"
       mode: 0644
 
   - name: "Add passwords to vault {{wildfly_role}}"
@@ -85,33 +85,33 @@
     template:
       src: "{{playbook_dir}}/templates/wildfly/host-slave-11-0-0-Alpha1.xml"
       dest: "{{wildfly_install_dir}}/domain/configuration/host-slave.xml"
-      owner: "{{wildfly_user}}"
-      group: "{{wildfly_user}}"
+      owner: "{{wildfly_role}}"
+      group: "{{wildfly_role}}"
 
   - name: "Copy Slave local Configuration {{wildfly_role}}"
     template:
       src: "{{playbook_dir}}/templates/wildfly/host-slave-local-11-0-0-Alpha1.xml"
       dest: "{{wildfly_install_dir}}/domain/configuration/host-slave-local.xml"
-      owner: "{{wildfly_user}}"
-      group: "{{wildfly_user}}"
+      owner: "{{wildfly_role}}"
+      group: "{{wildfly_role}}"
 
   - name: "Copy DC Configuration {{wildfly_role}}"
     template:
       src: "{{playbook_dir}}/templates/wildfly/domain-11-0-0-Alpha1.xml"
       dest: "{{wildfly_install_dir}}/domain/configuration/domain.xml"
-      owner: "{{wildfly_user}}"
-      group: "{{wildfly_user}}"
+      owner: "{{wildfly_role}}"
+      group: "{{wildfly_role}}"
 
   - name: "Copy DC Configuration {{wildfly_role}}"
     template:
       src: "{{playbook_dir}}/templates/wildfly/host-master-11-0-0-Alpha1.xml"
       dest: "{{wildfly_install_dir}}/domain/configuration/host-master.xml"
-      owner: "{{wildfly_user}}"
-      group: "{{wildfly_user}}"
+      owner: "{{wildfly_role}}"
+      group: "{{wildfly_role}}"
 
   - name: "Copy DC local Configuration {{wildfly_role}}"
     template:
       src: "{{playbook_dir}}/templates/wildfly/host-master-local-11-0-0-Alpha1.xml"
       dest: "{{wildfly_install_dir}}/domain/configuration/host-master-local.xml"
-      owner: "{{wildfly_user}}"
-      group: "{{wildfly_user}}"
+      owner: "{{wildfly_role}}"
+      group: "{{wildfly_role}}"
