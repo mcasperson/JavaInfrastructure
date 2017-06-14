@@ -13,7 +13,7 @@ Install Ansible and Boto:
 
 ```
 sudo apt-get install python-pip
-sudo pip install ansible boto3
+sudo pip install ansible boto3 pywinrm[credssp]
 ```
 
 ### Configure AWS

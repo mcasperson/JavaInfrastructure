@@ -14,10 +14,10 @@
       name: googlechrome
       state: present
 
-  - name: Install Sysinternals
-    win_chocolatey:
-      name: sysinternals
-      state: present
+#  - name: Install Sysinternals
+#    win_chocolatey:
+#      name: sysinternals
+#      state: present
 
   - name: Install Notepad ++
     win_chocolatey:
