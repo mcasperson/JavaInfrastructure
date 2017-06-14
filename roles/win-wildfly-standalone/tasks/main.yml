@@ -21,6 +21,6 @@
     win_shortcut:
       src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
       dest: '%PUBLIC%\Desktop\WildFly Standalone Admin.lnk'
-      args: '--new-window http://localhost:9990/'
+      args: '--new-window http://localhost:10990/'
       directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
       icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
