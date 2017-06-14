@@ -40,3 +40,10 @@
 
   roles:
     - win-wildfly-standalone
+
+- name: Tomcat
+  hosts: windows_server
+  become: false
+
+  roles:
+    - win-tomcat
