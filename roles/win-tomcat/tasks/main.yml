@@ -1,13 +1,4 @@
 ---
-
-  #- name: Disable UAC
-  #  win_shell: New-ItemProperty -Path HKLM:Software\Microsoft\Windows\CurrentVersion\policies\system -Name EnableLUA -PropertyType DWord -Value 0 -Force
-
-  #- name: Reboot Server
-  #  win_reboot:
-  #    shutdown_timeout_sec: 3600
-  #    reboot_timeout_sec: 3600
-
   - name: Download Tomcat
     win_get_url:
         url: "{{tomcat_zip_download}}"

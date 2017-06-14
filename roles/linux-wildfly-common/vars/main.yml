@@ -1,4 +1,4 @@
 ---
 wildfly_user: wildfly
-wildfly_install_dir: /opt/wildfly
-wildfly_logging_dir: /var/log/wildfly
+wildfly_install_dir: "/opt/{{wildfly_role}}/wildfly"
+wildfly_logging_dir: "/var/log/{{wildfly_role}}/wildfly"

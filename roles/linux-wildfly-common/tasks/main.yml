@@ -22,23 +22,28 @@
         dest: /tmp/wildfly.tar.gz
         mode: 0440
 
+  - name: Creates directory
+    file:
+      path: "/opt/{{wildfly_role}}"
+      state: directory
+
   - name: Extract WildFly
     unarchive:
         src: /tmp/wildfly.tar.gz
-        dest: /opt
+        dest: "/opt/{{wildfly_role}}"
         copy: no
 
   - name: Set WildFly Directory Permissions
     file:
       state: directory
-      path: "/opt/{{wildfly_versioned_dir}}"
+      path: "/opt/{{wildfly_role}}"
       owner: "{{wildfly_user}}"
       group: "{{wildfly_user}}"
       recurse: true
 
   - name: Symlink WildFly Dir
     file:
-        src: "/opt/{{wildfly_versioned_dir}}"
+        src: "/opt/{{wildfly_role}}/{{wildfly_versioned_dir}}"
         dest: "{{wildfly_install_dir}}"
         state: link
 
@@ -66,7 +71,7 @@
 
   - name: copy vault ketstore
     copy:
-      src: files/vault.keystore
+      src: group_files/wildfly/vault.keystore
       dest: "{{wildfly_install_dir}}/vault.keystore"
       owner: "{{wildfly_user}}"
       group: "{{wildfly_user}}"
