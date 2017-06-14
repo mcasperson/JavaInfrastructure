@@ -80,3 +80,38 @@
   - name: add passwords to vault
     command: "{{wildfly_install_dir}}/bin/vault.sh -k {{wildfly_install_dir}}/vault.keystore -p {{vault_password}} -e {{wildfly_install_dir}}/vault -i 50 -s {{salt}} -v vault -b MyVault -a {{item.name}} -x {{item.password}}"
     with_items: "{{passwords}}"
+
+  - name: Copy Slave Configuration
+    template:
+      src: "{{playbook_dir}}/templates/wildfly/host-slave-11-0-0-Alpha1.xml"
+      dest: "{{wildfly_install_dir}}/domain/configuration/host-slave.xml"
+      owner: "{{wildfly_user}}"
+      group: "{{wildfly_user}}"
+
+  - name: Copy Slave local Configuration
+    template:
+      src: "{{playbook_dir}}/templates/wildfly/host-slave-local-11-0-0-Alpha1.xml"
+      dest: "{{wildfly_install_dir}}/domain/configuration/host-slave-local.xml"
+      owner: "{{wildfly_user}}"
+      group: "{{wildfly_user}}"
+
+  - name: Copy DC Configuration
+    template:
+      src: "{{playbook_dir}}/templates/wildfly/domain-11-0-0-Alpha1.xml"
+      dest: "{{wildfly_install_dir}}/domain/configuration/domain.xml"
+      owner: "{{wildfly_user}}"
+      group: "{{wildfly_user}}"
+
+  - name: Copy DC Configuration
+    template:
+      src: "{{playbook_dir}}/templates/wildfly/host-master-11-0-0-Alpha1.xml"
+      dest: "{{wildfly_install_dir}}/domain/configuration/host-master.xml"
+      owner: "{{wildfly_user}}"
+      group: "{{wildfly_user}}"
+
+  - name: Copy DC local Configuration
+    template:
+      src: "{{playbook_dir}}/templates/wildfly/host-master-local-11-0-0-Alpha1.xml"
+      dest: "{{wildfly_install_dir}}/domain/configuration/host-master-local.xml"
+      owner: "{{wildfly_user}}"
+      group: "{{wildfly_user}}"
