@@ -22,6 +22,6 @@
 
   - name: Start Service
     service:
-      name: wildfly
+      name: "{{wildfly_role}}"
       enabled: yes
       state: restarted

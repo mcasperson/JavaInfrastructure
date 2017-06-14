@@ -1,1 +1,2 @@
 ---
+wildfly_role: "wildfly_standalone"

@@ -7,7 +7,7 @@
 
   - name: Stop Existing Service
     service:
-      name: wildfly
+      name: "{{wildfly_role}}"
       enabled: yes
       state: stopped
     ignore_errors: yes
@@ -64,7 +64,7 @@
   - name: Add Wildfly Service
     template:
       src: wildfly-init-redhat.sh
-      dest: /etc/init.d/wildfly
+      dest: "/etc/init.d/{{wildfly_role}}"
       owner: root
       group: root
       mode: 0755
