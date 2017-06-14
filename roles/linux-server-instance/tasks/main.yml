@@ -35,3 +35,7 @@
       port: 22
       host: "{{ linux_server_ec2.instances[0].public_ip }}"
       timeout: 600
+
+  - name: Pause for a bit
+    pause:
+      seconds: 30
