@@ -16,6 +16,18 @@ sudo apt-get install python-pip
 sudo pip install ansible boto3 pywinrm[credssp]
 ```
 
+### Configure Ansible
+
+You will want to disable the SSH key checking, as it is always
+going to prompt you to add new Linux servers.
+
+Add the following to `/etc/ansible/ansible.cfg`:
+
+```
+[defaults]
+host_key_checking = False
+```
+
 ### Configure AWS
 
 Configure the AWS CLI locally with your credentials:

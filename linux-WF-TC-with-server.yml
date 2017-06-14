@@ -13,29 +13,37 @@
     - linux-server-instance
 
 - name: wildfly standalone
-  hosts: windows_server
-  become: false
+  hosts: linux_server
+  remote_user: centos
+  become: true
+  become_user: root
 
   roles:
-    - win-wildfly-dc-local
+    - linux-wildfly-dc-local
 
 - name: wildfly standalone
   hosts: linux_server
-  become: false
+  remote_user: centos
+  become: true
+  become_user: root
 
   roles:
     - linux-wildfly-slave-local
 
 - name: wildfly standalone
   hosts: linux_server
-  become: false
+  remote_user: centos
+  become: true
+  become_user: root
 
   roles:
     - linux-wildfly-standalone
 
 - name: Tomcat
   hosts: linux_server
-  become: false
+  remote_user: centos
+  become: true
+  become_user: root
 
   roles:
     - linux-tomcat

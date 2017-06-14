@@ -1,7 +1,7 @@
 ---
   - name: Add EPEL repository
     yum:
-      name: http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-9.noarch.rpm
+      name: https://s3.amazonaws.com/bamboo-support/epel-release-7-9.noarch.rpm
       state: present
 
   - name: install useful packages
