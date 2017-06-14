@@ -54,7 +54,7 @@ fi
 
 # Location of wildfly
 if [ -z "$JBOSS_HOME" ]; then
-	JBOSS_HOME="/opt/${NAME}"
+	JBOSS_HOME="/opt/${NAME}/wildfly"
 fi
 export JBOSS_HOME
 
@@ -66,7 +66,7 @@ fi
 
 # Run as wildfly user
 if [ -z "$JBOSS_USER" ]; then
-	JBOSS_USER=wildfly
+	JBOSS_USER={{wildfly_role}}
 fi
 
 # Check wildfly user

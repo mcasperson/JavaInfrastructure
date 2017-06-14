@@ -80,6 +80,7 @@
   - name: "Add passwords to vault {{wildfly_role}}"
     command: "{{wildfly_install_dir}}/bin/vault.sh -k {{wildfly_install_dir}}/vault.keystore -p {{vault_password}} -e {{wildfly_install_dir}}/vault -i 50 -s {{salt}} -v vault -b MyVault -a {{item.name}} -x {{item.password}}"
     with_items: "{{passwords}}"
+    no_log: true
 
   - name: "Copy Slave Configuration {{wildfly_role}}"
     template:
@@ -95,21 +96,21 @@
       owner: "{{wildfly_role}}"
       group: "{{wildfly_role}}"
 
-  - name: "Copy DC Configuration {{wildfly_role}}"
+  - name: "Copy DC Domain Configuration {{wildfly_role}}"
     template:
       src: "{{playbook_dir}}/templates/wildfly/domain-11-0-0-Alpha1.xml"
       dest: "{{wildfly_install_dir}}/domain/configuration/domain.xml"
       owner: "{{wildfly_role}}"
       group: "{{wildfly_role}}"
 
-  - name: "Copy DC Configuration {{wildfly_role}}"
+  - name: "Copy DC Host Configuration {{wildfly_role}}"
     template:
       src: "{{playbook_dir}}/templates/wildfly/host-master-11-0-0-Alpha1.xml"
       dest: "{{wildfly_install_dir}}/domain/configuration/host-master.xml"
       owner: "{{wildfly_role}}"
       group: "{{wildfly_role}}"
 
-  - name: "Copy DC local Configuration {{wildfly_role}}"
+  - name: "Copy DC Host Local Configuration {{wildfly_role}}"
     template:
       src: "{{playbook_dir}}/templates/wildfly/host-master-local-11-0-0-Alpha1.xml"
       dest: "{{wildfly_install_dir}}/domain/configuration/host-master-local.xml"
