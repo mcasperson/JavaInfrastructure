@@ -1,0 +1,41 @@
+---
+# This playbook creates a Linux Server instance in AWS and installs:
+# WildFly Standalone
+# Wildfly Domain Controller and Slave
+# Tomcat
+- name: Linux Server
+  hosts:
+    - 127.0.0.1
+  become: false
+  gather_facts: false
+
+  roles:
+    - linux-server-instance
+
+- name: wildfly standalone
+  hosts: windows_server
+  become: false
+
+  roles:
+    - win-wildfly-dc-local
+
+- name: wildfly standalone
+  hosts: linux_server
+  become: false
+
+  roles:
+    - linux-wildfly-slave-local
+
+- name: wildfly standalone
+  hosts: linux_server
+  become: false
+
+  roles:
+    - linux-wildfly-standalone
+
+- name: Tomcat
+  hosts: linux_server
+  become: false
+
+  roles:
+    - linux-tomcat

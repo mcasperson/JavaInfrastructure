@@ -12,7 +12,7 @@
 
   - name: create user to run tomcat
     user:
-      name: {{tomcat_user}}
+      name: "{{tomcat_user}}"
 
   - name: download tomcat
     get_url:
