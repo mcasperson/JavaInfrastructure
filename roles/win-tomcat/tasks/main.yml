@@ -1,12 +1,12 @@
 ---
 
-  - name: Disable UAC
-    win_shell: New-ItemProperty -Path HKLM:Software\Microsoft\Windows\CurrentVersion\policies\system -Name EnableLUA -PropertyType DWord -Value 0 -Force
+  #- name: Disable UAC
+  #  win_shell: New-ItemProperty -Path HKLM:Software\Microsoft\Windows\CurrentVersion\policies\system -Name EnableLUA -PropertyType DWord -Value 0 -Force
 
-  - name: Reboot Server
-    win_reboot:
-      shutdown_timeout_sec: 3600
-      reboot_timeout_sec: 3600
+  #- name: Reboot Server
+  #  win_reboot:
+  #    shutdown_timeout_sec: 3600
+  #    reboot_timeout_sec: 3600
 
   - name: Download Tomcat
     win_get_url:
@@ -35,10 +35,21 @@
       dest: "C:\\tomcat\\apache-tomcat-8.5.15\\webapps\\manager\\META-INF\\context.xml"
 
   - name: Install Tomcat Service
-    win_command: "C:\\tomcat\\apache-tomcat-8.5.15\\bin\\service.bat install Tomcat8 --Startup=auto"
+    win_shell: "C:\\tomcat\\apache-tomcat-8.5.15\\bin\\service.bat install Tomcat8"
+    args:
+      chdir: "C:\\tomcat\\apache-tomcat-8.5.15\\bin"
 
   - name: Start Tomcat Service
     win_service:
       name: "Tomcat8"
       state: started
+      start_mode: auto
     ignore_errors: yes
+
+  - name: Add Tomcat Shortcut
+    win_shortcut:
+      src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
+      dest: '%PUBLIC%\Desktop\Tomcat.lnk'
+      args: '--new-window http://localhost:38080/'
+      directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
+      icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
