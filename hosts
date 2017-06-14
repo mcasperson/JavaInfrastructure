@@ -1,11 +1,2 @@
-[tag_Appplication_OctopusDeploy]
-107.21.184.175
-
-[tag_Appplication_WinWildflyStandalone]
-54.90.168.255
-
-[tag_Appplication_WinWildflyDC]
-54.90.168.255
-
-[tag_Appplication_WinWildflySlave]
-54.90.168.255
+[tag_Appplication_WinTomcat]
+54.147.39.139

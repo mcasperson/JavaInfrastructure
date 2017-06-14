@@ -2,30 +2,6 @@
   - include_vars: encrypted.yml
   - include_vars: main.yml
 
-#  - name: Disable UAC
-#    win_shell: New-ItemProperty -Path HKLM:Software\Microsoft\Windows\CurrentVersion\policies\system -Name EnableLUA -PropertyType DWord -Value 0 -Force
-
-#  - name: Reboot Server
-#    win_reboot:
-#      shutdown_timeout_sec: 3600
-#      reboot_timeout_sec: 3600
-
-#  - name: Install DotNET
-#    win_feature:
-#      name: NET-Framework-Core,NET-Framework-Features,NET-Framework-45-Features,NET-Framework-45-Core,NET-Framework-45-ASPNET
-#      state: present
-
-  # This is to get around permission issues that cause
-  # "There was an error generating the XML document" errors
-  # when installing SQL Server
-#  - name: Create admin user to install SQL Express
-#    win_user:
-#      name: "{{sql_install_user}}"
-#      password: "{{sql_install_user_password}}"
-#      state: present
-#      groups:
-#        - Administrators
-
   - name: Download SQL Server Express 2016
     win_get_url:
       url: "https://s3.amazonaws.com/bamboo-support/SQLEXPR_x64_ENU.exe"

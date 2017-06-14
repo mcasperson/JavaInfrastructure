@@ -105,6 +105,9 @@ Admin interface: http://localhost:9990
 ### Octopus Deploy
 Web interface: http://localhost:80
 
+### Tomcat
+Web interface: http://localhost:38080
+
 ## Notes
 
 ### Keystore

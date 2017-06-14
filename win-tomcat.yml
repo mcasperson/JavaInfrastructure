@@ -1,0 +1,7 @@
+---
+- name: wildfly standalone
+  hosts: tag_Appplication_WinTomcat
+  become: false
+
+  roles:
+    - win-tomcat

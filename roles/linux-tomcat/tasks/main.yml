@@ -28,7 +28,7 @@
 
   - name: set tomcat users
     template:
-      src: tomcat-users.xml
+      src: "{{playbook_dir}}/templates/tomcat/tomcat-users.xml"
       dest: /opt/apache-tomcat-8.5.15/conf/tomcat-users.xml
       owner: tomcat
       group: tomcat
@@ -36,7 +36,7 @@
 
   - name: set tomcat server settings
     template:
-      src: server.xml
+      src: "{{playbook_dir}}/templates/tomcat/server.xml"
       dest: /opt/apache-tomcat-8.5.15/conf/server.xml
       owner: tomcat
       group: tomcat
@@ -44,7 +44,7 @@
 
   - name: allow manager to be used anywhere
     template:
-      src: context.xml
+      src: "{{playbook_dir}}/templates/tomcat/context.xml"
       dest: /opt/apache-tomcat-8.5.15/webapps/manager/META-INF/context.xml
       owner: tomcat
       group: tomcat
@@ -52,7 +52,7 @@
 
   - name: install tomcat service
     template:
-      src: tomcat
+      src: "{{playbook_dir}}/templates/tomcat/tomcat"
       dest: /etc/init.d/tomcat
       owner: root
       group: root
