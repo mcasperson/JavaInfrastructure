@@ -74,7 +74,12 @@
     <domain-controller>
         <remote security-realm="ManagementRealm" username="{{wildfly_slave_username}}">
             <discovery-options>
+                {% if ansible_ip_addresses is defined %}
                 <static-discovery name="primary" protocol="${jboss.domain.master.protocol:remote}" host="${jboss.domain.master.address:{{ansible_ip_addresses[0]}}}" port="${jboss.domain.master.port:{{wildfly_domaincontroller_management_native_port}}}"/>
+                {% else %}
+                <static-discovery name="primary" protocol="${jboss.domain.master.protocol:remote}" host="${jboss.domain.master.address:{{ansible_default_ipv4.address}}}" port="${jboss.domain.master.port:{{wildfly_domaincontroller_management_native_port}}}"/>
+                {% endif %}
+
             </discovery-options>
         </remote>
     </domain-controller>
