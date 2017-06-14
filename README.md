@@ -174,3 +174,21 @@ Then use the hosts file with the command:
 ```
 ansible-playbook -i hosts --vault-password-file ~/password.txt --private-key /key/location/mykey.pem bamboo.yml
 ```
+
+### SQL Server Express
+
+Installing SQL Server Express via Ansible requires "multi-hop" support. To enable this:
+
+1. Enable CredSSP on the Windows side, by running these PowerShell commands:
+```
+Enable-WSManCredSSP -Role Server -Force
+Set-Item -Path "WSMan:\localhost\Service\Auth\CredSSP" -Value $true
+```
+
+2. Instruct Ansible to use CredSSP for its WinRM session, by setting the variable 
+`ansible_winrm_transport` to `credssp`.
+
+3. Upgrade pywinrm on the ansible server, including credssp support:
+```
+pip install --upgrade 'pywinrm[credssp]'
+```
