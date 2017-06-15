@@ -78,3 +78,9 @@
     args:
       creates: C:\Octopus\Applications
     register: create_tentacle
+
+  - name: Open Firewall For Server
+    win_shell: netsh advfirewall firewall add rule name="Octopus Deploy" dir=in action=allow protocol=TCP localport=80 profile=public
+
+  - name: Open Firewall For Tentacle
+    win_shell: netsh advfirewall firewall add rule name="Octopus Deploy" dir=in action=allow protocol=TCP localport=10933 profile=public
