@@ -3,16 +3,31 @@
     win_chocolatey:
       name: jdk8
       state: present
+      timeout: 10000
+    register: java_result
+    retries: 5
+    delay: 10
+    until: java_result | success
 
   - name: Install Groovy
     win_chocolatey:
       name: groovy
       state: present
+      timeout: 10000
+    register: groovy_result
+    retries: 5
+    delay: 10
+    until: groovy_result | success
 
-  - name: Install Chrome
-    win_chocolatey:
-      name: googlechrome
-      state: present
+#  - name: Install Chrome
+#    win_chocolatey:
+#      name: googlechrome
+#      state: present
+#      timeout: 10000
+#    register: chrome_result
+#    retries: 5
+#    delay: 10
+#    until: chrome_result | success
 
 #  - name: Install Sysinternals
 #    win_chocolatey:
