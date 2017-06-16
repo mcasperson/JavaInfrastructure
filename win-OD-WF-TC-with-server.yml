@@ -23,7 +23,6 @@
 - name: Octopus Deploy
   hosts: windows_server
   become: false
-  gather_facts: false
 
   roles:
     - win-octopus-deploy
