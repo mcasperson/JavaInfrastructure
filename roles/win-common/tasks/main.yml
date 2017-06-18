@@ -22,7 +22,7 @@
   - name: Download Chrome
     win_get_url:
       url: https://s3.amazonaws.com/bamboo-support/ChromeStandaloneSetup64.exe
-      dest: C:\Apps\ChromeStandaloneSetup64.exe
+      dest: C:\Apps
 
   - name: Install Chrome
     win_command: C:\Apps\ChromeStandaloneSetup64.exe /silent /install
