@@ -1,56 +1,40 @@
 ---
-  - name: Install Java
-    win_chocolatey:
-      name: jdk8
-      state: present
-      timeout: 10000
-    register: java_result
-    retries: 5
-    delay: 10
-    until: java_result | success
-
-  - name: Install Groovy
-    win_chocolatey:
-      name: groovy
-      state: present
-      timeout: 10000
-    register: groovy_result
-    retries: 5
-    delay: 10
-    until: groovy_result | success
-
-  - name: Download Chrome
-    win_get_url:
-      url: https://s3.amazonaws.com/bamboo-support/ChromeStandaloneSetup64.exe
-      dest: C:\Apps
-
-  - name: Install Chrome
-    win_command: C:\Apps\ChromeStandaloneSetup64.exe /silent /install
-
-#  - name: Install Chrome
-#    win_chocolatey:
-#      name: googlechrome
-#      state: present
-#      timeout: 10000
-#    register: chrome_result
-#    retries: 5
-#    delay: 10
-#    until: chrome_result | success
-
-#  - name: Install Sysinternals
-#    win_chocolatey:
-#      name: sysinternals
-#      state: present
-
-  - name: Install Notepad ++
-    win_chocolatey:
-      name: notepadplusplus.install
-      state: present
-
   - name: Create download directory
     win_file:
       path: C:\Apps
       state: directory
+
+  - name: Download Java
+    win_get_url:
+      url: "https://s3.amazonaws.com/bamboo-support/jdk-8u131-windows-x64.exe"
+      dest: C:\Apps\jdk-8u131-windows-x64.exe
+
+  - name: Install Java
+    win_command: C:\Apps\jdk-8u131-windows-x64.exe /s ADDLOCAL="ToolsFeature,SourceFeature,PublicjreFeature" INSTALLDIR=C:\Java\x86\jdk1.8.0_131 /INSTALLDIRPUBJRE=C:\Java\x86\jre1.8.0_131
+
+  - name: Download Groovy
+    win_get_url:
+      url: "https://s3.amazonaws.com/bamboo-support/groovy-2.4.11-installer.exe"
+      dest: C:\Apps\groovy-2.4.11-installer.exe
+
+  - name: Install Groovy
+    win_command: C:\Apps\groovy-2.4.11-installer.exe /S /A /N /D=C:\groovy
+
+  - name: Download Chrome
+    win_get_url:
+      url: "https://s3.amazonaws.com/bamboo-support/ChromeStandaloneSetup64.exe"
+      dest: C:\Apps\ChromeStandaloneSetup64.exe
+
+  - name: Install Chrome
+    win_command: C:\Apps\ChromeStandaloneSetup64.exe /silent /install
+
+  - name: Download Notepad++
+    win_get_url:
+      url: "https://s3.amazonaws.com/bamboo-support/npp.7.4.2.Installer.x64.exe"
+      dest: C:\Apps\npp.7.4.2.Installer.x64.exe
+
+  - name: Install Notepad++
+    win_command: C:\Apps\npp.7.4.2.Installer.x64.exe /S
 
   - name: Download JCE
     win_get_url:
