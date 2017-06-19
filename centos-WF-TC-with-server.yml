@@ -9,7 +9,7 @@
     - centos-7-server-instance
 
 - name: linux instance prep
-  hosts: linux_server
+  hosts: centos_server
   remote_user: centos
   become: true
   become_user: root
@@ -18,7 +18,7 @@
     - yum-linux-common
 
 - name: wildfly standalone
-  hosts: linux_server
+  hosts: centos_server
   remote_user: centos
   become: true
   become_user: root
@@ -27,7 +27,7 @@
     - linux-wildfly-dc-local
 
 - name: wildfly standalone
-  hosts: linux_server
+  hosts: centos_server
   remote_user: centos
   become: true
   become_user: root
@@ -36,7 +36,7 @@
     - linux-wildfly-slave-local
 
 - name: wildfly standalone
-  hosts: linux_server
+  hosts: centos_server
   remote_user: centos
   become: true
   become_user: root
@@ -45,7 +45,7 @@
     - linux-wildfly-standalone
 
 - name: Tomcat
-  hosts: linux_server
+  hosts: centos_server
   remote_user: centos
   become: true
   become_user: root

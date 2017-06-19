@@ -9,7 +9,7 @@
     - ubuntu-1704-server-instance
 
 - name: linux instance prep
-  hosts: linux_server
+  hosts: ubuntu_server
   remote_user: ubuntu
   become: true
   become_user: root

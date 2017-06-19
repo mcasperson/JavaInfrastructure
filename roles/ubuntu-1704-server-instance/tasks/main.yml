@@ -10,6 +10,7 @@
       group: WildFlyTomcat
       count: 1
       region: us-east-1
+      wait_timeout: 3000
       volumes:
         - device_name: /dev/sda1
           volume_size: 80
@@ -28,7 +29,9 @@
   - name: Add Host to Inventory
     add_host:
       name: "{{ item.public_ip }}"
-      groups: linux_server
+      groups:
+        - ubuntu_server
+        - linux_server
     with_items: "{{linux_server_ec2.instances}}"
 
   - name: Wait for SSH to answer on all hosts
