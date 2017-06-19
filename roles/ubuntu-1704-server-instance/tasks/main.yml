@@ -4,7 +4,7 @@
     ec2:
       key_name: OctopusVirginia
       instance_type: m3.xlarge
-      image: "{{centos_ami}}"
+      image: "{{ubuntu_ami}}"
       wait: yes
       wait_timeout: 600
       group: WildFlyTomcat
@@ -20,21 +20,23 @@
         Domain: None
         Environment: Test
         LifeTime: Permanent
-        Name: Octopus Deploy
+        Name: Ubuntu Server
         OwnerContact: "@matthew.casperson"
         Source: Ansible
     register: linux_server_ec2
 
   - name: Add Host to Inventory
     add_host:
-      name: "{{ linux_server_ec2.instances[0].public_ip }}"
+      name: "{{ item.public_ip }}"
       groups: linux_server
+    with_items: "{{linux_server_ec2.instances}}"
 
   - name: Wait for SSH to answer on all hosts
     wait_for:
       port: 22
-      host: "{{ linux_server_ec2.instances[0].public_ip }}"
+      host: "{{ item.public_ip }}"
       timeout: 600
+    with_items: "{{linux_server_ec2.instances}}"
 
   - name: Pause for a bit
     pause:

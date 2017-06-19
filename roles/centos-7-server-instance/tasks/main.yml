@@ -1,0 +1,43 @@
+---
+
+  - name: Create Linux Server
+    ec2:
+      key_name: OctopusVirginia
+      instance_type: m3.xlarge
+      image: "{{centos_ami}}"
+      wait: yes
+      wait_timeout: 600
+      group: WildFlyTomcat
+      count: 1
+      region: us-east-1
+      volumes:
+        - device_name: /dev/sda1
+          volume_size: 80
+          volume_type: gp2
+          delete_on_termination: true
+      instance_tags:
+        Appplication: OctopusDeploy
+        Domain: None
+        Environment: Test
+        LifeTime: Permanent
+        Name: Octopus Deploy
+        OwnerContact: "@matthew.casperson"
+        Source: Ansible
+    register: linux_server_ec2
+
+  - name: Add Host to Inventory
+    add_host:
+      name: "{{ item.public_ip }}"
+      groups: linux_server
+    with_items: "{{linux_server_ec2.instances}}"
+
+  - name: Wait for SSH to answer on all hosts
+    wait_for:
+      port: 22
+      host: "{{ item.public_ip }}"
+      timeout: 600
+    with_items: "{{linux_server_ec2.instances}}"
+
+  - name: Pause for a bit
+    pause:
+      seconds: 30
