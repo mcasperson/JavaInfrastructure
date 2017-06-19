@@ -1,0 +1,54 @@
+---
+- name: Linux Server
+  hosts:
+    - 127.0.0.1
+  become: false
+  gather_facts: false
+
+  roles:
+    - ubuntu-1704-server-instance
+
+- name: linux instance prep
+  hosts: ubuntu_server
+  remote_user: ubuntu
+  become: true
+  become_user: root
+
+  roles:
+    - apt-linux-common
+
+- name: wildfly standalone
+  hosts: ubuntu_server
+  remote_user: ubuntu
+  become: true
+  become_user: root
+
+  roles:
+    - linux-wildfly-dc-local
+
+- name: wildfly standalone
+  hosts: ubuntu_server
+  remote_user: ubuntu
+  become: true
+  become_user: root
+
+  roles:
+    - linux-wildfly-slave-local
+
+- name: wildfly standalone
+  hosts: ubuntu_server
+  remote_user: ubuntu
+  become: true
+  become_user: root
+
+  roles:
+    - linux-wildfly-standalone
+
+- name: Tomcat
+  hosts: ubuntu_server
+  remote_user: ubuntu
+  become: true
+  become_user: root
+
+  roles:
+    - linux-tomcat

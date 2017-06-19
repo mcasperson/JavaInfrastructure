@@ -20,6 +20,32 @@
   - name: Install Groovy
     win_command: C:\Apps\groovy-2.4.11-installer.exe /S /A /N /D=C:\groovy
 
+  - name: Ensure Groovy is on the path
+    win_path:
+      elements:
+      - 'C:\groovy\bin'
+
+  - name: Download OpenSSL
+    win_get_url:
+      url: "https://s3.amazonaws.com/bamboo-support/Win64OpenSSL-1_0_2L.exe"
+      dest: C:\Apps\Win64OpenSSL-1_0_2L.exe
+
+  - name: Install OpenSSL
+    win_command: C:\Apps\Win64OpenSSL-1_0_2L.exe /silent /verysilent /sp- /suppressmsgboxes
+
+  - name: Ensure OpenSSL is on the path
+    win_path:
+      elements:
+      - 'C:\OpenSSL-Win64\bin'
+
+  - name: Download Git
+    win_get_url:
+      url: "https://s3.amazonaws.com/bamboo-support/Git-2.13.1.2-64-bit.exe"
+      dest: C:\Apps\Git-2.13.1.2-64-bit.exe
+
+  - name: Install Git
+    win_command: C:\Apps\Git-2.13.1.2-64-bit.exe /SILENT /COMPONENTS="icons,ext\reg\shellhere,assoc,assoc_sh"
+
   - name: Download Chrome
     win_get_url:
       url: "https://s3.amazonaws.com/bamboo-support/ChromeStandaloneSetup64.exe"
