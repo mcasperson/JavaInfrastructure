@@ -6,7 +6,6 @@
       instance_type: m3.xlarge
       image: "{{centos_ami}}"
       wait: yes
-      wait_timeout: 600
       group: WildFlyTomcat
       count: 1
       region: us-east-1
