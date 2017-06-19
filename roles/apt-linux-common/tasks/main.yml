@@ -1,4 +1,10 @@
 ---
+  - name: Configure Mono
+    command: "apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF"
+
+  - name: Configure Mono
+    command: "echo \"deb http://download.mono-project.com/repo/ubuntu xenial main\" | tee /etc/apt/sources.list.d/mono-official.list"
+
   - name: Update and upgrade apt packages
     apt:
       upgrade: yes
@@ -8,12 +14,6 @@
   - name: install useful packages
     apt:
       name: wget,elinks,telnet,htop,mlocate,python-pip,vim,nano,jq,openjdk-8-jdk,unzip,maven,git,patch,zip
-
-  - name: Install Mono
-    command: >
-      apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF &
-      echo "deb http://download.mono-project.com/repo/ubuntu xenial main" | sudo tee /etc/apt/sources.list.d/mono-official.list &
-      apt-get update
 
   - name: install Mono
     apt:
