@@ -13,6 +13,9 @@
   remote_user: ubuntu
   become: true
   become_user: root
+  pre_tasks:
+    - name: Install python2
+      raw: sudo apt-get -y install python-simplejson
 
   roles:
     - apt-linux-common
