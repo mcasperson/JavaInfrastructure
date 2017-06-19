@@ -12,7 +12,7 @@
 
   - name: install useful packages
     apt:
-      name: wget,elinks,telnet,htop,mlocate,python-pip,vim,nano,jq,openjdk-8-jdk,unzip,maven,libunwind,libicu,git,patch,zip
+      name: wget,elinks,telnet,htop,mlocate,python-pip,vim,nano,jq,openjdk-8-jdk,unzip,maven,git,patch,zip
 
 #  - name: install mono key
 #    get_url:
