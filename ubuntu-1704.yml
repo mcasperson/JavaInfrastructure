@@ -10,7 +10,7 @@
 
 - name: linux instance prep
   hosts: linux_server
-  remote_user: centos
+  remote_user: ubuntu
   become: true
   become_user: root
 
