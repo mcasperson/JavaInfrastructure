@@ -13,7 +13,7 @@
       user_data: |
             #!/bin/bash
             apt-get update
-            apt-get install -y python-minimal aptitude
+            apt-get install -y python-simplejson aptitude
       volumes:
         - device_name: /dev/sda1
           volume_size: 80

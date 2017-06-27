@@ -61,13 +61,23 @@
   - name: "Add Slave Users {{wildfly_role}}"
     command: "{{wildfly_install_dir}}/bin/add-user.sh {{wildfly_slave_username}} {{wildfly_slave_password}}"
 
-  - name: "Add Wildfly Service {{wildfly_role}}"
+  - name: "Add Redhat Wildfly Service {{wildfly_role}}"
     template:
       src: wildfly-init-redhat.sh
       dest: "/etc/init.d/{{wildfly_role}}"
       owner: root
       group: root
       mode: 0755
+    when: '"centos_server" in group_names'
+
+  - name: "Add Debian Wildfly Service {{wildfly_role}}"
+    template:
+      src: wildfly-init-debian.sh
+      dest: "/etc/init.d/{{wildfly_role}}"
+      owner: root
+      group: root
+      mode: 0755
+    when: '"ubuntu_server" in group_names'
 
   - name: "Copy vault keystore {{wildfly_role}}"
     copy:

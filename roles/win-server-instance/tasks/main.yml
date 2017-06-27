@@ -35,4 +35,4 @@
     wait_for:
       port: 5986
       host: "{{ windows_server_ec2.instances[0].public_ip }}"
-      timeout: 600
+      timeout: 6000
