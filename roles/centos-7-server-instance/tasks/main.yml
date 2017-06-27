@@ -7,6 +7,7 @@
       image: "{{centos_ami}}"
       wait: yes
       assign_public_ip: yes
+      instance_profile_name: "{{ec2_role}}"
       group: "{{security_group}}"
       count: 1
       region: "{{region}}"

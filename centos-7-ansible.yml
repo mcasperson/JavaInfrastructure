@@ -12,6 +12,7 @@
       centos_ami: "ami-24959b47"
       location: "sydney"
       vpc_subnet: "subnet-77979c03"
+      ec2_role: "AnsibleWorker"
       key_name: "OctopusSydney"
       instance_type: "t2.micro"
       security_group: "Octopus SSH"
