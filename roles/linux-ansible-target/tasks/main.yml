@@ -1,8 +1,13 @@
 ---
-  - name: Install python pip
+  - name: Install the 'Development tools' package group
     yum:
-      name: python-pip
+      name: "@Development tools"
+      state: present
 
-  - name: Install Ansible
+  - name: Install python pip and other development libraries
+    yum:
+      name: python-pip, python-devel, python-lxml, openssl-devel
+
+  - name: Install Ansible and the AWS boto library
     pip:
-      name: ansible
+      name: ansible, boto
