@@ -66,12 +66,12 @@
       group: "{{tomcat_user}}"
       recurse: true
 
-  - name: allow centos user to push to webapps
+  - name: "allow {{ansible_user}} user to push to webapps"
     file:
       state: directory
       path: /opt/apache-tomcat-8.5.15/webapps
-      owner: "centos"
-      group: "centos"
+      owner: "{{ansible_user}}"
+      group: "{{ansible_user}}"
       recurse: true
       mode: 0777
 
