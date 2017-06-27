@@ -1,0 +1,38 @@
+---
+- name: Linux Server
+  hosts:
+    - 127.0.0.1
+  become: false
+  gather_facts: false
+
+  roles:
+    - centos-7-server-instance-syd
+
+  vars:
+      location: "sydney"
+      key_name: "OctopusSydney"
+      instance_type: "t2.micro"
+      security_group: "Octopus SSH"
+      region: "ap-southeast-2"
+      application_tag: "Ansible Octopus Deploy Target"
+      name_tag: "Ansible Octopus Deploy Target"
+      environment_tag: "Production"
+      lifetime_tag: "Permanent"
+
+- name: linux instance prep
+  hosts: centos_server
+  remote_user: centos
+  become: true
+  become_user: root
+
+  roles:
+    - yum-linux-common
+
+- name: Ansible setup
+  hosts: centos_server
+  remote_user: centos
+  become: true
+  become_user: root
+
+  roles:
+    - linux-ansible-target

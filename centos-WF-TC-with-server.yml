@@ -8,6 +8,17 @@
   roles:
     - centos-7-server-instance
 
+  vars:
+      location: "virgina"
+      key_name: "OctopusVirgina"
+      instance_type: "m3.xlarge"
+      security_group: "WildFlyTomcat"
+      region: "us-east-1"
+      application_tag: "Centos WildFly Tomcat"
+      name_tag: "Centos WildFly Tomcat"
+      environment_tag: "Test"
+      lifetime_tag: "Permanent"
+
 - name: linux instance prep
   hosts: centos_server
   remote_user: centos

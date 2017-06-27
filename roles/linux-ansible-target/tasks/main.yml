@@ -1,0 +1,8 @@
+---
+  - name: Install python pip
+    yum:
+      name: python-pip
+
+  - name: Install Ansible
+    pip:
+      name: ansible

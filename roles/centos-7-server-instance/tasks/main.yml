@@ -2,13 +2,13 @@
 
   - name: Create Linux Server
     ec2:
-      key_name: OctopusVirginia
-      instance_type: m3.xlarge
+      key_name: "{{key_name}}"
+      instance_type: "{{instance_type}}"
       image: "{{centos_ami}}"
       wait: yes
-      group: WildFlyTomcat
+      group: "{{security_group}}"
       count: 1
-      region: us-east-1
+      region: "{{region}}"
       wait_timeout: 3000
       volumes:
         - device_name: /dev/sda1
@@ -16,11 +16,11 @@
           volume_type: gp2
           delete_on_termination: true
       instance_tags:
-        Appplication: OctopusDeploy
+        Appplication: "{{application_tag}}"
         Domain: None
-        Environment: Test
-        LifeTime: Permanent
-        Name: Octopus Deploy
+        Environment: "{{environment_tag}}"
+        LifeTime: "{{lifetime_tag}}"
+        Name: "{{name_tag}}"
         OwnerContact: "@matthew.casperson"
         Source: Ansible
     register: linux_server_ec2
@@ -31,6 +31,7 @@
       groups:
         - centos_server
         - linux_server
+        - "{{location}}_server"
     with_items: "{{linux_server_ec2.instances}}"
 
   - name: Wait for SSH to answer on all hosts
