@@ -11,3 +11,17 @@
   - name: Install Ansible and the AWS boto library
     pip:
       name: ansible, boto
+
+  - name: Creates directory for ansible scripts
+    file:
+      path: "/var/octopus/scripts"
+      state: directory
+      owner: "{{ansible_user}}"
+      group: "{{ansible_user}}"
+      mode: 0775
+
+  - name: Set authorized key
+    authorized_key:
+      user: "{{ansible_user}}"
+      state: present
+      key: "{{ lookup('file', 'roles/linux-ansible-target/files/ansible_rsa.pub') }}"
