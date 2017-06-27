@@ -10,6 +10,7 @@
       count: 1
       region: "{{region}}"
       wait_timeout: 3000
+      vpc_subnet_id: "{{vpc_subnet}}"
       volumes:
         - device_name: /dev/sda1
           volume_size: 80
@@ -21,7 +22,7 @@
         Environment: "{{environment_tag}}"
         LifeTime: "{{lifetime_tag}}"
         Name: "{{name_tag}}"
-        OwnerContact: "@matthew.casperson"
+        OwnerContact: "{{owner_tag}}"
         Source: Ansible
     register: linux_server_ec2
 
