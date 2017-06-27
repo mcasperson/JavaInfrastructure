@@ -17,6 +17,7 @@
       security_group: "WildFlyTomcat"
       region: "us-east-1"
       application_tag: "Ubuntu"
+      domain_tag: "None"
       name_tag: "Ubuntu"
       environment_tag: "Test"
       lifetime_tag: "Permanent"

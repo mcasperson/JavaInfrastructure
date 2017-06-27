@@ -6,6 +6,7 @@
       instance_type: m3.xlarge
       image: "{{ubuntu_ami}}"
       wait: yes
+      assign_public_ip: yes
       group: WildFlyTomcat
       count: 1
       region: us-east-1

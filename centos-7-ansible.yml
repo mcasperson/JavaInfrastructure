@@ -16,6 +16,7 @@
       instance_type: "t2.micro"
       security_group: "Octopus SSH"
       region: "ap-southeast-2"
+      domain_tag: "None"
       application_tag: "Ansible Octopus Deploy Target"
       name_tag: "Ansible Octopus Deploy Target"
       environment_tag: "Production"

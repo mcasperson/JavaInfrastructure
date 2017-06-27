@@ -16,6 +16,7 @@
       instance_type: "m3.xlarge"
       security_group: "WildFlyTomcat"
       region: "us-east-1"
+      domain_tag: "None"
       application_tag: "Ubuntu WildFly Tomcat"
       name_tag: "Ubuntu WildFly Tomcat"
       environment_tag: "Test"

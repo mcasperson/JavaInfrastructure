@@ -6,6 +6,7 @@
       instance_type: "{{instance_type}}"
       image: "{{centos_ami}}"
       wait: yes
+      assign_public_ip: yes
       group: "{{security_group}}"
       count: 1
       region: "{{region}}"
@@ -18,7 +19,7 @@
           delete_on_termination: true
       instance_tags:
         Appplication: "{{application_tag}}"
-        Domain: None
+        Domain: "{{domain_tag}}"
         Environment: "{{environment_tag}}"
         LifeTime: "{{lifetime_tag}}"
         Name: "{{name_tag}}"
