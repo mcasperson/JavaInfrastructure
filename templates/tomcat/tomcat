@@ -25,7 +25,7 @@ PROCESS_NAME=tomcat
 
 CATALINA_HOME="/opt/apache-tomcat-8.5.15"
 
-## run as a diffent user
+## run as a different user
 TOMCAT_USER={{tomcat_user}}
 
 ##  Path to the pid, runnning info file

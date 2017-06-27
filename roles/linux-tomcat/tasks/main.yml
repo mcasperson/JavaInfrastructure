@@ -50,13 +50,23 @@
       group: tomcat
       mode: 0600
 
-  - name: install tomcat service
+  - name: install redhat tomcat service
     template:
       src: "{{playbook_dir}}/templates/tomcat/tomcat"
       dest: /etc/init.d/tomcat
       owner: root
       group: root
       mode: 0755
+    when: '"centos_server" in group_names'
+
+  - name: install debian tomcat service
+    template:
+      src: "{{playbook_dir}}/templates/tomcat/tomcat-debian"
+      dest: /etc/init.d/tomcat
+      owner: root
+      group: root
+      mode: 0755
+    when: '"ubuntu_server" in group_names'
 
   - name: set tomcat permissions
     file:
