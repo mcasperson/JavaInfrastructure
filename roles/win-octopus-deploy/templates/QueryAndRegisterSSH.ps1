@@ -4,7 +4,7 @@ $instances = & "C:\Program Files\Amazon\AWSCLI\aws.exe" ec2 describe-instances `
     --query "Reservations[*].Instances[*].PublicIpAddress" `
     --output=text
 
-ForEach ($host in $($instances -split "`r`n"))
+foreach ($line in $instances.Split("`n"))
 {
-    ./RegisterSSH.ps1 -Host $host -Account "Centos Duke Legion"
+    ./RegisterSSH.ps1 -LinuxHost $line -Account "Centos Duke Legion"
 }
