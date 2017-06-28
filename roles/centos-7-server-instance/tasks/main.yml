@@ -1,7 +1,16 @@
 ---
 
+  - name: Assume AWS Role
+    sts_assume_role:
+      role_arn: "arn:aws:iam::968802670493:instance-profile/AnsibleWorker"
+      role_session_name: "AnsibleBuild"
+    register: assumed_role
+
   - name: Create Linux Server
     ec2:
+      aws_access_key: "{{ assumed_role.sts_creds.access_key }}"
+      aws_secret_key: "{{ assumed_role.sts_creds.secret_key }}"
+      security_token: "{{ assumed_role.sts_creds.session_token }}"
       key_name: "{{key_name}}"
       instance_type: "{{instance_type}}"
       image: "{{centos_ami}}"

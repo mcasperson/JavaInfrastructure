@@ -12,7 +12,7 @@
       centos_ami: "ami-ae7bfdb8"
       location: "virgina"
       vpc_subnet: ""
-      key_name: "OctopusVirgina"
+      key_name: "DukeLegion"
       instance_type: "m3.xlarge"
       security_group: "WildFlyTomcat"
       region: "us-east-1"
