@@ -1,7 +1,17 @@
 ---
 
+  - name: Assume AWS Role
+    sts_assume_role:
+      role_arn: "arn:aws:iam::968802670493:role/AnsibleWorker"
+      role_session_name: "AnsibleBuild"
+      region: "{{region}}"
+    register: assumed_role
+
   - name: Create Windows Server
     ec2:
+      aws_access_key: "{{ assumed_role.sts_creds.access_key }}"
+      aws_secret_key: "{{ assumed_role.sts_creds.secret_key }}"
+      security_token: "{{ assumed_role.sts_creds.session_token }}"
       key_name: OctopusVirginia
       instance_type: m3.xlarge
       image: "{{win_ami}}"
