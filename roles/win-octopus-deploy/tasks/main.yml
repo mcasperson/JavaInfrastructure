@@ -100,7 +100,7 @@
       src: files/DukeLegion.pem
       dest: C:\Apps\DukeLegion.pem
 
-  - name: Copy Octopus Tentacle Install Script
+  - name: Copy Octopus SSH Account Install Script
     win_template:
       src: ImportDukeLegionCertificate.ps1
       dest: C:\Apps\ImportDukeLegionCertificate.ps1
