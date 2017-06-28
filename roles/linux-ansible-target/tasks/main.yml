@@ -10,7 +10,7 @@
 
   - name: Install Ansible and the AWS boto library
     pip:
-      name: ansible, boto, boto3
+      name: ansible, boto, boto3, pywinrm
       state: latest
 
   - name: Creates directory for ansible scripts
