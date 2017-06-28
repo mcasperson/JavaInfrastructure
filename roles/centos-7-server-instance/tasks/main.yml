@@ -2,8 +2,9 @@
 
   - name: Assume AWS Role
     sts_assume_role:
-      role_arn: "arn:aws:iam::968802670493:instance-profile/AnsibleWorker"
+      role_arn: "arn:aws:iam::968802670493:role/AnsibleWorker"
       role_session_name: "AnsibleBuild"
+      region: "{{region}}"
     register: assumed_role
 
   - name: Create Linux Server
@@ -15,7 +16,7 @@
       instance_type: "{{instance_type}}"
       image: "{{centos_ami}}"
       wait: yes
-      assign_public_ip: yes
+      assign_public_ip: "{{assign_public_ip}}"
       instance_profile_name: "{{ec2_role}}"
       group: "{{security_group}}"
       count: 1
