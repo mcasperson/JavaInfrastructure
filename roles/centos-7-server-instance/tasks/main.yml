@@ -36,6 +36,8 @@
         Name: "{{name_tag}}"
         OwnerContact: "{{owner_tag}}"
         Source: Ansible
+        OS: centos
+        Purpose: DukeLegion
     register: linux_server_ec2
 
   - name: Add Host to Inventory
