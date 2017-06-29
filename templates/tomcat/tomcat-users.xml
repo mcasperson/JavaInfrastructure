@@ -43,5 +43,5 @@
     -->
 
     <role rolename="manager-gui"/>
-    <user username="tomcat" password="s3cret" roles="manager-gui"/>
+    <user username="tomcat" password="{{tomcat_admin_password}}" roles="manager-gui"/>
 </tomcat-users>
