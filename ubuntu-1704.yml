@@ -9,19 +9,21 @@
     - ubuntu-1704-server-instance
 
   vars:
-      centos_ami: "ami-19d7f60f"
-      location: "virgina"
-      vpc_subnet: ""
-      key_name: "OctopusVirgina"
-      instance_type: "m3.xlarge"
-      security_group: "WildFlyTomcat"
-      region: "us-east-1"
-      application_tag: "Ubuntu"
-      domain_tag: "None"
-      name_tag: "Ubuntu"
-      environment_tag: "Test"
-      lifetime_tag: "Permanent"
-      owner_tag: "@matthew.casperson"
+    ubuntu_ami: "ami-19d7f60f"
+    location: "virgina"
+    vpc_subnet:
+    assign_public_ip:
+    key_name: "DukeLegion"
+    instance_type: "m3.xlarge"
+    security_group: "WildFlyTomcat"
+    region: "us-east-1"
+    ec2_role:
+    domain_tag: "None"
+    application_tag: "Ubuntu"
+    name_tag: "Ubuntu"
+    environment_tag: "Test"
+    lifetime_tag: "Permanent"
+    owner_tag: "@matthew.casperson"
 
 - name: linux instance prep
   hosts: ubuntu_server

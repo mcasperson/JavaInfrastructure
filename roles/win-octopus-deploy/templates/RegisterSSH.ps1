@@ -5,6 +5,15 @@ param(
 
 $headers = @{"X-Octopus-ApiKey"="{{api_key.stdout_lines[0]}}"}
 
+$existing = Invoke-RestMethod "http://localhost/api/machines/all" -Headers $headers -Method Get
+
+foreach ($machine in $existing) {
+	if ($machine.Endpoint.Host -eq $linuxHost) {
+		Write-Host "Host $linuxHost already exists, so skipping"
+		exit
+	}
+}
+
 $environments = Invoke-RestMethod "http://localhost/api/environments/all" -Headers $headers -Method Get
 $theEnvironment = $environments | ? { $_.Name -eq "DukeLegion" }
 
