@@ -38,7 +38,7 @@
     win_chocolatey:
       name: octopustools
       state: present
-      version: "{{octopus_version}}"
+      version: "{{octopus_tools_version}}"
 
   - name: Install Octopus Deploy
     win_chocolatey:
