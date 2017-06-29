@@ -20,10 +20,9 @@
         dest: C:\Apps\wildfly.zip
 
   - name: Extract WildFly
-    win_unzip:
-        src: C:\Apps\wildfly.zip
-        dest: "C:\\{{wildfly_role}}"
-        creates: "{{wildfly_install_dir}}"
+    win_command: "C:\7Zip\7z.exe e C:\Apps\wildfly.zip -oC:\\{{wildfly_role}}"
+    args:
+      creates: "{{wildfly_install_dir}}"
 
   - name: Add Management Users
     win_command: "{{wildfly_install_dir}}/bin/add-user.bat {{wildfly_admin_user}} {{wildfly_admin_password}}"

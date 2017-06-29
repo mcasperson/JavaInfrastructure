@@ -75,6 +75,17 @@
   - name: Install JCE
     win_shell: "&xcopy C:\\Apps\\UnlimitedJCEPolicyJDK8 \"C:\\Java\\x86\\jre1.8.0_131\\lib\\security\" /E /Y"
 
+
+  - name: Download 7zip
+    win_get_url:
+      url: "https://s3.amazonaws.com/bamboo-support/7z1604-x64.exe"
+      dest: C:\Apps\n7z1604-x64.exe
+
+  - name: Install 7zip
+    win_command: C:\Apps\7z1604-x64.exe /S /D=C:\7Zip
+
+
+
 #  - name: Download SDK
 #    win_get_url:
 #      url: "https://sdkrepo.atlassian.com/win-signed/sdk-installer-6.2.14.exe"
