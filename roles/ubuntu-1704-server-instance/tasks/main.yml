@@ -50,6 +50,7 @@
       groups:
         - ubuntu_server
         - linux_server
+        - "{{location}}_server"
     with_items: "{{linux_server_ec2.instances}}"
 
   - name: Wait for SSH to answer on all hosts
