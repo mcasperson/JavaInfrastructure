@@ -102,3 +102,13 @@
 
   - name: Install SSH Account
     win_shell: C:\Apps\ImportDukeLegionCertificate.ps1
+
+  - name: Copy Query Script
+    win_template:
+      src: QueryAndRegisterSSH.ps1
+      dest: C:\Apps\QueryAndRegisterSSH.ps1
+
+  - name: Copy Register Script
+    win_template:
+      src: RegisterSSH.ps1
+      dest: C:\Apps\RegisterSSH.ps1
