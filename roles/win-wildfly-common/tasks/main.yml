@@ -20,7 +20,7 @@
         dest: C:\Apps\wildfly.zip
 
   - name: Extract WildFly
-    win_command: "C:\\7Zip\\7z.exe x C:\Apps\wildfly.zip -oC:\\{{wildfly_role}}"
+    win_command: "C:\\7Zip\\7z.exe x C:\\Apps\\wildfly.zip -oC:\\{{wildfly_role}}"
     args:
       creates: "{{wildfly_install_dir}}"
 
