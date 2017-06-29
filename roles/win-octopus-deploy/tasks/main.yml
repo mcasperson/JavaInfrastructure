@@ -95,11 +95,6 @@
   - name: Open Firewall For Tentacle
     win_shell: netsh advfirewall firewall add rule name="Octopus Deploy" dir=in action=allow protocol=TCP localport=10933 profile=public
 
-  - name: Copy Duke Legion PEM file
-    win_copy:
-      src: files/DukeLegion.pem
-      dest: C:\Apps\DukeLegion.pem
-
   - name: Copy Octopus SSH Account Install Script
     win_template:
       src: ImportDukeLegionCertificate.ps1

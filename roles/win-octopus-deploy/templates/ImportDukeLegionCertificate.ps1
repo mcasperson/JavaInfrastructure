@@ -1,7 +1,10 @@
 $centosSSHAccountDetails = @{
 	"AccountType"="SshKeyPair";
 	"Username"="centos";
-	"PrivateKeyFile"=@{"NewValue"="C:\Apps\DukeLegion.pem"};
+	"PrivateKeyFile"=@{
+	    "HasValue"="true";
+	    "NewValue"="{{duke_legion_pem}}"
+    };
 	"Name"="Centos Duke Legion";
 	"Description"="Centos Duke Legion Account"
 }
