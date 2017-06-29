@@ -1,16 +1,28 @@
 ---
 
+  - name: Assume AWS Role
+    sts_assume_role:
+      role_arn: "arn:aws:iam::968802670493:role/AnsibleWorker"
+      role_session_name: "AnsibleBuild"
+      region: "{{region}}"
+    register: assumed_role
+
   - name: Create Linux Server
     ec2:
-      key_name: OctopusVirginia
-      instance_type: m3.xlarge
-      image: "{{ubuntu_ami}}"
+      aws_access_key: "{{ assumed_role.sts_creds.access_key }}"
+      aws_secret_key: "{{ assumed_role.sts_creds.secret_key }}"
+      security_token: "{{ assumed_role.sts_creds.session_token }}"
+      key_name: "{{key_name}}"
+      instance_type: "{{instance_type}}"
+      image: "{{centos_ami}}"
       wait: yes
-      assign_public_ip: yes
-      group: WildFlyTomcat
+      assign_public_ip: "{{assign_public_ip}}"
+      instance_profile_name: "{{ec2_role}}"
+      group: "{{security_group}}"
       count: 1
-      region: us-east-1
+      region: "{{region}}"
       wait_timeout: 3000
+      vpc_subnet_id: "{{vpc_subnet}}"
       user_data: |
             #!/bin/bash
             apt-get update
