@@ -12,6 +12,9 @@
   roles:
     - win-server-instance
 
+  vars:
+    region: "us-east-1"
+
 - name: Windows Instance Prep
   hosts: windows_server
   become: false

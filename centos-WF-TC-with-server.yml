@@ -9,7 +9,7 @@
     - centos-7-server-instance
 
   vars:
-      centos_ami: "ami-ae7bfdb8"
+    centos_ami: "ami-ae7bfdb8"
       location: "virgina"
       vpc_subnet:
       assign_public_ip:

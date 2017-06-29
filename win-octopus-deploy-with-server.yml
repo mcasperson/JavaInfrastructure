@@ -8,6 +8,9 @@
   roles:
     - win-server-instance
 
+  vars:
+    region: "us-east-1"
+
 - name: Octopus Deploy
   hosts: windows_server
   become: false

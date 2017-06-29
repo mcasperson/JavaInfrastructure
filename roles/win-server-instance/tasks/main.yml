@@ -20,7 +20,7 @@
       wait_timeout: 600
       group: OctopusHttp
       count: 1
-      region: us-east-1
+      region: "{{region}}"
       user_data: "{{ lookup('template', 'templates/userdata.txt.j2') }}"
       volumes:
         - device_name: /dev/sda1
