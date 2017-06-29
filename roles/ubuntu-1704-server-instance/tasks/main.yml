@@ -14,7 +14,7 @@
       security_token: "{{ assumed_role.sts_creds.session_token }}"
       key_name: "{{key_name}}"
       instance_type: "{{instance_type}}"
-      image: "{{centos_ami}}"
+      image: "{{ubuntu_ami}}"
       wait: yes
       assign_public_ip: "{{assign_public_ip}}"
       instance_profile_name: "{{ec2_role}}"
