@@ -11,11 +11,13 @@
   vars:
     ubuntu_ami: "ami-19d7f60f"
     location: "virgina"
-    vpc_subnet: ""
-    key_name: "OctopusVirgina"
+    vpc_subnet:
+    assign_public_ip:
+    key_name: "DukeLegion"
     instance_type: "m3.xlarge"
     security_group: "WildFlyTomcat"
     region: "us-east-1"
+    ec2_role:
     domain_tag: "None"
     application_tag: "Ubuntu WildFly Tomcat"
     name_tag: "Ubuntu WildFly Tomcat"
