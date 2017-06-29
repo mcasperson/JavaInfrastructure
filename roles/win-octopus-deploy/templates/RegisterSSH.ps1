@@ -3,7 +3,7 @@ param(
 	[String]$account
 )
 
-$headers = @{"X-Octopus-ApiKey"="API-6IH8WFHTAZXTND1AJNOYH5PCATC"}
+$headers = @{"X-Octopus-ApiKey"="{{api_key.stdout_lines[0]}}"}
 
 $environments = Invoke-RestMethod "http://localhost/api/environments/all" -Headers $headers -Method Get
 $theEnvironment = $environments | ? { $_.Name -eq "DukeLegion" }
