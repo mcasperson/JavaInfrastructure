@@ -79,7 +79,7 @@
   - name: Download 7zip
     win_get_url:
       url: "https://s3.amazonaws.com/bamboo-support/7z1604-x64.exe"
-      dest: C:\Apps\n7z1604-x64.exe
+      dest: C:\Apps\7z1604-x64.exe
 
   - name: Install 7zip
     win_command: C:\Apps\7z1604-x64.exe /S /D=C:\7Zip
