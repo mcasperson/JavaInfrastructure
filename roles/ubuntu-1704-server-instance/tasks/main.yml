@@ -33,12 +33,12 @@
           volume_type: gp2
           delete_on_termination: true
       instance_tags:
-        Appplication: OctopusDeploy
-        Domain: None
-        Environment: Test
-        LifeTime: Permanent
-        Name: Ubuntu Server
-        OwnerContact: "@matthew.casperson"
+        Appplication: "{{application_tag}}"
+        Domain: "{{domain_tag}}"
+        Environment: "{{environment_tag}}"
+        LifeTime: "{{lifetime_tag}}"
+        Name: "{{name_tag}}"
+        OwnerContact: "{{owner_tag}}"
         Source: Ansible
         OS: ubuntu
         Purpose: DukeLegion
