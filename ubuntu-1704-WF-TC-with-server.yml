@@ -9,19 +9,19 @@
     - ubuntu-1704-server-instance
 
   vars:
-      centos_ami: "ami-19d7f60f"
-      location: "virgina"
-      vpc_subnet: ""
-      key_name: "OctopusVirgina"
-      instance_type: "m3.xlarge"
-      security_group: "WildFlyTomcat"
-      region: "us-east-1"
-      domain_tag: "None"
-      application_tag: "Ubuntu WildFly Tomcat"
-      name_tag: "Ubuntu WildFly Tomcat"
-      environment_tag: "Test"
-      lifetime_tag: "Permanent"
-      owner_tag: "@matthew.casperson"
+    ubuntu_ami: "ami-19d7f60f"
+    location: "virgina"
+    vpc_subnet: ""
+    key_name: "OctopusVirgina"
+    instance_type: "m3.xlarge"
+    security_group: "WildFlyTomcat"
+    region: "us-east-1"
+    domain_tag: "None"
+    application_tag: "Ubuntu WildFly Tomcat"
+    name_tag: "Ubuntu WildFly Tomcat"
+    environment_tag: "Test"
+    lifetime_tag: "Permanent"
+    owner_tag: "@matthew.casperson"
 
 - name: linux instance prep
   hosts: ubuntu_server

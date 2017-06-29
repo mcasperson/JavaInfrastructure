@@ -10,20 +10,20 @@
 
   vars:
     centos_ami: "ami-ae7bfdb8"
-      location: "virgina"
-      vpc_subnet:
-      assign_public_ip:
-      key_name: "DukeLegion"
-      instance_type: "m3.xlarge"
-      security_group: "WildFlyTomcat"
-      region: "us-east-1"
-      ec2_role:
-      domain_tag: "None"
-      application_tag: "Centos WildFly Tomcat"
-      name_tag: "Centos WildFly Tomcat"
-      environment_tag: "Test"
-      lifetime_tag: "Permanent"
-      owner_tag: "@matthew.casperson"
+    location: "virgina"
+    vpc_subnet:
+    assign_public_ip:
+    key_name: "DukeLegion"
+    instance_type: "m3.xlarge"
+    security_group: "WildFlyTomcat"
+    region: "us-east-1"
+    ec2_role:
+    domain_tag: "None"
+    application_tag: "Centos WildFly Tomcat"
+    name_tag: "Centos WildFly Tomcat"
+    environment_tag: "Test"
+    lifetime_tag: "Permanent"
+    owner_tag: "@matthew.casperson"
 
 - name: linux instance prep
   hosts: centos_server
