@@ -27,6 +27,6 @@ $discovered.Roles += "DukeLegion"
 $discovered.EnvironmentIds += $theEnvironment.Id
 $discovered.Endpoint.AccountId = $theAccount.Id
 
-$discovered | ConvertTo-Json -Depth 10
-
 Invoke-RestMethod "http://localhost/api/machines" -Headers $headers -Method Post -Body ($discovered | ConvertTo-Json -Depth 10)
+
+Write-Host "Host $linuxHost added under account $account"

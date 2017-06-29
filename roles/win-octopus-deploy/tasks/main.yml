@@ -38,16 +38,19 @@
     win_chocolatey:
       name: octopustools
       state: present
+      version: "{{octopus_version}}"
 
   - name: Install Octopus Deploy
     win_chocolatey:
       name: octopusdeploy
       state: present
+      version: "{{octopus_version}}"
 
   - name: Install Octopus Deploy Tentacle
     win_chocolatey:
       name: octopusdeploy.tentacle
       state: present
+      version: "{{octopus_version}}"
 
   - name: Copy Octopus Server Creation Script
     win_template:
