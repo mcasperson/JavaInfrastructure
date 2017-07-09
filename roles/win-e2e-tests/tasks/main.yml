@@ -1,0 +1,26 @@
+---
+  - name: Download Iridium
+    win_get_url:
+      url: https://s3.amazonaws.com/iridium-release/IridiumApplicationTesting.jar
+      dest: C:\Apps\IridiumApplicationTesting.jar
+
+  - name: Download Atom Text Editor
+    win_get_url:
+      url: https://s3.amazonaws.com/bamboo-support/AtomSetup-x64.exe
+      dest: C:\Apps\AtomSetup-x64.exe
+
+  - name: Install Atom Text Editor
+    win_command: C:\Apps\AtomSetup-x64.exe --silent
+
+  - name: Create download directory
+    win_file:
+      path: C:\E2ETests
+      state: directory
+
+  - name: Copy Test Scripts
+    template: src="{{item}} dest=C:\E2ETests\{{ item | regex_replace(role_path + '/templates','') }}"
+    with_items: "{{ lookup('pipe','find {{role_path}}/templates -type f').split('\n') }}"
+
+  - name: Copy Test Library Scripts
+    template: src="{{item}} dest=C:\E2ETests\lib\{{ item | regex_replace(role_path + '/templates','') }}"
+    with_items: "{{ lookup('pipe','find {{role_path}}/templates/lib -type f').split('\n') }}"

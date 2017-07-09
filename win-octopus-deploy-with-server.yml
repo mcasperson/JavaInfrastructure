@@ -18,3 +18,4 @@
 
   roles:
     - win-octopus-deploy
+    - win-e2e-tests
