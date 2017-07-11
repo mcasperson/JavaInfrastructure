@@ -9,3 +9,6 @@ passwords:
     - { name: 's3_access_key', password: 'The AWS Access Key used to access the s3_bucket' }
     - { name: 's3_secret_key', password: 'The AWS Secret Key used to access the s3 bucket' }
     - { name: 'wildfly_slave_password', password: "{{wildfly_slave_password}}" }
+tomcat_admin_password: "Tomcat admin password"
+octopus_admin_username: "Octopus Deploy admin username"
+octopus_admin_password: "Octopus Deploy admin password"

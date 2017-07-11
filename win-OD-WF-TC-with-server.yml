@@ -22,8 +22,39 @@
 
   roles:
     - win-common
+
+- name: Octopus Deploy
+  hosts: windows_server
+  become: false
+
+  roles:
     - win-octopus-deploy
     - win-e2e-tests
+
+- name: wildfly standalone
+  hosts: windows_server
+  become: false
+
+  roles:
     - win-wildfly-dc-local
+
+- name: wildfly standalone
+  hosts: windows_server
+  become: false
+
+  roles:
+    - win-wildfly-slave-local
+
+- name: wildfly standalone
+  hosts: windows_server
+  become: false
+
+  roles:
     - win-wildfly-standalone
+
+- name: Tomcat
+  hosts: windows_server
+  become: false
+
+  roles:
     - win-tomcat

@@ -12,15 +12,18 @@
   - name: Install Atom Text Editor
     win_command: C:\Apps\AtomSetup-x64.exe --silent
 
-  - name: Create download directory
+  - name: Create Tests Directory
     win_file:
       path: C:\E2ETests
       state: directory
 
-  - name: Copy Test Scripts
-    template: src="{{item}} dest=C:\E2ETests\{{ item | regex_replace(role_path + '/templates','') }}"
-    with_items: "{{ lookup('pipe','find {{role_path}}/templates -type f').split('\n') }}"
+  - name: Create Tests Library Directory
+    win_file:
+      path: C:\E2ETests\lib
+      state: directory
 
-  - name: Copy Test Library Scripts
-    template: src="{{item}} dest=C:\E2ETests\lib\{{ item | regex_replace(role_path + '/templates','') }}"
-    with_items: "{{ lookup('pipe','find {{role_path}}/templates/lib -type f').split('\n') }}"
+  - name: Copy Test Scripts
+    template:
+      src: "{{item}}"
+      dest: "C:\\E2ETests\\{{ item | regex_replace(role_path + '/templates','') | regex_replace('/', '\\') }}"
+    with_items: "{{ lookup('pipe','find {{role_path}}/templates -type f').split('\n') }}"
