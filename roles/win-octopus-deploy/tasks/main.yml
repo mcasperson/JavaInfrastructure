@@ -1,4 +1,6 @@
 ---
+  - include_vars: "{{playbook_dir}}/vars/encrypted.yml"
+
   - name: Download AWS Client
     win_get_url:
       url: "https://s3.amazonaws.com/bamboo-support/AWSCLI64.msi"

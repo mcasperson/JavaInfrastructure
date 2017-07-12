@@ -7,4 +7,4 @@ Feature: Create a project
   Scenario: Create project
     Given I open the page "http://localhost/app#/projects"
     Then I click the "Add project" button
-    Then I populate the "Project name" thing with alias "New Project Name"
+    Then I populate the "Project name" textbox with alias "New Project Name"
