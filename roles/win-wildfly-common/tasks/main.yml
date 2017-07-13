@@ -40,13 +40,15 @@
     with_items: "{{passwords}}"
     no_log: true
 
-  - name: Create services directory
-    win_file:
-      path: "{{wildfly_install_dir}}\\bin\\service"
-      state: directory
+  - name: copy service files
+    win_copy:
+      src: group_files/wildfly/service.zip
+      dest: "C:\\Apps\\service.zip"
 
-  - name: Copy service files into bin
-    win_shell: "&xcopy \"{{wildfly_install_dir}}\\docs\\contrib\\scripts\\service\" \"{{wildfly_install_dir}}\\bin\\service\" /E /Y"
+  - name: Unzip Service Files
+    win_unzip:
+      src: C:\Apps\service.zip
+      dest: "{{wildfly_install_dir}}\\bin"
 
   - name: Copy Domain Controller Configuration
     template:

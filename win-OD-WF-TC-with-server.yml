@@ -59,6 +59,13 @@
   roles:
     - win-wildfly10-standalone
 
+- name: EAP 6 Standalone
+  hosts: windows_server
+  become: false
+
+  roles:
+    - win-eap6-standalone
+
 - name: Tomcat 7
   hosts: windows_server
   become: false

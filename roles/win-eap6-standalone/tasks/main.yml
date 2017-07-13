@@ -1,6 +1,6 @@
 ---
   - name: Install Slave Service
-    win_command: "{{wildfly_install_dir}}\\bin\\service\\service.bat install /jbossuser {{wildfly_admin_user}} /jbosspass {{wildfly_admin_password}} /controller localhost:12990 /startup /name \"{{wildfly_standalone_service}}\""
+    win_command: "{{wildfly_install_dir}}\\bin\\service\\service.bat install /jbossuser {{wildfly_admin_user}} /jbosspass {{wildfly_admin_password}} /controller localhost:13990 /startup /name \"{{wildfly_standalone_service}}\""
 
   - name: Start Standalone Service
     win_service:
@@ -11,15 +11,15 @@
   - name: Add WildFly Shortcut
     win_shortcut:
       src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
-      dest: '%PUBLIC%\Desktop\WildFly 10 Standalone.lnk'
-      args: '--new-window http://localhost:11080/'
+      dest: '%PUBLIC%\Desktop\EAP 6 Standalone.lnk'
+      args: '--new-window http://localhost:12080/'
       directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
       icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
 
   - name: Add WildFly Shortcut
     win_shortcut:
       src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
-      dest: '%PUBLIC%\Desktop\WildFly 10 Standalone Admin.lnk'
-      args: '--new-window http://localhost:12990/'
+      dest: '%PUBLIC%\Desktop\EAP 6 Standalone Admin.lnk'
+      args: '--new-window http://localhost:13990/'
       directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
       icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
