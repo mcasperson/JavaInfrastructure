@@ -1,4 +1,10 @@
 ---
+  # The service.bat file included with Wildfly 10.1.0.Final has a bug that prevents the service from starting
+  # See https://issues.jboss.org/browse/WFCORE-1719
+  - name: Fix the service.bat file
+    win_copy:
+      src: group_files/wildfly/service.bat
+      dest: "{{wildfly_install_dir}}\\bin\\service\\service.bat"
 
   - name: Install Slave Service
     win_command: "{{wildfly_install_dir}}\\bin\\service\\service.bat install /jbossuser {{wildfly_admin_user}} /jbosspass {{wildfly_admin_password}} /controller localhost:12990 /startup /name \"{{wildfly_standalone_service}}\""
