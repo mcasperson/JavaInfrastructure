@@ -8,7 +8,10 @@ servers and CI servers.
 9443    Wildfly 11 Standalone HTTPS
 10080   Wildfly 11 Slave
 10443   Wildfly 11 Slave HTTPS
+11080   Wildfly 10 Standalone
+11443   Wildfly 10 Standalone HTTPS
 10990   Wildfly 11 Standalone Admin
+12990   Wildfly 10 Standalone Admin
 19990   Wildfly 11 DC Admin
 38080   Tomcat 8
 38443   Tomcat 8 HTTPS
