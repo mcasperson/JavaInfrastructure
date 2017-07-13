@@ -114,3 +114,21 @@
     win_template:
       src: RegisterSSH.ps1
       dest: C:\Apps\RegisterSSH.ps1
+
+  - name: Copy Package Upload Script
+    win_template:
+      src: OctopusPackagePush.ps1
+      dest: C:\Apps\OctopusPackagePush.ps1
+
+  - name: Copy Packages
+    win_copy:
+      src: group_files/package/demo.0.0.1.zip
+      dest: C:\Apps\demo.0.0.1.zip
+
+  - name: Copy Packages
+    win_copy:
+      src: group_files/package/samplewebapp.1.0.0.0.nupkg
+      dest: C:\Apps\samplewebapp.1.0.0.0.nupkg
+
+  - name: Install Packages
+    win_shell: C:\Apps\OctopusPackagePush.ps1
