@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
-<host xmlns="urn:jboss:domain:5.0" name="master">
+<!-- CHANGE: Use machine id as slave name -->
+<host xmlns="urn:jboss:domain:5.0" name="wildfly-slave-{{ansible_machine_id}}">
     <extensions>
         <extension module="org.jboss.as.jmx"/>
         <extension module="org.wildfly.extension.core-management"/>
@@ -18,6 +19,10 @@
     <management>
         <security-realms>
             <security-realm name="ManagementRealm">
+                <server-identities>
+                    <!-- CHANGE: Add the slave password -->
+                    <secret value="${VAULT::MyVault::wildfly_slave_password::1}"/>
+                </server-identities>
                 <authentication>
                     <local default-user="$local" skip-group-loading="true"/>
                     <properties path="mgmt-users.properties" relative-to="jboss.domain.config.dir"/>
@@ -62,16 +67,12 @@
         </audit-log>
         <management-interfaces>
             <native-interface security-realm="ManagementRealm">
-                <socket interface="management" port="${jboss.management.native.port:{{wildfly_domaincontroller_management_native_port}}}"/>
+                <socket interface="management" port="${jboss.management.native.port:29999}"/>
             </native-interface>
-            <http-interface security-realm="ManagementRealm">
-                <http-upgrade enabled="true"/>
-                <socket interface="management" port="${jboss.management.http.port:{{wildfly_domaincontroller_management_http_port}}}"/>
-            </http-interface>
         </management-interfaces>
     </management>
     <domain-controller>
-        <local>
+        <remote security-realm="ManagementRealm" username="{{wildfly_slave_username}}">
             <discovery-options>
                 <discovery-option name="s3-discovery" code="org.jboss.as.host.controller.discovery.S3Discovery" module="org.jboss.as.host-controller">
                     <property name="access-key" value="${VAULT::MyVault::s3_access_key::1}"/>
@@ -79,7 +80,7 @@
                     <property name="location" value="${VAULT::MyVault::s3_bucket::1}"/>
                 </discovery-option>
             </discovery-options>
-        </local>
+        </remote>
     </domain-controller>
     <interfaces>
         <interface name="management">
@@ -89,7 +90,14 @@
             {% else %}
             <inet-address value="{{ansible_default_ipv4.address}}"/>
             {% endif %}
-
+        </interface>
+        <interface name="public">
+            <!-- CHANGE: Bind to IP address -->
+            {% if ansible_ip_addresses is defined %}
+            <inet-address value="{{ansible_ip_addresses[0]}}"/>
+            {% else %}
+            <inet-address value="{{ansible_default_ipv4.address}}"/>
+            {% endif %}
         </interface>
     </interfaces>
     <jvms>
@@ -102,6 +110,18 @@
             </jvm-options>
         </jvm>
     </jvms>
+    <servers>
+        <server name="server-one" group="main-server-group">
+            <socket-bindings port-offset="{{wildfly_slave_port_offset}}"/>
+        </server>
+        <server name="server-two" group="other-server-group">
+            <!--
+              ~  server-two avoids port conflicts by incrementing the ports in
+              ~                  the default socket-group declared in the server-group 
+              -->
+            <socket-bindings port-offset="150"/>
+        </server>
+    </servers>
     <profile>
         <subsystem xmlns="urn:jboss:domain:core-management:1.0"/>
         <subsystem xmlns="urn:jboss:domain:jmx:1.3">

@@ -36,21 +36,28 @@
   become: false
 
   roles:
-    - win-wildfly-dc-local
+    - win-wildfly11-dc-local
 
 - name: wildfly standalone
   hosts: windows_server
   become: false
 
   roles:
-    - win-wildfly-slave-local
+    - win-wildfly11-slave-local
 
 - name: wildfly standalone
   hosts: windows_server
   become: false
 
   roles:
-    - win-wildfly-standalone
+    - win-wildfly11-standalone
+
+- name: Wildfly 10 Standalone
+  hosts: windows_server
+  become: false
+
+  roles:
+    - win-wildfly10-standalone
 
 - name: Tomcat 7
   hosts: windows_server

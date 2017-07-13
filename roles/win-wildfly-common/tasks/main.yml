@@ -50,32 +50,32 @@
 
   - name: Copy Domain Controller Configuration
     template:
-      src: "{{playbook_dir}}/templates/wildfly/domain-11-0-0-Alpha1.xml"
+      src: "{{playbook_dir}}/templates/{{wildfly_template_dir}}/domain.xml"
       dest: "{{wildfly_install_dir}}/domain/configuration/domain.xml"
 
   - name: Copy Domain Controller Configuration
     template:
-      src: "{{playbook_dir}}/templates/wildfly/host-master-11-0-0-Alpha1.xml"
+      src: "{{playbook_dir}}/templates/{{wildfly_template_dir}}/host-master.xml"
       dest: "{{wildfly_install_dir}}/domain/configuration/host-master.xml"
 
   - name: Copy Domain Controller Configuration
     template:
-      src: "{{playbook_dir}}/templates/wildfly/host-master-local-11-0-0-Alpha1.xml"
+      src: "{{playbook_dir}}/templates/{{wildfly_template_dir}}/host-master-local.xml"
       dest: "{{wildfly_install_dir}}/domain/configuration/host-master-local.xml"
 
   - name: Copy Slave Configuration
     template:
-      src: "{{playbook_dir}}/templates/wildfly/host-slave-11-0-0-Alpha1.xml"
+      src: "{{playbook_dir}}/templates/{{wildfly_template_dir}}/host-slave.xml"
       dest: "{{wildfly_install_dir}}/domain/configuration/host-slave.xml"
 
   - name: Copy Slave Configuration
     template:
-      src: "{{playbook_dir}}/templates/wildfly/host-slave-local-11-0-0-Alpha1.xml"
+      src: "{{playbook_dir}}/templates/{{wildfly_template_dir}}/host-slave-local.xml"
       dest: "{{wildfly_install_dir}}/domain/configuration/host-slave-local.xml"
 
   - name: Copy Standalone Configuration
     win_template:
-      src: "{{playbook_dir}}/templates/wildfly/standalone-11-0-0-Alpha1.xml"
+      src: "{{playbook_dir}}/templates/{{wildfly_template_dir}}/standalone.xml"
       dest: "{{wildfly_install_dir}}\\standalone\\configuration\\standalone.xml"
 
 #  - name: Give permissions to wildfly user

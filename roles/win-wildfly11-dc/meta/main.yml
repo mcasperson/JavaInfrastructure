@@ -1,3 +1,4 @@
 ---
 dependencies:
+  - { role: wildfly11-common }
   - { role: win-wildfly-common }
