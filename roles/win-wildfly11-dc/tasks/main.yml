@@ -12,7 +12,7 @@
   - name: Add WildFly Shortcut
     win_shortcut:
       src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
-      dest: '%PUBLIC%\Desktop\WildFly Domain Admin.lnk'
+      dest: '%PUBLIC%\Desktop\WildFly 11 Domain Admin.lnk'
       args: "--new-window http://{{ansible_ip_addresses[0]}}:19990/"
       directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
       icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'

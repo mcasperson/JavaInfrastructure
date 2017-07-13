@@ -1,7 +1,7 @@
 ---
-wildfly10_download: https://s3.amazonaws.com/bamboo-support/wildfly-10.1.0.Final.tar.gz
-wildfly10_download_zip: https://s3.amazonaws.com/bamboo-support/wildfly-10.1.0.Final.zip
-wildfly10_versioned_dir: wildfly-10.1.0.Final
+wildfly_download: https://s3.amazonaws.com/bamboo-support/wildfly-10.1.0.Final.tar.gz
+wildfly_download_zip: https://s3.amazonaws.com/bamboo-support/wildfly-10.1.0.Final.zip
+wildfly_versioned_dir: wildfly-10.1.0.Final
 wildfly_standalone_port_offset: 3000
 wildfly_slave_port_offset: 4000
 wildfly_domaincontroller_management_native_port: 29999
