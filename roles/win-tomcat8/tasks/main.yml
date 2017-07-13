@@ -1,0 +1,46 @@
+---
+  - name: Download Tomcat
+    win_get_url:
+        url: "{{tomcat_zip_download}}"
+        dest: C:\Apps\tomcat8.zip
+
+  - name: Extract Tomcat
+    win_unzip:
+        src: C:\Apps\tomcat8.zip
+        dest: "C:\\tomcat"
+        creates: "C:\\tomcat\\apache-tomcat-{{tomcat_version}}"
+
+  - name: Set tomcat users
+    win_template:
+      src: "{{playbook_dir}}/templates/tomcat8/tomcat-users.xml"
+      dest: "C:\\tomcat\\apache-tomcat-{{tomcat_version}}\\conf\\tomcat-users.xml"
+
+  - name: Set tomcat server settings
+    win_template:
+      src: "{{playbook_dir}}/templates/tomcat8/server.xml"
+      dest: "C:\\tomcat\\apache-tomcat-{{tomcat_version}}\\conf\\server.xml"
+
+  - name: Allow manager to be used anywhere
+    win_template:
+      src: "{{playbook_dir}}/templates/tomcat8/context.xml"
+      dest: "C:\\tomcat\\apache-tomcat-{{tomcat_version}}\\webapps\\manager\\META-INF\\context.xml"
+
+  - name: Install Tomcat Service
+    win_shell: "C:\\tomcat\\apache-tomcat-{{tomcat_version}}\\bin\\service.bat install Tomcat{{tomcat_version}}"
+    args:
+      chdir: "C:\\tomcat\\apache-tomcat-{{tomcat_version}}\\bin"
+
+  - name: Start Tomcat Service
+    win_service:
+      name: "Tomcat{{tomcat_version}}"
+      state: started
+      start_mode: auto
+    ignore_errors: yes
+
+  - name: Add Tomcat Shortcut
+    win_shortcut:
+      src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
+      dest: '%PUBLIC%\Desktop\Tomcat8.lnk'
+      args: '--new-window http://localhost:38080/'
+      directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
+      icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'

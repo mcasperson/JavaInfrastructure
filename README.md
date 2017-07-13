@@ -3,9 +3,19 @@
 This scripts allow us to spin us test infrastructure in AWS for Java application
 servers and CI servers.
 
-## Prerequisites 
-
-The Linux instances being configures are based on Centos 7.
+## Ports
+9080    Wildfly 11 Standalone
+9443    Wildfly 11 Standalone HTTPS
+10080   Wildfly 11 Slave
+10443   Wildfly 11 Slave HTTPS
+10990   Wildfly 11 Standalone Admin
+19990   Wildfly 11 DC Admin
+38080   Tomcat 8
+38443   Tomcat 8 HTTPS
+39080   Tomcat 7
+39443   Tomcat 7 HTTPS
+40080   Tomcat 9
+40443   Tomcat 9 HTTPS
 
 ### Dependencies
 
@@ -97,28 +107,6 @@ To deploy a combined playbook, run the command:
 ```
 ansible-playbook --vault-password-file ~/password.txt win-OD-WF-with-server.yml
 ```
-
-## Deployment Details
-
-The various services that can be deployed by the playbooks in the repo have
-been configured to work on different ports to allow them to be installed
-side by side.
-
-### Wildfly Domain Controller
-* Admin interface: http://<public ip address>:19990
-
-### Wildfly Slave
-* Web interface: http://<public ip address>:10080
-
-### Wildfly Standalone
-* Web Interface: http://localhost:9080
-* Admin interface: http://localhost:9990
-
-### Octopus Deploy
-* Web interface: http://localhost:80
-
-### Tomcat
-* Web interface: http://localhost:38080
 
 ## Notes
 

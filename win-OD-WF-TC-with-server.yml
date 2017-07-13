@@ -52,9 +52,23 @@
   roles:
     - win-wildfly-standalone
 
-- name: Tomcat
+- name: Tomcat 7
   hosts: windows_server
   become: false
 
   roles:
-    - win-tomcat
+    - win-tomcat7
+
+- name: Tomcat 8
+  hosts: windows_server
+  become: false
+
+  roles:
+    - win-tomcat8
+
+- name: Tomcat 9
+  hosts: windows_server
+  become: false
+
+  roles:
+    - win-tomcat9
