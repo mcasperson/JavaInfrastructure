@@ -511,6 +511,7 @@
             <any-address/>
         </interface>
     </interfaces>
+    <!-- CHANGE: Add port offset -->
     <socket-binding-group name="standard-sockets" default-interface="public" port-offset="${jboss.socket.binding.port-offset:{{wildfly_standalone_port_offset}}}">
         <socket-binding name="management-http" interface="management" port="${jboss.management.http.port:9990}"/>
         <socket-binding name="management-https" interface="management" port="${jboss.management.https.port:9993}"/>
