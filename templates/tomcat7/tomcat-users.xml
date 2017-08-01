@@ -40,5 +40,6 @@
 -->
 
     <role rolename="manager-gui"/>
-    <user username="tomcat" password="{{tomcat_admin_password}}" roles="manager-gui"/>
+    <role rolename="manager-script"/>
+    <user username="tomcat" password="{{tomcat_admin_password}}" roles="manager-gui,manager-script"/>
 </tomcat-users>
