@@ -41,7 +41,7 @@
   become_user: root
 
   roles:
-    - linux-wildfly-dc-local
+    - linux-wildfly11-dc-local
 
 - name: wildfly standalone
   hosts: ubuntu_server
@@ -50,7 +50,7 @@
   become_user: root
 
   roles:
-    - linux-wildfly-slave-local
+    - linux-wildfly11-slave-local
 
 - name: wildfly standalone
   hosts: ubuntu_server
@@ -59,7 +59,7 @@
   become_user: root
 
   roles:
-    - linux-wildfly-standalone
+    - linux-wildfly11-standalone
 
 - name: Tomcat
   hosts: ubuntu_server

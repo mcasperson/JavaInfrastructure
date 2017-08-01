@@ -22,7 +22,7 @@
 
   - name: Copy Modified Configuration
     template:
-      src: "{{playbook_dir}}/templates/wildfly/standalone-11-0-0-Alpha1.xml"
+      src: "{{playbook_dir}}/templates/{{wildfly_template_dir}}/standalone.xml"
       dest: "{{wildfly_install_dir}}/standalone/configuration/standalone.xml"
       owner: "{{wildfly_role}}"
       group: "{{wildfly_role}}"

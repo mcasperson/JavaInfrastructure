@@ -94,35 +94,35 @@
 
   - name: "Copy Slave Configuration {{wildfly_role}}"
     template:
-      src: "{{playbook_dir}}/templates/wildfly/host-slave-11-0-0-Alpha1.xml"
+      src: "{{playbook_dir}}/templates/{{wildfly_template_dir}}/host-slave.xml"
       dest: "{{wildfly_install_dir}}/domain/configuration/host-slave.xml"
       owner: "{{wildfly_role}}"
       group: "{{wildfly_role}}"
 
   - name: "Copy Slave local Configuration {{wildfly_role}}"
     template:
-      src: "{{playbook_dir}}/templates/wildfly/host-slave-local-11-0-0-Alpha1.xml"
+      src: "{{playbook_dir}}/templates/{{wildfly_template_dir}}/host-slave-local.xml"
       dest: "{{wildfly_install_dir}}/domain/configuration/host-slave-local.xml"
       owner: "{{wildfly_role}}"
       group: "{{wildfly_role}}"
 
   - name: "Copy DC Domain Configuration {{wildfly_role}}"
     template:
-      src: "{{playbook_dir}}/templates/wildfly/domain-11-0-0-Alpha1.xml"
+      src: "{{playbook_dir}}/templates/{{wildfly_template_dir}}/domain.xml"
       dest: "{{wildfly_install_dir}}/domain/configuration/domain.xml"
       owner: "{{wildfly_role}}"
       group: "{{wildfly_role}}"
 
   - name: "Copy DC Host Configuration {{wildfly_role}}"
     template:
-      src: "{{playbook_dir}}/templates/wildfly/host-master-11-0-0-Alpha1.xml"
+      src: "{{playbook_dir}}/templates/{{wildfly_template_dir}}/host-master.xml"
       dest: "{{wildfly_install_dir}}/domain/configuration/host-master.xml"
       owner: "{{wildfly_role}}"
       group: "{{wildfly_role}}"
 
   - name: "Copy DC Host Local Configuration {{wildfly_role}}"
     template:
-      src: "{{playbook_dir}}/templates/wildfly/host-master-local-11-0-0-Alpha1.xml"
+      src: "{{playbook_dir}}/templates/{{wildfly_template_dir}}/host-master-local.xml"
       dest: "{{wildfly_install_dir}}/domain/configuration/host-master-local.xml"
       owner: "{{wildfly_role}}"
       group: "{{wildfly_role}}"

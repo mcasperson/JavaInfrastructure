@@ -1,7 +1,7 @@
 ---
   - name: Copy Modified Configuration
     template:
-      src: "{{playbook_dir}}/templates/wildfly/host-slave-11-0-0-Alpha1.xml"
+      src: "{{playbook_dir}}/templates/{{wildfly_template_dir}}/host-slave.xml"
       dest: "{{wildfly_install_dir}}/domain/configuration/host-slave.xml"
 
   - name: Install Slave Service

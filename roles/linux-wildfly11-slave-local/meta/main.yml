@@ -1,4 +1,5 @@
 ---
 dependencies:
   - { role: wildfly-common }
+  - { role: wildfly11-common }
   - { role: linux-wildfly-common }
