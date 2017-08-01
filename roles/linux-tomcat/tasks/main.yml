@@ -61,7 +61,7 @@
 
   - name: install debian tomcat service
     template:
-      src: "{{playbook_dir}}/templates/tomcat8/tomcat-debian"
+      src: "{{playbook_dir}}/templates/tomcat/tomcat-debian"
       dest: /etc/init.d/tomcat
       owner: root
       group: root
