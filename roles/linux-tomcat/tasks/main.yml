@@ -62,7 +62,7 @@
   - name: install debian tomcat service
     template:
       src: "{{playbook_dir}}/templates/tomcat/tomcat-debian"
-      dest: /etc/init.d/tomcat
+      dest: /etc/init.d/tomcat8
       owner: root
       group: root
       mode: 0755
@@ -87,6 +87,6 @@
 
   - name: start tomcat service
     service:
-      name: tomcat
+      name: tomcat8
       enabled: yes
       state: restarted
