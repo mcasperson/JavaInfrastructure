@@ -52,7 +52,7 @@
 
   - name: install redhat tomcat service
     template:
-      src: "{{playbook_dir}}/templates/tomcat8/tomcat"
+      src: "{{playbook_dir}}/templates/tomcat/tomcat"
       dest: /etc/init.d/tomcat
       owner: root
       group: root
