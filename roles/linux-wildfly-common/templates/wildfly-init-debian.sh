@@ -60,7 +60,7 @@ fi
 
 # Location of wildfly
 if [ -z "$JBOSS_HOME" ]; then
-	JBOSS_HOME="/opt/$NAME/wildfly"
+	JBOSS_HOME="/opt/{{wildfly_role}}/{{wildfly_versioned_dir}}"
 fi
 export JBOSS_HOME
 

@@ -219,7 +219,7 @@
             <default-missing-method-permissions-deny-access value="true"/>
             <log-system-exceptions value="true"/>
         </subsystem>
-        <subsystem xmlns="urn:jboss:domain:io:1.1">
+        <subsystem xmlns="urn:jboss:domain:io:2.0">
             <worker name="default"/>
             <buffer-pool name="default"/>
         </subsystem>
@@ -235,14 +235,21 @@
                     <transaction mode="BATCH"/>
                     <file-store passivation="true" purge="false"/>
                 </local-cache>
-                <local-cache name="persistent">
-                    <locking isolation="REPEATABLE_READ"/>
-                    <transaction mode="BATCH"/>
-                    <file-store passivation="false" purge="false"/>
-                </local-cache>
-                <local-cache name="concurrent">
-                    <file-store passivation="true" purge="false"/>
-                </local-cache>
+                <!-- Alternate configuration which always persists HttpSession state to disk -->
+                <!--
+                  ~ local-cache name="persistent">
+                  ~                     <locking isolation="REPEATABLE_READ"/>
+                  ~                     <transaction mode="BATCH"/>
+                  ~                     <file-store passivation="false" purge="false"/>
+                  ~                 </local-cache
+                  -->
+                <!-- Alternate configuration to reduce lock contention for applications that make use of concurrent access to a web session -->
+                <!-- Web sessions will be locked more frequently, but for shorter periods of time -->
+                <!--
+                  ~ local-cache name="concurrent">
+                  ~                     <file-store passivation="true" purge="false"/>
+                  ~                 </local-cache
+                  -->
             </cache-container>
             <cache-container name="ejb" aliases="sfsb" default-cache="passivation" module="org.wildfly.clustering.ejb.infinispan">
                 <local-cache name="passivation">
@@ -250,11 +257,14 @@
                     <transaction mode="BATCH"/>
                     <file-store passivation="true" purge="false"/>
                 </local-cache>
-                <local-cache name="persistent">
-                    <locking isolation="REPEATABLE_READ"/>
-                    <transaction mode="BATCH"/>
-                    <file-store passivation="false" purge="false"/>
-                </local-cache>
+                <!-- Alternate configuration which always persists SFSB state to disk -->
+                <!--
+                  ~ local-cache name="persistent">
+                  ~                     <locking isolation="REPEATABLE_READ"/>
+                  ~                     <transaction mode="BATCH"/>
+                  ~                     <file-store passivation="false" purge="false"/>
+                  ~                 </local-cache
+                  -->
             </cache-container>
             <cache-container name="hibernate" module="org.hibernate.infinispan">
                 <local-cache name="entity">
@@ -299,7 +309,7 @@
             <jpa default-datasource="" default-extended-persistence-inheritance="DEEP"/>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:jsf:1.0"/>
-        <subsystem xmlns="urn:jboss:domain:mail:2.1">
+        <subsystem xmlns="urn:jboss:domain:mail:3.0">
             <mail-session name="default" jndi-name="java:jboss/mail/Default">
                 <smtp-server outbound-socket-binding-ref="mail-smtp"/>
             </mail-session>
@@ -322,7 +332,7 @@
                 </maximum-set>
             </deployment-permissions>
         </subsystem>
-        <subsystem xmlns="urn:wildfly:elytron:1.0" final-providers="combined-providers">
+        <subsystem xmlns="urn:wildfly:elytron:1.0" final-providers="combined-providers" disallowed-providers="OracleUcrypto">
             <providers>
                 <provider-loader name="elytron" module="org.wildfly.security.elytron"/>
                 <provider-loader name="openssl" module="org.wildfly.openssl"/>
@@ -356,7 +366,13 @@
                 </properties-realm>
             </security-realms>
             <mappers>
-                <constant-permission-mapper name="default-permission-mapper">
+                <logical-permission-mapper name="default-permission-mapper" logical-operation="unless" left="constant-permission-mapper" right="anonymous-permission-mapper"/>
+                <simple-permission-mapper name="anonymous-permission-mapper">
+                    <permission-mapping principals="anonymous">
+                        <permission class-name="org.wildfly.security.auth.permission.LoginPermission"/>
+                    </permission-mapping>
+                </simple-permission-mapper>
+                <constant-permission-mapper name="constant-permission-mapper">
                     <permission class-name="org.wildfly.security.auth.permission.LoginPermission"/>
                     <permission class-name="org.wildfly.extension.batch.jberet.deployment.BatchPermission" module="org.wildfly.extension.batch.jberet" target-name="*"/>
                     <permission class-name="org.wildfly.transaction.client.RemoteTransactionPermission" module="org.wildfly.transaction.client"/>
@@ -410,21 +426,13 @@
                     </filters>
                 </mechanism-provider-filtering-sasl-server-factory>
                 <configurable-sasl-server-factory name="configured" sasl-server-factory="elytron">
-                    <filters>
-                        <filter>
-                            <pattern-filter value="JBOSS-LOCAL-USER"/>
-                        </filter>
-                        <filter>
-                            <pattern-filter value="DIGEST-MD5"/>
-                        </filter>
-                    </filters>
                     <properties>
                         <property name="wildfly.sasl.local-user.default-user" value="$local"/>
                     </properties>
                 </configurable-sasl-server-factory>
             </sasl>
         </subsystem>
-        <subsystem xmlns="urn:jboss:domain:security:3.0">
+        <subsystem xmlns="urn:jboss:domain:security:2.0">
             <security-domains>
                 <security-domain name="other" cache-type="default">
                     <authentication>
@@ -456,7 +464,7 @@
                 </security-domain>
             </security-domains>
         </subsystem>
-        <subsystem xmlns="urn:jboss:domain:transactions:3.1">
+        <subsystem xmlns="urn:jboss:domain:transactions:4.0">
             <core-environment>
                 <process-id>
                     <uuid/>
@@ -474,7 +482,7 @@
                     <location name="/" handler="welcome-content"/>
                     <filter-ref name="server-header"/>
                     <filter-ref name="x-powered-by-header"/>
-                    <http-invoker http-authentication-factory="application-http-authentication"/>
+                    <http-invoker security-realm="ApplicationRealm"/>
                 </host>
             </server>
             <servlet-container name="default">
@@ -485,7 +493,7 @@
                 <file name="welcome-content" path="${jboss.home.dir}/welcome-content"/>
             </handlers>
             <filters>
-                <response-header name="server-header" header-name="Server" header-value="WildFly/10"/>
+                <response-header name="server-header" header-name="Server" header-value="WildFly/11"/>
                 <response-header name="x-powered-by-header" header-name="X-Powered-By" header-value="Undertow/1"/>
             </filters>
         </subsystem>

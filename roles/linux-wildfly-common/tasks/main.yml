@@ -41,12 +41,6 @@
       group: "{{wildfly_role}}"
       recurse: true
 
-  - name: "Symlink WildFly Dir {{wildfly_role}}"
-    file:
-        src: "/opt/{{wildfly_role}}/{{wildfly_versioned_dir}}"
-        dest: "{{wildfly_install_dir}}"
-        state: link
-
   - name: "Create Logging Directory {{wildfly_role}}"
     file:
       state: directory
