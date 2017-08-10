@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
+<!-- CHANGE: Use machine id as slave name -->
 <host xmlns="urn:jboss:domain:5.0" name="wildfly-slave-{{ansible_machine_id}}">
     <extensions>
         <extension module="org.jboss.as.jmx"/>
@@ -66,7 +67,8 @@
         </audit-log>
         <management-interfaces>
             <native-interface security-realm="ManagementRealm">
-                <socket interface="management" port="${jboss.management.native.port:9999}"/>
+                <!-- CHANGE: Bind to different port -->
+                <socket interface="management" port="${jboss.management.native.port:29999}"/>
             </native-interface>
         </management-interfaces>
     </management>
@@ -112,7 +114,10 @@
         </jvm>
     </jvms>
     <servers>
-        <server name="server-one" group="main-server-group"/>
+        <!-- CHANGE: Add port offset -->
+        <server name="server-one" group="main-server-group">
+            <socket-bindings port-offset="{{wildfly_slave_port_offset}}"/>
+        </server>
         <server name="server-two" group="other-server-group">
             <!--
               ~  server-two avoids port conflicts by incrementing the ports in

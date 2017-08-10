@@ -1,2 +1,2 @@
 ---
-wildfly_role: "wildfly_slave"
+wildfly_role: "wildfly11_slave_local"
