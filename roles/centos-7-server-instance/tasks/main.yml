@@ -46,6 +46,7 @@
       groups:
         - centos_server
         - linux_server
+        - java_server
         - "{{location}}_server"
     with_items: "{{linux_server_ec2.instances}}"
 

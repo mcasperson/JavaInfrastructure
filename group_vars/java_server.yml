@@ -1,0 +1,7 @@
+---
+tomcat_7_http_port: 39080
+tomcat_7_https_port: 39443
+tomcat_8_http_port: 38080
+tomcat_8_https_port: 38443
+tomcat_9_http_port: 40080
+tomcat_9_https_port: 40443
