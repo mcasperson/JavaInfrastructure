@@ -34,6 +34,15 @@
   roles:
     - apt-linux-common
 
+- name: wildfly standalone 10
+  hosts: ubuntu_server
+  remote_user: ubuntu
+  become: true
+  become_user: root
+
+  roles:
+    - linux-wildfly10-standalone
+
 - name: EAP 7 Standalone
   hosts: ubuntu_server
   remote_user: ubuntu

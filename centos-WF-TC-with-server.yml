@@ -34,6 +34,33 @@
   roles:
     - yum-linux-common
 
+- name: wildfly standalone 10
+  hosts: centos_server
+  remote_user: centos
+  become: true
+  become_user: root
+
+  roles:
+    - linux-wildfly10-standalone
+
+- name: EAP 6 Standalone
+  hosts: centos_server
+  remote_user: centos
+  become: true
+  become_user: root
+
+  roles:
+    - linux-eap6-standalone
+
+- name: EAP 7 Standalone
+  hosts: centos_server
+  remote_user: centos
+  become: true
+  become_user: root
+
+  roles:
+    - linux-eap7-standalone
+
 - name: Tomcat 7
   hosts: centos_server
   remote_user: centos
@@ -60,24 +87,6 @@
 
   roles:
     - linux-tomcat9
-
-- name: EAP 6 Standalone
-  hosts: centos_server
-  remote_user: centos
-  become: true
-  become_user: root
-
-  roles:
-    - linux-eap6-standalone
-
-- name: EAP 7 Standalone
-  hosts: centos_server
-  remote_user: centos
-  become: true
-  become_user: root
-
-  roles:
-    - linux-eap7-standalone
 
 - name: wildfly standalone
   hosts: centos_server
