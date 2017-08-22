@@ -34,15 +34,6 @@
   roles:
     - apt-linux-common
 
-- name: EAP 6 Standalone
-  hosts: ubuntu_server
-  remote_user: ubuntu
-  become: true
-  become_user: root
-
-  roles:
-    - linux-eap6-standalone
-
 - name: EAP 7 Standalone
   hosts: ubuntu_server
   remote_user: ubuntu
@@ -51,6 +42,15 @@
 
   roles:
     - linux-eap7-standalone
+
+- name: EAP 6 Standalone
+  hosts: ubuntu_server
+  remote_user: ubuntu
+  become: true
+  become_user: root
+
+  roles:
+    - linux-eap6-standalone
 
 - name: Tomcat 7
   hosts: ubuntu_server
