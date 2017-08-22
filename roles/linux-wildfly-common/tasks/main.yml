@@ -19,7 +19,7 @@
   - name: "Download Wildfly Distribution {{wildfly_role}}"
     get_url:
         url: "{{wildfly_download}}"
-        dest: /tmp/wildfly.tar.gz
+        dest: "/tmp/{{wildfly_role}}.tar.gz"
         mode: 0440
 
   - name: "Creates directory {{wildfly_role}}"
@@ -29,7 +29,7 @@
 
   - name: "Extract WildFly {{wildfly_role}}"
     unarchive:
-        src: /tmp/wildfly.tar.gz
+        src: "/tmp/{{wildfly_role}}.tar.gz"
         dest: "/opt/{{wildfly_role}}"
         copy: no
 
