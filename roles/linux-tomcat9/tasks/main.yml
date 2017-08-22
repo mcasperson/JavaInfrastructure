@@ -48,8 +48,8 @@
     template:
       src: "{{playbook_dir}}/templates/{{tomcat_template_dir}}/context.xml"
       dest: "/opt/apache-tomcat-{{tomcat_version}}/webapps/manager/META-INF/context.xml"
-      owner: tomcat
-      group: tomcat
+      owner: "{{tomcat_user}}"
+      group: "{{tomcat_user}}"
       mode: 0600
 
   - name: install redhat tomcat service
