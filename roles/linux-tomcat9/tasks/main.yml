@@ -1,4 +1,6 @@
 ---
+  - include_vars: "{{playbook_dir}}/vars/encrypted.yml"
+
   - name: stop tomcat service
     service:
       name: "{{tomcat_user}}"
