@@ -12,6 +12,12 @@ servers and CI servers.
 11443   Wildfly 10 Standalone HTTPS
 10990   Wildfly 11 Standalone Admin
 12990   Wildfly 10 Standalone Admin
+12080   EAP 6 Standalone HTTP
+12443   EAP 6 Standalone HTTPS
+13990   EAP 6 Standalone Admin
+14080   EAP 7 Standalone HTTP
+14443   EAP 7 Standalone HTTPS
+15990   EAP 7 Standalone Admin
 19990   Wildfly 11 DC Admin
 38080   Tomcat 8
 38443   Tomcat 8 HTTPS
