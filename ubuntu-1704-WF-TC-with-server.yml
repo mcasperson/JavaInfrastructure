@@ -34,6 +34,42 @@
   roles:
     - apt-linux-common
 
+- name: Tomcat 7
+  hosts: ubuntu_server
+  remote_user: ubuntu
+  become: true
+  become_user: root
+
+  roles:
+    - linux-tomcat7
+
+- name: Tomcat 8
+  hosts: ubuntu_server
+  remote_user: ubuntu
+  become: true
+  become_user: root
+
+  roles:
+    - linux-tomcat8
+
+- name: Tomcat 9
+  hosts: ubuntu_server
+  remote_user: ubuntu
+  become: true
+  become_user: root
+
+  roles:
+    - linux-tomcat9
+
+- name: EAP 6 Standalone
+  hosts: ubuntu_server
+  remote_user: ubuntu
+  become: true
+  become_user: root
+
+  roles:
+    - linux-eap6-standalone
+
 - name: wildfly standalone
   hosts: ubuntu_server
   remote_user: ubuntu
@@ -60,12 +96,3 @@
 
   roles:
     - linux-wildfly11-standalone
-
-- name: Tomcat
-  hosts: ubuntu_server
-  remote_user: ubuntu
-  become: true
-  become_user: root
-
-  roles:
-    - linux-tomcat

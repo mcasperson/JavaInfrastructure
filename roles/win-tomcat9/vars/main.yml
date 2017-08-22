@@ -1,5 +1,5 @@
 ---
 tomcat_user: tomcat
+tomcat_template_dir: tomcat9
 tomcat_version: 9.0.0.M22
-tomcat_download: https://s3.amazonaws.com/bamboo-support/apache-tomcat-9.0.0.M22.tar.gz
 tomcat_zip_download: https://s3.amazonaws.com/bamboo-support/apache-tomcat-9.0.0.M22-windows-x64.zip

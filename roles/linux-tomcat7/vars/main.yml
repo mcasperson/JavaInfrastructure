@@ -1,0 +1,5 @@
+---
+tomcat_user: tomcat7
+tomcat_template_dir: tomcat7
+tomcat_version: 7.0.79
+tomcat_download: https://s3.amazonaws.com/bamboo-support/apache-tomcat-7.0.79.tar.gz

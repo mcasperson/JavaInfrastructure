@@ -1,7 +1,7 @@
 ---
   - name: stop tomcat service
     service:
-      name: tomcat
+      name: "{{tomcat_user}}"
       enabled: yes
       state: stopped
     ignore_errors: yes
@@ -28,32 +28,32 @@
 
   - name: set tomcat users
     template:
-      src: "{{playbook_dir}}/templates/tomcat8/tomcat-users.xml"
-      dest: /opt/apache-tomcat-8.5.15/conf/tomcat-users.xml
-      owner: tomcat
-      group: tomcat
+      src: "{{playbook_dir}}/templates/{{tomcat_template_dir}}/tomcat-users.xml"
+      dest: "/opt/apache-tomcat-{{tomcat_version}}/conf/tomcat-users.xml"
+      owner: "{{tomcat_user}}"
+      group: "{{tomcat_user}}"
       mode: 0600
 
   - name: set tomcat server settings
     template:
-      src: "{{playbook_dir}}/templates/tomcat8/server.xml"
-      dest: /opt/apache-tomcat-8.5.15/conf/server.xml
-      owner: tomcat
-      group: tomcat
+      src: "{{playbook_dir}}/templates/{{tomcat_template_dir}}/server.xml"
+      dest: "/opt/apache-tomcat-{{tomcat_version}}/conf/server.xml"
+      owner: "{{tomcat_user}}"
+      group: "{{tomcat_user}}"
       mode: 0600
 
   - name: allow manager to be used anywhere
     template:
-      src: "{{playbook_dir}}/templates/tomcat8/context.xml"
-      dest: /opt/apache-tomcat-8.5.15/webapps/manager/META-INF/context.xml
+      src: "{{playbook_dir}}/templates/{{tomcat_template_dir}}/context.xml"
+      dest: "/opt/apache-tomcat-{{tomcat_version}}/webapps/manager/META-INF/context.xml"
       owner: tomcat
       group: tomcat
       mode: 0600
 
   - name: install redhat tomcat service
     template:
-      src: "{{playbook_dir}}/templates/tomcat/tomcat"
-      dest: /etc/init.d/tomcat
+      src: "{{playbook_dir}}/templates/{{tomcat_template_dir}}/tomcat"
+      dest: "/etc/init.d/{{tomcat_user}}"
       owner: root
       group: root
       mode: 0755
@@ -62,7 +62,7 @@
   - name: install debian tomcat service
     template:
       src: "{{playbook_dir}}/templates/tomcat/tomcat-debian"
-      dest: /etc/init.d/tomcat8
+      dest: "/etc/init.d/{{tomcat_user}}"
       owner: root
       group: root
       mode: 0755
@@ -71,7 +71,7 @@
   - name: set tomcat permissions
     file:
       state: directory
-      path: /opt/apache-tomcat-8.5.15
+      path: "/opt/apache-tomcat-{{tomcat_version}}"
       owner: "{{tomcat_user}}"
       group: "{{tomcat_user}}"
       recurse: true
@@ -79,7 +79,7 @@
   - name: "allow {{ansible_user}} user to push to webapps"
     file:
       state: directory
-      path: /opt/apache-tomcat-8.5.15/webapps
+      path: "/opt/apache-tomcat-{{tomcat_version}}/webapps"
       owner: "{{ansible_user}}"
       group: "{{ansible_user}}"
       recurse: true
@@ -87,6 +87,6 @@
 
   - name: start tomcat service
     service:
-      name: tomcat8
+      name: "{{tomcat_user}}"
       enabled: yes
       state: restarted

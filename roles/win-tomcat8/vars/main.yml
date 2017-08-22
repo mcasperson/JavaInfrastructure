@@ -1,5 +1,5 @@
 ---
 tomcat_user: tomcat
+tomcat_template_dir: tomcat8
 tomcat_version: 8.5.15
-tomcat_download: https://s3.amazonaws.com/bamboo-support/apache-tomcat-8.5.15.tar.gz
 tomcat_zip_download: https://s3.amazonaws.com/bamboo-support/apache-tomcat-8.5.15-windows-x64.zip
