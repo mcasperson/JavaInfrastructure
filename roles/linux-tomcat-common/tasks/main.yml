@@ -54,7 +54,7 @@
 
   - name: install redhat tomcat service
     template:
-      src: "{{playbook_dir}}/templates/{{tomcat_template_dir}}/tomcat"
+      src: "{{playbook_dir}}/templates/tomcat/tomcat"
       dest: "/etc/init.d/{{tomcat_user}}"
       owner: root
       group: root
