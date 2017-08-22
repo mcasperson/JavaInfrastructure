@@ -19,12 +19,12 @@
   - name: download tomcat
     get_url:
         url: "{{tomcat_download}}"
-        dest: /tmp/tomcat.tar.gz
+        dest: "/tmp/{{tomcat_user}}.tar.gz"
         mode: 0440
 
   - name: extract tomcat
     unarchive:
-        src: /tmp/tomcat.tar.gz
+        src: "/tmp/{{tomcat_user}}.tar.gz"
         dest: /opt
         copy: no
 
