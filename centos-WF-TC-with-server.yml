@@ -114,12 +114,3 @@
 
   roles:
     - linux-wildfly11-standalone
-
-- name: Tomcat
-  hosts: centos_server
-  remote_user: centos
-  become: true
-  become_user: root
-
-  roles:
-    - linux-tomcat
