@@ -18,7 +18,7 @@
       instance_profile_name: ListEC2
       wait: yes
       wait_timeout: 600
-      group: OctopusHttp
+      group: WildFlyTomcat
       count: 1
       region: "{{region}}"
       user_data: "{{ lookup('template', 'templates/userdata.txt.j2') }}"
