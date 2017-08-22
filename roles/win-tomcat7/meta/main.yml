@@ -1,3 +1,1 @@
 ---
-dependencies:
-  - { role: linux-tomcat-common }
