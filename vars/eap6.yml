@@ -1,5 +1,5 @@
 ---
-wildfly_download: https://s3.amazonaws.com/bamboo-support/jboss-eap-6.4-CVE-2015-7501.zip
+wildfly_download: https://s3.amazonaws.com/bamboo-support/jboss-eap-6.4-CVE-2015-7501.tar.gz
 wildfly_download_zip: https://s3.amazonaws.com/bamboo-support/jboss-eap-6.4-CVE-2015-7501.zip
 wildfly_versioned_dir: jboss-eap-6.4
 wildfly_standalone_port_offset: 4000
