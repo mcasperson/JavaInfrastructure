@@ -16,7 +16,7 @@
 ## run as a different user
 TOMCAT_USER={{tomcat_user}}
 
-export CATALINA_HOME="/opt/apache-tomcat-8.5.15"
+export CATALINA_HOME="/opt/apache-tomcat-{{tomcat_version}}"
 
 start() {
  echo "Starting Tomcat 8..."

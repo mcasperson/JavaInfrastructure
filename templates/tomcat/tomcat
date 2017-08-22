@@ -6,7 +6,7 @@
 # description:  Start up the Tomcat servlet engine.
 #
 # processname: java
-# pidfile: /var/run/tomcat.pid
+# pidfile: /var/run/{{tomcat_user}}.pid
 #
 ### BEGIN INIT INFO
 # Provides: tomcat
@@ -21,9 +21,9 @@
 . /etc/init.d/functions
 
 ## tomcat installation directory
-PROCESS_NAME=tomcat
+PROCESS_NAME={{tomcat_user}}
 
-CATALINA_HOME="/opt/apache-tomcat-8.5.15"
+CATALINA_HOME="/opt/apache-tomcat-{{tomcat_version}}"
 
 ## run as a different user
 TOMCAT_USER={{tomcat_user}}
