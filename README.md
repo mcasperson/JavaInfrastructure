@@ -14,7 +14,8 @@ servers and CI servers.
 12990   Wildfly 10 Standalone Admin
 12080   EAP 6 Standalone HTTP
 12443   EAP 6 Standalone HTTPS
-13990   EAP 6 Standalone Admin
+13990   EAP 6 Standalone Admin Console
+13999   EAP 6 Standalone Admin
 14080   EAP 7 Standalone HTTP
 14443   EAP 7 Standalone HTTPS
 15990   EAP 7 Standalone Admin
