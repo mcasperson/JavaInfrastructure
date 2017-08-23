@@ -25,7 +25,16 @@ $theAccount = $accounts | ? { $_.Name -eq "$account" }
 $discovered = Invoke-RestMethod "$hostName/api/machines/discover?host=$linuxHost&type=Ssh" -Headers $headers -Method Get
 
 #$discovered.Name = "MySshTargetName" # If you wanted to change the name of the deployment target (default is host name)
-$discovered.Roles += "DukeLegion"
+$discovered.Roles += "linux"
+$discovered.Roles += "wildfly"
+$discovered.Roles += "wildfly10"
+$discovered.Roles += "wildfly11"
+$discovered.Roles += "eap6"
+$discovered.Roles += "eap7"
+$discovered.Roles += "tomcat"
+$discovered.Roles += "tomcat7"
+$discovered.Roles += "tomcat8"
+$discovered.Roles += "tomcat9"
 $discovered.EnvironmentIds += $theEnvironment.Id
 $discovered.Endpoint.AccountId = $theAccount.Id
 
