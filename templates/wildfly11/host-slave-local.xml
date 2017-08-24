@@ -76,30 +76,18 @@
         <!-- CHANGE: Discover via local ip -->
         <remote security-realm="ManagementRealm" username="{{wildfly_slave_username}}">
             <discovery-options>
-                {% if ansible_ip_addresses is defined %}
-                <static-discovery name="primary" protocol="${jboss.domain.master.protocol:remote}" host="${jboss.domain.master.address:{{ansible_ip_addresses[0]}}}" port="${jboss.domain.master.port:{{wildfly_domaincontroller_management_native_port}}}"/>
-                {% else %}
-                <static-discovery name="primary" protocol="${jboss.domain.master.protocol:remote}" host="${jboss.domain.master.address:{{ansible_default_ipv4.address}}}" port="${jboss.domain.master.port:{{wildfly_domaincontroller_management_native_port}}}"/>
-                {% endif %}
+                <static-discovery name="primary" protocol="${jboss.domain.master.protocol:remote}" host="${jboss.domain.master.address:localhost}" port="${jboss.domain.master.port:{{wildfly_domaincontroller_management_native_port}}}"/>
             </discovery-options>
         </remote>
     </domain-controller>
     <interfaces>
         <interface name="management">
-            <!-- CHANGE: Bind to IP address -->
-            {% if ansible_ip_addresses is defined %}
-            <inet-address value="{{ansible_ip_addresses[0]}}"/>
-            {% else %}
-            <inet-address value="{{ansible_default_ipv4.address}}"/>
-            {% endif %}
+            <!-- CHANGE: Bind to any IP address -->
+            <any-address/>
         </interface>
         <interface name="public">
-            <!-- CHANGE: Bind to IP address -->
-            {% if ansible_ip_addresses is defined %}
-            <inet-address value="{{ansible_ip_addresses[0]}}"/>
-            {% else %}
-            <inet-address value="{{ansible_default_ipv4.address}}"/>
-            {% endif %}
+            <!-- CHANGE: Bind to any IP address -->
+            <any-address/>
         </interface>
     </interfaces>
     <jvms>
