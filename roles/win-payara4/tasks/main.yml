@@ -27,7 +27,7 @@
 - name: Add Payara Shortcut
   win_shortcut:
     src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
-    dest: '%PUBLIC%\Desktop\Payara4.lnk'
+    dest: '%PUBLIC%\Desktop\Payara 4.lnk'
     args: "--new-window http://localhost:{{payara_4_http_port1}}/"
     directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
     icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
@@ -35,7 +35,7 @@
 - name: Add Payara Admin Shortcut
   win_shortcut:
     src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
-    dest: '%PUBLIC%\Desktop\Payara4.lnk'
+    dest: '%PUBLIC%\Desktop\Payara 4 Admin.lnk'
     args: "--new-window http://localhost:{{payara_4_admin_port}}/"
     directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
     icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
