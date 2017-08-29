@@ -5,3 +5,5 @@ tomcat_8_http_port: 38080
 tomcat_8_https_port: 38443
 tomcat_9_http_port: 40080
 tomcat_9_https_port: 40443
+liberty_7_http_port: 15080
+liberty_7_https_port: 15443
