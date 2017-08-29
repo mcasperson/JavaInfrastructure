@@ -48,6 +48,6 @@
   win_shortcut:
     src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
     dest: '%PUBLIC%\Desktop\Liberty7.lnk'
-    args: '--new-window http://localhost:15080/'
+    args: "--new-window http://localhost:{{liberty_7_http_port}}/"
     directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
     icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'

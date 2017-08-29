@@ -31,6 +31,13 @@
     - win-octopus-deploy
     - win-e2e-tests
 
+- name: payara 4
+  hosts: windows_server
+  become: false
+
+  roles:
+    - win-payara4
+
 - name: liberty 7
   hosts: windows_server
   become: false

@@ -7,3 +7,6 @@ tomcat_9_http_port: 40080
 tomcat_9_https_port: 40443
 liberty_7_http_port: 15080
 liberty_7_https_port: 15443
+payara_4_http_port1: 16080
+payara_4_http_port2: 16081
+payara_4_admin_port: 4848
