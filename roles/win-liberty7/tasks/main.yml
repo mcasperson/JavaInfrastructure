@@ -4,7 +4,7 @@
     url: "{{liberty_download}}"
     dest: "C:\\Apps\\{{liberty_template_dir}}.zip"
 
-- name: Extract Tomcat
+- name: Extract Liberty
   win_unzip:
     src: "C:\\Apps\\{{liberty_template_dir}}.zip"
     dest: "C:\\liberty"
