@@ -39,3 +39,11 @@
   win_template:
     src: "{{playbook_dir}}/templates/{{liberty_template_dir}}/server.env"
     dest: "C:\\liberty\\wlp\\usr\\servers\\octopus\\server.env"
+
+- name: Add Liberty Shortcut
+  win_shortcut:
+    src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
+    dest: '%PUBLIC%\Desktop\Liberty7.lnk'
+    args: '--new-window http://localhost:15080/'
+    directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
+    icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
