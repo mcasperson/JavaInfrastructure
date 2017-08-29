@@ -1,13 +1,17 @@
 ---
+- name: Create Liberty Directory
+  win_file:
+    path: "C:\\liberty"
+    state: directory
+
 - name: Download Liberty
   win_get_url:
     url: "{{liberty_download}}"
     dest: "C:\\Apps\\{{liberty_template_dir}}.zip"
 
 - name: Extract Liberty
-  win_unzip:
-    src: "C:\\Apps\\{{liberty_template_dir}}.zip"
-    dest: "C:\\liberty"
+  win_command: "C:\\7Zip\\7z.exe x C:\\Apps\\{{liberty_template_dir}}.zip -oC:\\liberty"
+  args:
     creates: "C:\\liberty\\wlp"
 
 - name: Create Liberty Server
