@@ -6,30 +6,33 @@ servers and CI servers.
 ## Ports
 | Port | Description |
 |-|-|
-|9080|    Wildfly 11 Standalone|
-|9443 |   Wildfly 11 Standalone HTTPS|
-|10080 |  Wildfly 11 Slave|
-|10443  | Wildfly 11 Slave HTTPS|
-|11080  | Wildfly 10 Standalone|
-|11443 |  Wildfly 10 Standalone HTTPS|
-|10990 |  Wildfly 11 Standalone Admin|
-|12990 |  Wildfly 10 Standalone Admin|
-|12080 |  EAP 6 Standalone HTTP|
-|12443 |  EAP 6 Standalone HTTPS|
-|13990 |  EAP 6 Standalone Admin Console|
-|13999 |  EAP 6 Standalone Admin|
-|14080 |  EAP 7 Standalone HTTP|
-|14443 |  EAP 7 Standalone HTTPS|
-|15080 |  Liberty 7 HTTP |
-|15443 |  Liberty 7 HTTPS |
-|15990 |  EAP 7 Standalone Admin|
-|19990 |  Wildfly 11 DC Admin|
-|38080 |  Tomcat 8|
-|38443 |  Tomcat 8 HTTPS|
-|39080 |  Tomcat 7|
-|39443 |  Tomcat 7 HTTPS|
-|40080 |  Tomcat 9|
-|40443 |  Tomcat 9 HTTPS|
+|4848  | Payara Admin |
+|9080  | Wildfly 11 Standalone |
+|9443  | Wildfly 11 Standalone HTTPS |
+|10080 | Wildfly 11 Slave |
+|10443 | Wildfly 11 Slave HTTPS |
+|11080 | Wildfly 10 Standalone |
+|11443 | Wildfly 10 Standalone HTTPS |
+|10990 | Wildfly 11 Standalone Admin |
+|12990 | Wildfly 10 Standalone Admin |
+|12080 | EAP 6 Standalone HTTP |
+|12443 | EAP 6 Standalone HTTPS |
+|13990 | EAP 6 Standalone Admin Console |
+|13999 | EAP 6 Standalone Admin |
+|14080 | EAP 7 Standalone HTTP |
+|14443 | EAP 7 Standalone HTTPS |
+|15080 | Liberty 7 HTTP |
+|15443 | Liberty 7 HTTPS |
+|15990 | EAP 7 Standalone Admin |
+|16080 | Payara 4 HTTP 1 |
+|16081 | Payara 4 HTTP 2 |
+|19990 | Wildfly 11 DC Admin |
+|38080 | Tomcat 8 |
+|38443 | Tomcat 8 HTTPS |
+|39080 | Tomcat 7 |
+|39443 | Tomcat 7 HTTPS |
+|40080 | Tomcat 9 |
+|40443 | Tomcat 9 HTTPS |
 
 ### Dependencies
 
