@@ -1,0 +1,41 @@
+---
+- name: Download Liberty
+  win_get_url:
+    url: "{{liberty_download}}"
+    dest: "C:\\Apps\\{{liberty_template_dir}}.zip"
+
+- name: Extract Tomcat
+  win_unzip:
+    src: "C:\\Apps\\{{liberty_template_dir}}.zip"
+    dest: "C:\\liberty"
+    creates: "C:\\liberty\\wlp-javaee7-{{liberty_version}}"
+
+- name: Create Liberty Server
+  win_file:
+    path: "C:\\liberty\\wlp-javaee7-{{liberty_version}}\\wlp\\usr\\servers\\octopus"
+    state: directory
+
+- name: Create Liberty Server dropins
+  win_file:
+    path: "C:\\liberty\\wlp-javaee7-{{liberty_version}}\\wlp\\usr\\servers\\octopus\\dropins"
+    state: directory
+
+- name: Create Liberty Server apps
+  win_file:
+    path: "C:\\liberty\\wlp-javaee7-{{liberty_version}}\\wlp\\usr\\servers\\octopus\\apps"
+    state: directory
+
+- name: Create Liberty Server workarea
+  win_file:
+    path: "C:\\liberty\\wlp-javaee7-{{liberty_version}}\\wlp\\usr\\servers\\octopus\\workarea"
+    state: directory
+
+- name: Copy Server Configuration
+  win_template:
+    src: "{{playbook_dir}}/templates/{{liberty_template_dir}}/server.xml"
+    dest: "C:\\liberty\\wlp-javaee7-{{liberty_version}}\\wlp\\usr\\servers\\octopus\\server.xml"
+
+- name: Copy Server Configuration
+  win_template:
+    src: "{{playbook_dir}}/templates/{{liberty_template_dir}}/server.env"
+    dest: "C:\\liberty\\wlp-javaee7-{{liberty_version}}\\wlp\\usr\\servers\\octopus\\server.env"

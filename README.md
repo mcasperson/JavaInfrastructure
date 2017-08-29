@@ -20,6 +20,8 @@ servers and CI servers.
 |13999 |  EAP 6 Standalone Admin|
 |14080 |  EAP 7 Standalone HTTP|
 |14443 |  EAP 7 Standalone HTTPS|
+|15080 |  Liberty 7 HTTP |
+|15443 |  Liberty 7 HTTPS |
 |15990 |  EAP 7 Standalone Admin|
 |19990 |  Wildfly 11 DC Admin|
 |38080 |  Tomcat 8|

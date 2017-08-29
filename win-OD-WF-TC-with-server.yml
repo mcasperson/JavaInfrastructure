@@ -31,6 +31,13 @@
     - win-octopus-deploy
     - win-e2e-tests
 
+- name: liberty 7
+  hosts: windows_server
+  become: false
+
+  roles:
+    - win-liberty7
+
 - name: wildfly standalone
   hosts: windows_server
   become: false
