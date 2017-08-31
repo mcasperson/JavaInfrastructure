@@ -19,7 +19,7 @@
       wait: yes
       wait_timeout: 600
       group: WildFlyTomcat
-      count: 1
+      count: "{{server_count}}"
       region: "{{region}}"
       user_data: "{{ lookup('template', 'templates/userdata.txt.j2') }}"
       volumes:
