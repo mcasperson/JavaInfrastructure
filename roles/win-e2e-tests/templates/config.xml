@@ -3,8 +3,14 @@
   <urlMappings>
     <featureGroup name="local">
       <urlMapping>
-        <url name="default">https://localhost</url>
+        <url name="default">http://localhost</url>
         <url name="projects">http://localhost/app#/projects</url>
+      </urlMapping>
+    </featureGroup>
+    <featureGroup name="local8065">
+      <urlMapping>
+        <url name="default">http://localhost:8065</url>
+        <url name="projects">http://localhost:8065/app#/projects</url>
       </urlMapping>
     </featureGroup>
     <featureGroup name="remote">

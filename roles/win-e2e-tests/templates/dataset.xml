@@ -1,0 +1,13 @@
+<profile>
+    <dataSets>
+      <commonDataSet>
+        <!--<setting name="username">{{octopus_admin_username}}</setting>
+        <setting name="password">{{octopus_admin_password}}</setting>-->
+        <setting name="username">admin</setting>
+        <setting name="password">Password01!</setting>
+    </commonDataSet>
+    <dataSet>
+
+    </dataSet>
+  </dataSets>
+</profile>

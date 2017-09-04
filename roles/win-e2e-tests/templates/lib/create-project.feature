@@ -3,6 +3,7 @@ Feature: Create a project
   Scenario: Define Aliases
     Given I set the alias mappings
       | Project name | name-input |
+      | Add project | a.btn-success:nth-child(2) |
 
   Scenario: Create project
     Given I open the application "projects"
