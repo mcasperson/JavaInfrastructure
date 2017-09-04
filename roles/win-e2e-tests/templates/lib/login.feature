@@ -3,6 +3,7 @@ Feature: Log into Octopus Deploy
     Given I set the alias mappings
       | Username | inputUsername |
       | Password | inputPassword |
+    And I set the default keystroke delay to "0" milliseconds
 
   Scenario: Do login
     Then I open the page "http://localhost"
