@@ -7,6 +7,6 @@ Feature: Log into Octopus Deploy
 
   Scenario: Do login
     Then I open the application
-    Then I populate the "Username" textbox with alias "username"
-    Then I populate the "Password" textbox with alias "password"
+    Then I populate the "Username" textbox with "username"
+    Then I populate the "Password" textbox with "password"
     Then I click the "Sign in" button

@@ -5,6 +5,6 @@ Feature: Create a project
       | Project name | name-input |
 
   Scenario: Create project
-    Given I open the page "projects"
+    Given I open the application "projects"
     Then I click the "Add project" button
     Then I populate the "Project name" textbox with alias "New Project Name"
