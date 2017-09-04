@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile>
+  <urlMappings>
+    <featureGroup name="local">
+      <urlMapping>
+        <url name="default">https://localhost</url>
+        <url name="projects">http://localhost/app#/projects</url>
+      </urlMapping>
+    </featureGroup>
+    <featureGroup name="remote">
+      <urlMapping>
+        <url name="default">http://54.82.92.143</url>
+        <url name="projects">http://54.82.92.143/app#/projects</url>
+      </urlMapping>
+    </featureGroup>
+  </urlMappings>
+</profile>
