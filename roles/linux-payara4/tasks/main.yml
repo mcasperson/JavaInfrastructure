@@ -15,7 +15,7 @@
     name: "{{payara_user}}"
 
 - name: Create Payara Directory
-  win_file:
+  file:
     path: "/opt/payara"
     state: directory
 
