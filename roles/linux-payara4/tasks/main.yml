@@ -14,11 +14,6 @@
   user:
     name: "{{payara_user}}"
 
-- name: Create Payara Directory
-  file:
-    path: "/opt/payara"
-    state: directory
-
 - name: Download Payara
   get_url:
     url: "{{payara_download}}"
@@ -27,23 +22,37 @@
 - name: Extract Payara
   unarchive:
       src: "/tmp/{{payara_template_dir}}.zip"
-      dest: /opt
+      dest: "/opt"
       copy: no
 
 - name: Create Payara Server autodeploy
   file:
-    path: "/opt/payara/{{payara_version}}/glassfish/domains/domain1/autodeploy"
+    path: "/opt/{{payara_version}}/glassfish/domains/domain1/autodeploy"
     state: directory
 
 - name: Copy Server Configuration
   template:
     src: "{{playbook_dir}}/templates/{{payara_template_dir}}/domain.xml"
-    dest: "/opt/payara/{{payara_version}}/glassfish/domains/domain1/config/domain.xml"
+    dest: "/opt/{{payara_version}}/glassfish/domains/domain1/config/domain.xml"
 
 - name: Set Payara Permissions
   file:
     state: directory
-    path: "/opt/payara"
+    path: "/opt/{{payara_version}}"
     owner: "{{payara_user}}"
     group: "{{payara_user}}"
     recurse: true
+
+- name: Install Payara service
+  template:
+    src: "{{playbook_dir}}/templates/payara4/payara4"
+    dest: "/etc/init.d/{{payara_user}}"
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Start Payara Service
+  service:
+    name: "{{payara_user}}"
+    enabled: yes
+    state: restarted
