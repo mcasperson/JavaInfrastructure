@@ -1,0 +1,46 @@
+---
+- name: Create Liberty Directory
+  win_file:
+    path: "/opt/liberty"
+    state: directory
+
+- name: Download Liberty
+  get_url:
+    url: "{{liberty_download}}"
+    dest: "/tmp/{{liberty_template_dir}}.zip"
+
+- name: Extract Liberty
+    unarchive:
+        src: "/tmp/{{liberty_template_dir}}.zip"
+        dest: /opt
+        copy: no
+
+- name: Create Liberty Server
+  win_file:
+    path: "/opt/liberty/wlp/usr/servers/octopus"
+    state: directory
+
+- name: Create Liberty Server dropins
+  win_file:
+    path: "/opt/liberty/wlp/usr/servers/octopus/dropins"
+    state: directory
+
+- name: Create Liberty Server apps
+  win_file:
+    path: "/opt/liberty/wlp/usr/servers/octopus/apps"
+    state: directory
+
+- name: Create Liberty Server workarea
+  win_file:
+    path: "/opt/liberty/wlp/usr/servers/octopus/workarea"
+    state: directory
+
+- name: Copy Server Configuration
+  win_template:
+    src: "{{playbook_dir}}/templates/{{liberty_template_dir}}/server.xml"
+    dest: "/opt/liberty/wlp/usr/servers/octopus/server.xml"
+
+- name: Copy Server Configuration
+  win_template:
+    src: "{{playbook_dir}}/templates/{{liberty_template_dir}}/server.env"
+    dest: "/opt/liberty/wlp/usr/servers/octopus/server.env"
