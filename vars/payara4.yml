@@ -2,3 +2,4 @@
 payara_download: https://s3.amazonaws.com/bamboo-support/payara-4.1.2.173.zip
 payara_template_dir: payara4
 payara_version: payara41
+payara_user: payara4

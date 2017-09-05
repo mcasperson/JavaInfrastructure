@@ -10,10 +10,10 @@
     dest: "/tmp/{{liberty_template_dir}}.zip"
 
 - name: Extract Liberty
-    unarchive:
-        src: "/tmp/{{liberty_template_dir}}.zip"
-        dest: /opt
-        copy: no
+  unarchive:
+      src: "/tmp/{{liberty_template_dir}}.zip"
+      dest: /opt
+      copy: no
 
 - name: Create Liberty Server
   win_file:

@@ -2,7 +2,6 @@ Decide the best way to include common vars. Wildfly has a common role that inclu
 Move all port information into a single config file.
 
 Add EAP 7 Domain
-Add EAP 7 Standalone
 Add EAP 6 Domain
 Add Wildfly 10 Domain
 

@@ -1,4 +1,19 @@
 ---
+- name: Stop Payara Service
+  service:
+    name: "{{payara_user}}"
+    enabled: yes
+    state: stopped
+  ignore_errors: yes
+
+- name: Kill Payara
+  command: "pkill -9 -U {{payara_user}}"
+  ignore_errors: yes
+
+- name: Create user to run Payara
+  user:
+    name: "{{payara_user}}"
+
 - name: Create Payara Directory
   win_file:
     path: "/opt/payara"
@@ -10,10 +25,10 @@
     dest: "/tmp/{{payara_template_dir}}.zip"
 
 - name: Extract Payara
-    unarchive:
-        src: "/tmp/{{payara_template_dir}}.zip"
-        dest: /opt
-        copy: no
+  unarchive:
+      src: "/tmp/{{payara_template_dir}}.zip"
+      dest: /opt
+      copy: no
 
 - name: Create Payara Server autodeploy
   file:
@@ -24,3 +39,11 @@
   template:
     src: "{{playbook_dir}}/templates/{{payara_template_dir}}/domain.xml"
     dest: "/opt/payara/{{payara_version}}/glassfish/domains/domain1/config/domain.xml"
+
+- name: Set Payara Permissions
+  file:
+    state: directory
+    path: "/opt/payara"
+    owner: "{{payara_user}}"
+    group: "{{payara_user}}"
+    recurse: true
