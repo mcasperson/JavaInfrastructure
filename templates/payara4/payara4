@@ -1,4 +1,8 @@
 #!/bin/sh
+
+# chkconfig: 345 99 01
+# description: Payara
+
 #
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
 #
