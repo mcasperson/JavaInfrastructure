@@ -1,0 +1,2 @@
+---
+  - include_vars: "{{playbook_dir}}/vars/payara4.yml"

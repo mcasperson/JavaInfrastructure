@@ -1,0 +1,26 @@
+---
+- name: Create Payara Directory
+  win_file:
+    path: "/opt/payara"
+    state: directory
+
+- name: Download Payara
+  get_url:
+    url: "{{payara_download}}"
+    dest: "/tmp/{{payara_template_dir}}.zip"
+
+- name: Extract Payara
+    unarchive:
+        src: "/tmp/{{payara_template_dir}}.zip"
+        dest: /opt
+        copy: no
+
+- name: Create Payara Server autodeploy
+  file:
+    path: "/opt/payara/{{payara_version}}/glassfish/domains/domain1/autodeploy"
+    state: directory
+
+- name: Copy Server Configuration
+  template:
+    src: "{{playbook_dir}}/templates/{{payara_template_dir}}/domain.xml"
+    dest: "/opt/payara/{{payara_version}}/glassfish/domains/domain1/config/domain.xml"
