@@ -35,6 +35,14 @@
     path: "/opt/wlp/usr/servers/octopus/dropins"
     state: directory
 
+- name: Allow all users to deploy to dropins
+  file:
+    path: "/opt/wlp/usr/servers/octopus/dropins"
+    owner: root
+    group: root
+    mode: 0777
+    recurse: true
+
 - name: Create Liberty Server apps
   file:
     path: "/opt/wlp/usr/servers/octopus/apps"

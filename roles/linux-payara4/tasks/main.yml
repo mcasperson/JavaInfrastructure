@@ -30,6 +30,14 @@
     path: "/opt/{{payara_version}}/glassfish/domains/domain1/autodeploy"
     state: directory
 
+- name: Allow all users to deploy to autodeploy
+  file:
+    path: "/opt/{{payara_version}}/glassfish/domains/domain1/autodeploy"
+    owner: root
+    group: root
+    mode: 0777
+    recurse: true
+
 - name: Copy Server Configuration
   template:
     src: "{{playbook_dir}}/templates/{{payara_template_dir}}/domain.xml"
