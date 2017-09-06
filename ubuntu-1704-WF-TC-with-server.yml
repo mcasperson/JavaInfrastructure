@@ -34,6 +34,24 @@
   roles:
     - apt-linux-common
 
+- name: payara 4
+  hosts: ubuntu_server
+  remote_user: ubuntu
+  become: true
+  become_user: root
+
+  roles:
+    - linux-payara4
+
+- name: liberty 7
+  hosts: ubuntu_server
+  remote_user: ubuntu
+  become: true
+  become_user: root
+
+  roles:
+    - linux-liberty7
+
 - name: wildfly standalone 10
   hosts: ubuntu_server
   remote_user: ubuntu
