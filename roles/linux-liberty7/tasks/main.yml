@@ -1,8 +1,18 @@
 ---
-- name: Create Liberty Directory
-  file:
-    path: "/opt/liberty"
-    state: directory
+- name: Stop Liberty Service
+  service:
+    name: "{{liberty_user}}"
+    enabled: yes
+    state: stopped
+  ignore_errors: yes
+
+- name: Kill Liberty
+  command: "pkill -9 -U {{liberty_user}}"
+  ignore_errors: yes
+
+- name: Create user to run Liberty
+  user:
+    name: "{{liberty_user}}"
 
 - name: Download Liberty
   get_url:
@@ -17,30 +27,52 @@
 
 - name: Create Liberty Server
   file:
-    path: "/opt/liberty/wlp/usr/servers/octopus"
+    path: "/opt/wlp/usr/servers/octopus"
     state: directory
 
 - name: Create Liberty Server dropins
   file:
-    path: "/opt/liberty/wlp/usr/servers/octopus/dropins"
+    path: "/opt/wlp/usr/servers/octopus/dropins"
     state: directory
 
 - name: Create Liberty Server apps
   file:
-    path: "/opt/liberty/wlp/usr/servers/octopus/apps"
+    path: "/opt/wlp/usr/servers/octopus/apps"
     state: directory
 
 - name: Create Liberty Server workarea
   file:
-    path: "/opt/liberty/wlp/usr/servers/octopus/workarea"
+    path: "/opt/wlp/usr/servers/octopus/workarea"
     state: directory
 
 - name: Copy Server Configuration
   template:
     src: "{{playbook_dir}}/templates/{{liberty_template_dir}}/server.xml"
-    dest: "/opt/liberty/wlp/usr/servers/octopus/server.xml"
+    dest: "/opt/wlp/usr/servers/octopus/server.xml"
 
 - name: Copy Server Configuration
   template:
     src: "{{playbook_dir}}/templates/{{liberty_template_dir}}/server.env"
-    dest: "/opt/liberty/wlp/usr/servers/octopus/server.env"
+    dest: "/opt/wlp/usr/servers/octopus/server.env"
+
+- name: Set Liberty Permissions
+  file:
+    state: directory
+    path: "/opt/{{liberty_version}}"
+    owner: "{{liberty_user}}"
+    group: "{{liberty_user}}"
+    recurse: true
+
+- name: Install Liberty service
+  template:
+    src: "{{playbook_dir}}/templates/liberty7/liberty7"
+    dest: "/etc/init.d/{{liberty_user}}"
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Start Liberty Service
+  service:
+    name: "{{liberty_user}}"
+    enabled: yes
+    state: restarted

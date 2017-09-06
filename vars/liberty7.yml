@@ -2,3 +2,4 @@
 liberty_download: https://s3.amazonaws.com/bamboo-support/wlp-javaee7-17.0.0.2.zip
 liberty_template_dir: liberty7
 liberty_version: 17.0.0.2
+liberty_user: liberty7
