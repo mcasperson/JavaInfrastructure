@@ -63,13 +63,23 @@
     group: "{{liberty_user}}"
     recurse: true
 
-- name: Install Liberty service
+- name: install redhat Liberty service
   template:
     src: "{{playbook_dir}}/templates/liberty7/liberty7"
     dest: "/etc/init.d/{{liberty_user}}"
     owner: root
     group: root
     mode: 0755
+  when: '"centos_server" in group_names'
+
+- name: install debian Liberty service
+  template:
+    src: "{{playbook_dir}}/templates/liberty7/liberty7-debian"
+    dest: "/etc/init.d/{{liberty_user}}"
+    owner: root
+    group: root
+    mode: 0755
+  when: '"ubuntu_server" in group_names'
 
 - name: Start Liberty Service
   service:

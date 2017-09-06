@@ -43,13 +43,23 @@
     group: "{{payara_user}}"
     recurse: true
 
-- name: Install Payara service
+- name: install redhat payara service
   template:
     src: "{{playbook_dir}}/templates/payara4/payara4"
     dest: "/etc/init.d/{{payara_user}}"
     owner: root
     group: root
     mode: 0755
+  when: '"centos_server" in group_names'
+
+- name: install debian payara service
+  template:
+    src: "{{playbook_dir}}/templates/payara4/payara4-debian"
+    dest: "/etc/init.d/{{payara_user}}"
+    owner: root
+    group: root
+    mode: 0755
+  when: '"ubuntu_server" in group_names'
 
 - name: Start Payara Service
   service:
