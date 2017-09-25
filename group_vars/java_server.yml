@@ -3,6 +3,12 @@ tomcat_7_http_port: 39080
 tomcat_7_https_port: 39443
 tomcat_8_http_port: 38080
 tomcat_8_https_port: 38443
+tomcat_8_https_port2: 38444
+tomcat_8_https_port3: 38445
+tomcat_8_https_port4: 38446
+tomcat_8_https_port5: 38447
+tomcat_8_https_port6: 38448
+tomcat_8_https_port7: 38449
 tomcat_9_http_port: 40080
 tomcat_9_https_port: 40443
 liberty_7_http_port: 15080
