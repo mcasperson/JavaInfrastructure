@@ -65,7 +65,6 @@
             </native-interface>
             <!-- CHANGE: Bind to custom port -->
             <http-interface security-realm="ManagementRealm">
-                <http-upgrade enabled="true"/>
                 <socket interface="management" port="${jboss.management.http.port:{{wildfly_domaincontroller_management_http_port}}}"/>
             </http-interface>
         </management-interfaces>
@@ -73,10 +72,12 @@
     <domain-controller>
         <local/>
     </domain-controller>
-    <interface name="management">
-        <!-- CHANGE: Bind to any IP address -->
-        <any-address/>
-    </interface>
+    <interfaces>
+        <interface name="management">
+            <!-- CHANGE: Bind to any IP address -->
+            <any-address/>
+        </interface>
+    </interfaces>
     <jvms>
         <jvm name="default">
             <heap size="64m" max-size="256m"/>
