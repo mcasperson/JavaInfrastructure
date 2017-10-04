@@ -6,6 +6,15 @@
         <extension module="org.wildfly.extension.core-management"/>
         <extension module="org.wildfly.extension.elytron"/>
     </extensions>
+    <!-- CHANGE: Add the vault -->
+    <vault>
+        <vault-option name="KEYSTORE_URL" value="{{wildfly_install_dir}}/vault.keystore"/>
+        <vault-option name="KEYSTORE_PASSWORD" value="{{masked_vault_password}}"/>
+        <vault-option name="KEYSTORE_ALIAS" value="vault"/>
+        <vault-option name="SALT" value="{{salt}}"/>
+        <vault-option name="ITERATION_COUNT" value="50"/>
+        <vault-option name="ENC_FILE_DIR" value="{{wildfly_install_dir}}/vault/"/>
+    </vault>
     <management>
         <security-realms>
             <security-realm name="ManagementRealm">
@@ -52,12 +61,14 @@
             </server-logger>
         </audit-log>
         <management-interfaces>
+            <!-- CHANGE: Bind to custom port -->
             <native-interface security-realm="ManagementRealm">
-                <socket interface="management" port="${jboss.management.native.port:9999}"/>
+                <socket interface="management" port="${jboss.management.native.port:{{wildfly_domaincontroller_management_native_port}}}"/>
             </native-interface>
+            <!-- CHANGE: Bind to custom port -->
             <http-interface security-realm="ManagementRealm">
                 <http-upgrade enabled="true"/>
-                <socket interface="management" port="${jboss.management.http.port:9990}"/>
+                <socket interface="management" port="${jboss.management.http.port:{{wildfly_domaincontroller_management_http_port}}}"/>
             </http-interface>
         </management-interfaces>
     </management>
@@ -66,7 +77,8 @@
     </domain-controller>
     <interfaces>
         <interface name="management">
-            <inet-address value="${jboss.bind.address.management:127.0.0.1}"/>
+            <!-- CHANGE: Bind to any IP address -->
+            <any-address/>
         </interface>
     </interfaces>
     <jvms>

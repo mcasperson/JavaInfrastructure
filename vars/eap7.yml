@@ -4,6 +4,7 @@ wildfly_download_zip: https://s3.amazonaws.com/bamboo-support/jboss-eap-7.1.0.Be
 wildfly_versioned_dir: jboss-eap-7.1
 wildfly_standalone_port_offset: 6000
 wildfly_slave_port_offset: 7000
+wildfly_slave_port_offset2: 7150
 wildfly_domaincontroller_management_native_port: 40999
 wildfly_domaincontroller_management_http_port: 40990
 wildfly_domain_controller_service: EAPDomainController7
