@@ -5,6 +5,7 @@ wildfly_versioned_dir: jboss-eap-6.4
 wildfly_standalone_port_offset: 4000
 wildfly_slave_port_offset: 5000
 wildfly_domaincontroller_management_native_port: 39999
+wildfly_domaincslavemanagement_native_port: 40000
 wildfly_domaincontroller_management_http_port: 39990
 wildfly_domain_controller_service: EAPDomainController6
 wildfly_slave_service: EAPSlave6
