@@ -14,9 +14,11 @@ servers and CI servers.
 |11080 | Wildfly 10 Standalone |
 |11443 | Wildfly 10 Standalone HTTPS |
 |10990 | Wildfly 11 Standalone Admin |
+|12080 | Wildfly 10 Slave HTTP |
+|12443 | Wildfly 10 Slave HTTPS |
 |12990 | Wildfly 10 Standalone Admin |
-|12080 | EAP 6 Standalone HTTP |
-|12443 | EAP 6 Standalone HTTPS |
+|13080 | EAP 6 Standalone HTTP |
+|13443 | EAP 6 Standalone HTTPS |
 |13080 | EAP 6 Slave HTTP |
 |13443 | EAP 6 Slave HTTPS |
 |13990 | EAP 6 Standalone Admin Console |
@@ -29,6 +31,7 @@ servers and CI servers.
 |16080 | Payara 4 HTTP 1 |
 |16081 | Payara 4 HTTP 2 |
 |19990 | Wildfly 11 DC Admin |
+|29990 | Wildfly 10 DC Admin |
 |38080 | Tomcat 8 |
 |38443 | Tomcat 8 HTTPS |
 |39080 | Tomcat 7 |
