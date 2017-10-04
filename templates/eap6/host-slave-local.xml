@@ -78,20 +78,12 @@
 
     <interfaces>
         <interface name="management">
-            <!-- CHANGE: Bind to IP address -->
-            {% if ansible_ip_addresses is defined %}
-            <inet-address value="{{ansible_ip_addresses[0]}}"/>
-            {% else %}
-            <inet-address value="{{ansible_default_ipv4.address}}"/>
-            {% endif %}
+            <!-- CHANGE: Bind to any IP address -->
+            <any-address/>
         </interface>
         <interface name="public">
-            <!-- CHANGE: Bind to IP address -->
-            {% if ansible_ip_addresses is defined %}
-            <inet-address value="{{ansible_ip_addresses[0]}}"/>
-            {% else %}
-            <inet-address value="{{ansible_default_ipv4.address}}"/>
-            {% endif %}
+            <!-- CHANGE: Bind to any IP address -->
+            <any-address/>
         </interface>
         <interface name="unsecure">
             <!-- Used for IIOP sockets in the standard configuration.
