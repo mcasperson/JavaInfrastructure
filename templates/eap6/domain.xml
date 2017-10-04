@@ -1404,12 +1404,13 @@
             </jvm>
             <socket-binding-group ref="full-sockets"/>
         </server-group>
-        <server-group name="other-server-group" profile="full-ha">
+        <!-- CHANGE: just use the full profile and the full sockets binding -->
+        <server-group name="other-server-group" profile="full">
             <jvm name="default">
                 <heap size="1000m" max-size="1000m"/>
                 <permgen max-size="256m"/>
             </jvm>
-            <socket-binding-group ref="full-ha-sockets"/>
+            <socket-binding-group ref="full-sockets"/>
         </server-group>
     </server-groups>
 </domain>

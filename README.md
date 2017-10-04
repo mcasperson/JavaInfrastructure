@@ -17,6 +17,8 @@ servers and CI servers.
 |12990 | Wildfly 10 Standalone Admin |
 |12080 | EAP 6 Standalone HTTP |
 |12443 | EAP 6 Standalone HTTPS |
+|13080 | EAP 6 Slave HTTP |
+|13443 | EAP 6 Slave HTTPS |
 |13990 | EAP 6 Standalone Admin Console |
 |13999 | EAP 6 Standalone Admin |
 |14080 | EAP 7 Standalone HTTP |
@@ -30,6 +32,8 @@ servers and CI servers.
 |38080 | Tomcat 8 |
 |38443 | Tomcat 8 HTTPS |
 |39080 | Tomcat 7 |
+|39990 | EAP 6 Domain Admin HTTP |
+|39999 | EAP 6 Domain Admin |
 |39443 | Tomcat 7 HTTPS |
 |40080 | Tomcat 9 |
 |40443 | Tomcat 9 HTTPS |
