@@ -68,7 +68,7 @@
         <management-interfaces>
             <native-interface security-realm="ManagementRealm">
                 <!-- CHANGE: Bind to different port -->
-                <socket interface="management" port="${jboss.management.native.port:{{wildfly_domaincslavemanagement_native_port}}}"/>
+                <socket interface="management" port="${jboss.management.native.port:{{wildfly_domainslavemanagement_native_port}}}"/>
             </native-interface>
         </management-interfaces>
     </management>

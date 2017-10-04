@@ -8,10 +8,10 @@
       state: started
     ignore_errors: yes
 
-  - name: Open Firewall For Tentacle
+  - name: Open Firewall For Admin
     win_shell: "netsh advfirewall firewall add rule name=\"EAP 6\" dir=in action=allow protocol=TCP localport={{wildfly_domaincontroller_management_http_port}} profile=public"
 
-  - name: Open Firewall For Tentacle
+  - name: Open Firewall For Admin
     win_shell: "netsh advfirewall firewall add rule name=\"EAP 6\" dir=in action=allow protocol=TCP localport={{wildfly_domaincontroller_management_native_port}} profile=public"
 
   - name: Add WildFly Shortcut

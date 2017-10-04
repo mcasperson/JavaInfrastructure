@@ -59,27 +59,24 @@
             </server-logger>
         </audit-log>
         <management-interfaces>
+            <!-- CHANGE: Bind to custom port -->
             <native-interface security-realm="ManagementRealm">
-                <socket interface="management" port="${jboss.management.native.port:9999}"/>
+                <socket interface="management" port="${jboss.management.native.port:{{wildfly_domaincontroller_management_native_port}}}"/>
             </native-interface>
-            <http-interface security-realm="ManagementRealm" http-upgrade-enabled="true">
-                <socket interface="management" port="${jboss.management.http.port:9990}"/>
+            <!-- CHANGE: Bind to custom port -->
+            <http-interface security-realm="ManagementRealm">
+                <http-upgrade enabled="true"/>
+                <socket interface="management" port="${jboss.management.http.port:{{wildfly_domaincontroller_management_http_port}}}"/>
             </http-interface>
         </management-interfaces>
     </management>
     <domain-controller>
         <local/>
     </domain-controller>
-    <interfaces>
-        <interface name="management">
-            <!-- CHANGE: Bind to IP address -->
-            {% if ansible_ip_addresses is defined %}
-            <inet-address value="{{ansible_ip_addresses[0]}}"/>
-            {% else %}
-            <inet-address value="{{ansible_default_ipv4.address}}"/>
-            {% endif %}
-        </interface>
-    </interfaces>
+    <interface name="management">
+        <!-- CHANGE: Bind to any IP address -->
+        <any-address/>
+    </interface>
     <jvms>
         <jvm name="default">
             <heap size="64m" max-size="256m"/>
