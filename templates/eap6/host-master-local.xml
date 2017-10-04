@@ -56,10 +56,10 @@
         </audit-log>
         <management-interfaces>
             <native-interface security-realm="ManagementRealm">
-                <socket interface="management" port="${jboss.management.native.port:9999}"/>
+                <socket interface="management" port="${jboss.management.native.port:{{wildfly_domaincontroller_management_native_port}}}"/>
             </native-interface>
             <http-interface security-realm="ManagementRealm">
-                <socket interface="management" port="${jboss.management.http.port:9990}"/>
+                <socket interface="management" port="${jboss.management.http.port:{{wildfly_domaincontroller_management_http_port}}}"/>
             </http-interface>
         </management-interfaces>
     </management>

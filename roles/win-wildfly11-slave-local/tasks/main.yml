@@ -16,3 +16,11 @@
       args: "--new-window http://{{ansible_ip_addresses[0]}}:10080/"
       directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
       icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
+
+  - name: Add WildFly Shortcut
+    win_shortcut:
+      src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
+      dest: '%PUBLIC%\Desktop\WildFly 11 Slave HTTPS.lnk'
+      args: "--new-window https://{{ansible_ip_addresses[0]}}:10443/"
+      directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
+      icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'

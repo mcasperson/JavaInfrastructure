@@ -46,16 +46,16 @@
     icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
 
 - name: Open Firewall For Tentacle
-  win_shell: "netsh advfirewall firewall add rule name=\"RTomcat 8\" dir=in action=allow protocol=TCP localport={{tomcat_8_https_port}} profile=public"
+  win_shell: "netsh advfirewall firewall add rule name=\"Tomcat 8\" dir=in action=allow protocol=TCP localport={{tomcat_8_https_port}} profile=public"
 - name: Open Firewall For Tentacle
-  win_shell: "netsh advfirewall firewall add rule name=\"RTomcat 8\" dir=in action=allow protocol=TCP localport={{tomcat_8_https_port2}} profile=public"
+  win_shell: "netsh advfirewall firewall add rule name=\"Tomcat 8\" dir=in action=allow protocol=TCP localport={{tomcat_8_https_port2}} profile=public"
 - name: Open Firewall For Tentacle
-  win_shell: "netsh advfirewall firewall add rule name=\"RTomcat 8\" dir=in action=allow protocol=TCP localport={{tomcat_8_https_port3}} profile=public"
+  win_shell: "netsh advfirewall firewall add rule name=\"Tomcat 8\" dir=in action=allow protocol=TCP localport={{tomcat_8_https_port3}} profile=public"
 - name: Open Firewall For Tentacle
-  win_shell: "netsh advfirewall firewall add rule name=\"RTomcat 8\" dir=in action=allow protocol=TCP localport={{tomcat_8_https_port4}} profile=public"
+  win_shell: "netsh advfirewall firewall add rule name=\"Tomcat 8\" dir=in action=allow protocol=TCP localport={{tomcat_8_https_port4}} profile=public"
 - name: Open Firewall For Tentacle
-  win_shell: "netsh advfirewall firewall add rule name=\"RTomcat 8\" dir=in action=allow protocol=TCP localport={{tomcat_8_https_port5}} profile=public"
+  win_shell: "netsh advfirewall firewall add rule name=\"Tomcat 8\" dir=in action=allow protocol=TCP localport={{tomcat_8_https_port5}} profile=public"
 - name: Open Firewall For Tentacle
-  win_shell: "netsh advfirewall firewall add rule name=\"RTomcat 8\" dir=in action=allow protocol=TCP localport={{tomcat_8_https_port6}} profile=public"
+  win_shell: "netsh advfirewall firewall add rule name=\"Tomcat 8\" dir=in action=allow protocol=TCP localport={{tomcat_8_https_port6}} profile=public"
 - name: Open Firewall For Tentacle
-  win_shell: "netsh advfirewall firewall add rule name=\"RTomcat 8\" dir=in action=allow protocol=TCP localport={{tomcat_8_https_port7}} profile=public"
+  win_shell: "netsh advfirewall firewall add rule name=\"Tomcat 8\" dir=in action=allow protocol=TCP localport={{tomcat_8_https_port7}} profile=public"

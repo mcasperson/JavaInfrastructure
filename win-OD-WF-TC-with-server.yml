@@ -31,6 +31,20 @@
     - win-octopus-deploy
     - win-e2e-tests
 
+- name: EAP 6 DC Local
+  hosts: windows_server
+  become: false
+
+  roles:
+    - win-eap6-dc-local
+
+- name: EAP 6 Slave Local
+  hosts: windows_server
+  become: false
+
+  roles:
+    - win-eap6-slave-local
+
 - name: payara 4
   hosts: windows_server
   become: false
