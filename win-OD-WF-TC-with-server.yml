@@ -31,6 +31,27 @@
     - win-octopus-deploy
     - win-e2e-tests
 
+- name: EAP 7 Standalone
+  hosts: windows_server
+  become: false
+
+  roles:
+    - win-eap7-standalone
+
+- name: EAP 7 DC Local
+  hosts: windows_server
+  become: false
+
+  roles:
+    - win-eap7-dc-local
+
+- name: EAP 7 Slave Local
+  hosts: windows_server
+  become: false
+
+  roles:
+    - win-eap7-slave-local
+
 - name: EAP 6 DC Local
   hosts: windows_server
   become: false
