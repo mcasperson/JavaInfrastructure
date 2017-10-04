@@ -4,6 +4,7 @@ wildfly_download_zip: https://s3.amazonaws.com/bamboo-support/wildfly-11.0.0.Bet
 wildfly_versioned_dir: wildfly-11.0.0.Beta1
 wildfly_standalone_port_offset: 1000
 wildfly_slave_port_offset: 2000
+wildfly_slave_port_offset2: 2150
 wildfly_domaincontroller_management_native_port: 19999
 wildfly_domaincslavemanagement_native_port: 9999
 wildfly_domaincontroller_management_http_port: 19990

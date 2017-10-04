@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
-<host xmlns="urn:jboss:domain:1.7">
+<!-- CHANGE: Use machine id as slave name -->
+<host xmlns="urn:jboss:domain:1.7" name="wildfly-slave-{{ansible_machine_id}}">
     <!-- CHANGE: Add the vault -->
     <vault>
         <vault-option name="KEYSTORE_URL" value="{{wildfly_install_dir}}/vault.keystore"/>
@@ -117,7 +118,7 @@
         <server name="server-two" group="other-server-group">
             <!-- server-two avoids port conflicts by incrementing the ports in
                  the default socket-group declared in the server-group -->
-            <socket-bindings port-offset="150"/>
+            <socket-bindings port-offset="{{wildfly_slave_port_offset2}}"/>
         </server>
     </servers>
 </host>
