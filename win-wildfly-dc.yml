@@ -1,7 +1,0 @@
----
-- name: wildfly standalone
-  hosts: tag_Appplication_WinWildflyDC
-  become: false
-
-  roles:
-    - win-wildfly-dc

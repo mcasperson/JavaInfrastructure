@@ -1,7 +1,0 @@
----
-- name: Tomcat
-  hosts: tag_Appplication_WinTomcat
-  become: false
-
-  roles:
-    - win-tomcat

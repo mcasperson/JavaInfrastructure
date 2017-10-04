@@ -1,8 +1,0 @@
----
-- name: Octopus Deploy
-  hosts: tag_Appplication_OctopusDeploy
-  become: false
-  gather_facts: false
-
-  roles:
-    - win-octopus-deploy

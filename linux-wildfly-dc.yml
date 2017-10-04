@@ -1,9 +1,0 @@
----
-- name: wildfly domain controller
-  hosts: tag_Appplication_WildflyDC
-  remote_user: centos
-  become: true
-  become_user: root
-
-  roles:
-    - linux-wildflydc
