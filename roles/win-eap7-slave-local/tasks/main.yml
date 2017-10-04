@@ -12,10 +12,21 @@
   - name: Open Firewall For EAP
     win_shell: "netsh advfirewall firewall add rule name=\"EAP 7\" dir=in action=allow protocol=TCP localport=15080 profile=public"
 
+  - name: Open Firewall For EAP
+    win_shell: "netsh advfirewall firewall add rule name=\"EAP 7\" dir=in action=allow protocol=TCP localport=15443 profile=public"
+
   - name: Add WildFly Shortcut
     win_shortcut:
       src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
       dest: '%PUBLIC%\Desktop\EAP 7 Slave.lnk'
       args: "--new-window http://localhost:15080/"
+      directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
+      icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
+
+  - name: Add WildFly Shortcut
+    win_shortcut:
+      src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
+      dest: '%PUBLIC%\Desktop\EAP 7 Slave.lnk'
+      args: "--new-window http://localhost:15443/"
       directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
       icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'

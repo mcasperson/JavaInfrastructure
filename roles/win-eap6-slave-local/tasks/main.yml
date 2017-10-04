@@ -1,7 +1,7 @@
 ---
 
   - name: Install Slave Service
-    win_command: "{{wildfly_install_dir}}\\bin\\service\\service.bat install /jbossuser {{wildfly_admin_user}} /jbosspass {{wildfly_admin_password}} /controller {{ansible_ip_addresses[0]}}:{{wildfly_domaincontroller_management_native_port}} /startup /name \"{{wildfly_slave_service}}\" /host /hostconfig host-slave-local.xml"
+    win_command: "{{wildfly_install_dir}}\\bin\\service\\service.bat install /jbossuser {{wildfly_admin_user}} /jbosspass {{wildfly_admin_password}} /controller localhost:{{wildfly_domainslavemanagement_native_port}} /startup /name \"{{wildfly_slave_service}}\" /host /hostconfig host-slave-local.xml"
 
   - name: Start Slave Service
     win_service:
@@ -12,11 +12,22 @@
   - name: Open Firewall For Tentacle
     win_shell: "netsh advfirewall firewall add rule name=\"EAP 6\" dir=in action=allow protocol=TCP localport=13080 profile=public"
 
+  - name: Open Firewall For Tentacle
+    win_shell: "netsh advfirewall firewall add rule name=\"EAP 6\" dir=in action=allow protocol=TCP localport=13443 profile=public"
+
 
   - name: Add WildFly Shortcut
     win_shortcut:
       src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
       dest: '%PUBLIC%\Desktop\EAP 6 Slave.lnk'
       args: "--new-window http://localhost:13080/"
+      directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
+      icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
+
+  - name: Add WildFly Shortcut
+    win_shortcut:
+      src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
+      dest: '%PUBLIC%\Desktop\EAP 6 Slave HTTPS.lnk'
+      args: "--new-window https://localhost:13443/"
       directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
       icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'

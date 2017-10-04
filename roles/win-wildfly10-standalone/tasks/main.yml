@@ -8,11 +8,28 @@
       state: started
     ignore_errors: yes
 
+  - name: Open Firewall For Wildfly
+    win_shell: "netsh advfirewall firewall add rule name=\"EAP 6\" dir=in action=allow protocol=TCP localport=11080 profile=public"
+
+  - name: Open Firewall For Wildfly
+    win_shell: "netsh advfirewall firewall add rule name=\"EAP 6\" dir=in action=allow protocol=TCP localport=11443 profile=public"
+
+  - name: Open Firewall For Wildfly
+    win_shell: "netsh advfirewall firewall add rule name=\"EAP 6\" dir=in action=allow protocol=TCP localport=12990 profile=public"
+
   - name: Add WildFly Shortcut
     win_shortcut:
       src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
       dest: '%PUBLIC%\Desktop\WildFly 10 Standalone.lnk'
       args: '--new-window http://localhost:11080/'
+      directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
+      icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
+
+  - name: Add WildFly Shortcut
+    win_shortcut:
+      src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
+      dest: '%PUBLIC%\Desktop\WildFly 10 Standalone HTTPS.lnk'
+      args: '--new-window http://localhost:11443/'
       directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
       icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
 
