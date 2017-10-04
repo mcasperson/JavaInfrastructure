@@ -45,6 +45,20 @@
   roles:
     - win-eap6-slave-local
 
+- name: Wildfly 10 DC Local
+  hosts: windows_server
+  become: false
+
+  roles:
+    - win-wildfly10-dc-local
+
+- name: Wildfly 10 Slave Local
+  hosts: windows_server
+  become: false
+
+  roles:
+    - win-wildfly10-slave-local
+
 - name: payara 4
   hosts: windows_server
   become: false

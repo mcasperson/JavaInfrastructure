@@ -10,23 +10,23 @@
     ignore_errors: yes
 
   - name: Open Firewall For Wildfly
-    win_shell: "netsh advfirewall firewall add rule name=\"Wildfly 11\" dir=in action=allow protocol=TCP localport=10080 profile=public"
+    win_shell: "netsh advfirewall firewall add rule name=\"Wildfly 10\" dir=in action=allow protocol=TCP localport=12080 profile=public"
 
   - name: Open Firewall For Wildfly
-    win_shell: "netsh advfirewall firewall add rule name=\"Wildfly 11\" dir=in action=allow protocol=TCP localport=10443 profile=public"
+    win_shell: "netsh advfirewall firewall add rule name=\"Wildfly 10\" dir=in action=allow protocol=TCP localport=12443 profile=public"
 
   - name: Add WildFly Shortcut
     win_shortcut:
       src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
-      dest: '%PUBLIC%\Desktop\WildFly 11 Slave.lnk'
-      args: "--new-window http://localhost:10080/"
+      dest: '%PUBLIC%\Desktop\WildFly 10 Slave.lnk'
+      args: "--new-window http://localhost:12080/"
       directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
       icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
 
   - name: Add WildFly Shortcut
     win_shortcut:
       src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
-      dest: '%PUBLIC%\Desktop\WildFly 11 Slave HTTPS.lnk'
-      args: "--new-window https://localhost:10443/"
+      dest: '%PUBLIC%\Desktop\WildFly 10 Slave HTTPS.lnk'
+      args: "--new-window https://localhost:12443/"
       directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
       icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
