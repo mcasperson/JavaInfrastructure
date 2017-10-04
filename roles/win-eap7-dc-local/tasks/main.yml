@@ -15,6 +15,6 @@
     win_shortcut:
       src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
       dest: '%PUBLIC%\Desktop\EAP 7 DC Local Admin.lnk'
-      args: '--new-window http://{{ansible_ip_addresses[0]}}:{{wildfly_domaincontroller_management_http_port}}/'
+      args: '--new-window http://localhost:{{wildfly_domaincontroller_management_http_port}}/'
       directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
       icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
