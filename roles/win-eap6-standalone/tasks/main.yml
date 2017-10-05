@@ -9,10 +9,10 @@
     ignore_errors: yes
 
   - name: Open Firewall For EAP
-    win_shell: "netsh advfirewall firewall add rule name=\"EAP 6\" dir=in action=allow protocol=TCP localport=12080 profile=public"
+    win_shell: "netsh advfirewall firewall add rule name=\"EAP 6\" dir=in action=allow protocol=TCP localport=12580 profile=public"
 
   - name: Open Firewall For EAP
-    win_shell: "netsh advfirewall firewall add rule name=\"EAP 6\" dir=in action=allow protocol=TCP localport=12443 profile=public"
+    win_shell: "netsh advfirewall firewall add rule name=\"EAP 6\" dir=in action=allow protocol=TCP localport=12943 profile=public"
 
   - name: Open Firewall For EAP
     win_shell: "netsh advfirewall firewall add rule name=\"EAP 6\" dir=in action=allow protocol=TCP localport=13990 profile=public"
@@ -21,7 +21,7 @@
     win_shortcut:
       src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
       dest: '%PUBLIC%\Desktop\EAP 6 Standalone.lnk'
-      args: '--new-window http://localhost:12080/'
+      args: '--new-window http://localhost:12580/'
       directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
       icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
 
@@ -29,7 +29,7 @@
     win_shortcut:
       src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
       dest: '%PUBLIC%\Desktop\EAP 6 Standalone HTTPS.lnk'
-      args: '--new-window http://localhost:12443/'
+      args: '--new-window http://localhost:12943/'
       directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
       icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
 
