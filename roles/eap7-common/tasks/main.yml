@@ -1,2 +1,2 @@
 ---
-  - include_vars: "{{playbook_dir}}/vars/eap70.yml"
+  - include_vars: "{{playbook_dir}}/vars/eap7.yml"
