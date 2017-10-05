@@ -63,10 +63,8 @@
             <native-interface security-realm="ManagementRealm">
                 <socket interface="management" port="${jboss.management.native.port:{{wildfly_domaincontroller_management_native_port}}}"/>
             </native-interface>
-            <!-- CHANGE: Bind to custom port -->
-            <http-interface security-realm="ManagementRealm">
-                <!-- CHANGE: Allow HTTP upgrade -->
-                <http-upgrade enabled="true" />
+            <!-- CHANGE: Bind to custom port and allow HTTP upgrade -->
+            <http-interface security-realm="ManagementRealm" http-upgrade-enabled="true" >
                 <socket interface="management" port="${jboss.management.http.port:{{wildfly_domaincontroller_management_http_port}}}"/>
             </http-interface>
         </management-interfaces>
