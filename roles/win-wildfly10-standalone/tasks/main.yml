@@ -29,7 +29,7 @@
     win_shortcut:
       src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
       dest: '%PUBLIC%\Desktop\WildFly 10 Standalone HTTPS.lnk'
-      args: '--new-window http://localhost:11443/'
+      args: '--new-window https://localhost:11443/'
       directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
       icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
 
