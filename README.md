@@ -40,6 +40,7 @@ servers and CI servers.
 |39443 | Tomcat 7 HTTPS |
 |40080 | Tomcat 9 |
 |40443 | Tomcat 9 HTTPS |
+|40990 | EAP 7 DC Admin |
 
 ### Dependencies
 

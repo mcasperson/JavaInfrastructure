@@ -56,11 +56,11 @@
 
   - name: Download Notepad++
     win_get_url:
-      url: "https://s3.amazonaws.com/bamboo-support/npp.7.4.2.Installer.x64.exe"
-      dest: C:\Apps\npp.7.4.2.Installer.x64.exe
+      url: "https://s3.amazonaws.com/bamboo-support/npp.7.5.1.Installer.x64.exe"
+      dest: C:\Apps\npp.7.5.1.Installer.x64.exe
 
   - name: Install Notepad++
-    win_command: C:\Apps\npp.7.4.2.Installer.x64.exe /S
+    win_command: C:\Apps\npp.7.5.1.Installer.x64.exe /S
 
   - name: Download JCE
     win_get_url:
