@@ -1,4 +1,4 @@
 ---
 dependencies:
-  - { role: eap6-common }
+  - { role: eap7-common }
   - { role: win-wildfly-common }
