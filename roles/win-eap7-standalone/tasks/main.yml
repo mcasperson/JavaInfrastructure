@@ -29,7 +29,7 @@
     win_shortcut:
       src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
       dest: '%PUBLIC%\Desktop\EAP 7 Standalone HTTPS.lnk'
-      args: '--new-window http://localhost:14443/'
+      args: '--new-window https://localhost:14443/'
       directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
       icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
 
