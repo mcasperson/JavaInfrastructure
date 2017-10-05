@@ -24,3 +24,11 @@
       args: '--new-window http://localhost:10990/'
       directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
       icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
+
+  - name: Add WildFly Shortcut
+    win_shortcut:
+      src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
+      dest: '%PUBLIC%\Desktop\WildFly 11 Standalone HTTPS.lnk'
+      args: '--new-window https://localhost:9443/'
+      directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
+      icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
