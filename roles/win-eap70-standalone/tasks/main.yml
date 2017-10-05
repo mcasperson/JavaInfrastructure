@@ -1,6 +1,6 @@
 ---
   - name: Install Slave Service
-    win_command: "{{wildfly_install_dir}}\\bin\\service\\service.bat install /jbossuser {{wildfly_admin_user}} /jbosspass {{wildfly_admin_password}} /controller localhost:15990 /startup /name \"{{wildfly_standalone_service}}\""
+    win_command: "{{wildfly_install_dir}}\\bin\\service\\service.bat install /jbossuser {{wildfly_admin_user}} /jbosspass {{wildfly_admin_password}} /controller localhost:18990 /startup /name \"{{wildfly_standalone_service}}\""
 
   - name: Start Standalone Service
     win_service:
@@ -9,34 +9,34 @@
     ignore_errors: yes
 
   - name: Open Firewall For EAP
-    win_shell: "netsh advfirewall firewall add rule name=\"EAP 7\" dir=in action=allow protocol=TCP localport=14080 profile=public"
+    win_shell: "netsh advfirewall firewall add rule name=\"EAP 7\" dir=in action=allow protocol=TCP localport=17080 profile=public"
 
   - name: Open Firewall For EAP
-    win_shell: "netsh advfirewall firewall add rule name=\"EAP 7\" dir=in action=allow protocol=TCP localport=14443 profile=public"
+    win_shell: "netsh advfirewall firewall add rule name=\"EAP 7\" dir=in action=allow protocol=TCP localport=17443 profile=public"
 
   - name: Open Firewall For EAP
-    win_shell: "netsh advfirewall firewall add rule name=\"EAP 7\" dir=in action=allow protocol=TCP localport=15990 profile=public"
+    win_shell: "netsh advfirewall firewall add rule name=\"EAP 7\" dir=in action=allow protocol=TCP localport=18990 profile=public"
 
   - name: Add WildFly Shortcut
     win_shortcut:
       src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
-      dest: '%PUBLIC%\Desktop\EAP 7.1 Standalone.lnk'
-      args: '--new-window http://localhost:14080/'
+      dest: '%PUBLIC%\Desktop\EAP 7.0 Standalone.lnk'
+      args: '--new-window http://localhost:17080/'
       directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
       icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
 
   - name: Add WildFly Shortcut
     win_shortcut:
       src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
-      dest: '%PUBLIC%\Desktop\EAP 7.1 Standalone HTTPS.lnk'
-      args: '--new-window https://localhost:14443/'
+      dest: '%PUBLIC%\Desktop\EAP 7.0 Standalone HTTPS.lnk'
+      args: '--new-window https://localhost:17443/'
       directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
       icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
 
   - name: Add WildFly Shortcut
     win_shortcut:
       src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
-      dest: '%PUBLIC%\Desktop\EAP 7.1 Standalone Admin.lnk'
-      args: '--new-window http://localhost:15990/'
+      dest: '%PUBLIC%\Desktop\EAP 7.0 Standalone Admin.lnk'
+      args: '--new-window http://localhost:18990/'
       directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
       icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
