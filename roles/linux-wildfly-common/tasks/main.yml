@@ -149,6 +149,4 @@
     file:
       state: directory
       path: "{{wildfly_install_dir}}/standalone/configuration"
-      owner: "{{wildfly_role}}"
-      group: "{{wildfly_role}}"
       mode: "o+t,g+s"

@@ -92,3 +92,17 @@
       name: "{{tomcat_user}}"
       enabled: yes
       state: restarted
+
+  - name: "Allow SSH user to add files to config dir"
+    file:
+      state: directory
+      path: "/opt/apache-tomcat-{{tomcat_version}}/conf"
+      owner: "{{tomcat_user}}"
+      group: "{{tomcat_user}}"
+      mode: "0777"
+
+  - name: "New files should belong to the tomcat group, and protected from deletion"
+    file:
+      state: directory
+      path: "/opt/apache-tomcat-{{tomcat_version}}/conf"
+      mode: "o+t,g+s"
