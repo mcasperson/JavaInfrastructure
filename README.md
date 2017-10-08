@@ -25,8 +25,8 @@ servers and CI servers.
 |13999 | EAP 6 Standalone Admin |
 |14080 | EAP 7 Standalone HTTP |
 |14443 | EAP 7 Standalone HTTPS |
-|15080 | Liberty 7 HTTP |
-|15443 | Liberty 7 HTTPS |
+|15080 | EAP 7 Slave HTTP |
+|15443 | EAP 7 Slave HTTPS |
 |15990 | EAP 7 Standalone Admin |
 |16080 | Payara 4 HTTP 1 |
 |16081 | Payara 4 HTTP 2 |
