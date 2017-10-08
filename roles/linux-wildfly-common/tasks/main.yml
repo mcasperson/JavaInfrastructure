@@ -122,28 +122,32 @@
       group: "{{wildfly_role}}"
 
   - name: "Allow SSH user to add files to config dir"
-    state: directory
+    file:
+      state: directory
       path: "{{wildfly_install_dir}}/domain/configuration"
       owner: "{{wildfly_role}}"
       group: "{{wildfly_role}}"
       mode: "0777"
 
   - name: "New files should belong to the wildfly user, and protected from deletion"
-    state: directory
+    file:
+      state: directory
       path: "{{wildfly_install_dir}}/domain/configuration"
       owner: "{{wildfly_role}}"
       group: "{{wildfly_role}}"
       mode: "o+t,u+s,g+s"
 
   - name: "Allow SSH user to add files to config dir"
-    state: directory
+    file:
+      state: directory
       path: "{{wildfly_install_dir}}/standalone/configuration"
       owner: "{{wildfly_role}}"
       group: "{{wildfly_role}}"
       mode: "0777"
 
   - name: "New files should belong to the wildfly group, and protected from deletion"
-    state: directory
+    file:
+      state: directory
       path: "{{wildfly_install_dir}}/standalone/configuration"
       owner: "{{wildfly_role}}"
       group: "{{wildfly_role}}"

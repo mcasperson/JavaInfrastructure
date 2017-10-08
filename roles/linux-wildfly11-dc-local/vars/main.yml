@@ -1,3 +1,2 @@
 ---
-wildfly_role: "wildfly_dc_local"
-wildfly_version: "11"
+wildfly_role: "wildfly11_dc_local"

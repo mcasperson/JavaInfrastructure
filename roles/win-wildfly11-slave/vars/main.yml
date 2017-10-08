@@ -1,3 +1,0 @@
----
-wildfly_role: "wildfly11_slave"
-service_name: "{{wildfly_slave_service}}"

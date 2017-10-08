@@ -1,0 +1,4 @@
+---
+dependencies:
+  - { role: eap7-common }
+  - { role: linux-wildfly-common }

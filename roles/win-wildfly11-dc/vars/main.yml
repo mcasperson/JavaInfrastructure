@@ -1,3 +1,0 @@
----
-wildfly_role: "wildfly11_dc"
-service_name: "{{wildfly_domain_controller_service}}"

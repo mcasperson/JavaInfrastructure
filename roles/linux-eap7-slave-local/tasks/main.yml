@@ -1,0 +1,27 @@
+---
+
+  - name: Set WildFly Configuration Settings
+    template:
+      src: wildfly.conf
+      dest: "/etc/default/{{wildfly_role}}"
+      owner: "{{wildfly_role}}"
+      group: "{{wildfly_role}}"
+      mode: 0644
+
+  #- name: Add Additional JMX Monitoring
+
+  #- name: Add Java Memory Logging
+
+  #- name: Add HTTPS Key
+
+  #- name: Secure Admin Console
+
+  #- name: Generate Vault
+
+  #- name: Add Vault
+
+  - name: Start Service
+    service:
+      name: "{{wildfly_role}}"
+      enabled: yes
+      state: restarted

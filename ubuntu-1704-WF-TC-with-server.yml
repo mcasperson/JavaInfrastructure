@@ -34,6 +34,60 @@
   roles:
     - apt-linux-common
 
+- name: wildfly 10 dc
+  hosts: ubuntu_server
+  remote_user: ubuntu
+  become: true
+  become_user: root
+
+  roles:
+    - linux-wildfly10-dc-local
+
+- name: wildfly 10 slave
+  hosts: ubuntu_server
+  remote_user: ubuntu
+  become: true
+  become_user: root
+
+  roles:
+    - linux-wildfly10-slave-local
+
+- name: eap 6 dc
+  hosts: ubuntu_server
+  remote_user: ubuntu
+  become: true
+  become_user: root
+
+  roles:
+    - linux-eap6-dc-local
+
+- name: eap 6 slave
+  hosts: ubuntu_server
+  remote_user: ubuntu
+  become: true
+  become_user: root
+
+  roles:
+    - linux-eap6-slave-local
+
+- name: eap 7 dc
+  hosts: ubuntu_server
+  remote_user: ubuntu
+  become: true
+  become_user: root
+
+  roles:
+    - linux-eap7-dc-local
+
+- name: eap 7 slave
+  hosts: ubuntu_server
+  remote_user: ubuntu
+  become: true
+  become_user: root
+
+  roles:
+    - linux-eap7-slave-local
+
 - name: payara 4
   hosts: ubuntu_server
   remote_user: ubuntu
