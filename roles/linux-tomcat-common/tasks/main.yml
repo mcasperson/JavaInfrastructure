@@ -114,3 +114,11 @@
       owner: "{{tomcat_user}}"
       group: "{{tomcat_user}}"
       mode: "0777"
+
+  - name: "Allow everyone to read the catalina.jar file"
+    file:
+      state: file
+      path: "/opt/apache-tomcat-{{tomcat_version}}/lib/catalina.jar"
+      owner: "{{tomcat_user}}"
+      group: "{{tomcat_user}}"
+      mode: "o+r"
