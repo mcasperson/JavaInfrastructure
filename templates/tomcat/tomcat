@@ -28,11 +28,14 @@ CATALINA_HOME="/opt/apache-tomcat-{{tomcat_version}}"
 ## run as a different user
 TOMCAT_USER={{tomcat_user}}
 
-##  Path to the pid, runnning info file
+##  Path to the pid, running info file
 pidfile=${PIDFILE-/var/run/${PROCESS_NAME}.pid};
 lockfile=${LOCKFILE-/var/lock/subsys/${PROCESS_NAME}};
 
 RETVAL=0
+
+## Setup APR
+export CATALINA_OPTS="-Djava.library.path=/usr/local/apr/lib"
 
 case "$1" in
  start)
