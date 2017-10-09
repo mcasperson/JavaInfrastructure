@@ -106,3 +106,11 @@
       state: directory
       path: "/opt/apache-tomcat-{{tomcat_version}}/conf"
       mode: "o+t,g+s"
+
+  - name: "Allow everyone to modify the server.xml file"
+    file:
+      state: file
+      path: "/opt/apache-tomcat-{{tomcat_version}}/conf/server.xml"
+      owner: "{{tomcat_user}}"
+      group: "{{tomcat_user}}"
+      mode: "0777"
