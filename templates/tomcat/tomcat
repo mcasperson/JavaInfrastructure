@@ -34,9 +34,6 @@ lockfile=${LOCKFILE-/var/lock/subsys/${PROCESS_NAME}};
 
 RETVAL=0
 
-## Setup APR
-export CATALINA_OPTS="-Djava.library.path=/usr/local/apr/lib"
-
 case "$1" in
  start)
         PID=`pidofproc -p ${pidfile} ${PROCESS_NAME}`

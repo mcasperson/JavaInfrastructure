@@ -70,6 +70,15 @@
       mode: 0755
     when: '"ubuntu_server" in group_names'
 
+  - name: Add setenv.sh
+    template:
+      src: "{{playbook_dir}}/templates/tomcat/setenv.sh"
+      dest: "/opt/apache-tomcat-{{tomcat_version}}/bin/setenv.sh"
+      owner: "{{tomcat_user}}"
+      group: "{{tomcat_user}}"
+      mode: 0755
+    when: '"centos_server" in group_names'
+
   - name: set tomcat permissions
     file:
       state: directory

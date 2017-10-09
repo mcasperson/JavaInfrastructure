@@ -1,0 +1,1 @@
+CATALINA_OPTS="-Djava.library.path=/usr/local/apr/lib"
