@@ -113,7 +113,7 @@
       path: "/opt/apache-tomcat-{{tomcat_version}}/conf/server.xml"
       owner: "{{tomcat_user}}"
       group: "{{tomcat_user}}"
-      mode: "0777"
+      mode: "0666"
 
   - name: "Allow everyone to read the catalina.jar file"
     file:
@@ -121,4 +121,4 @@
       path: "/opt/apache-tomcat-{{tomcat_version}}/lib/catalina.jar"
       owner: "{{tomcat_user}}"
       group: "{{tomcat_user}}"
-      mode: "o+r"
+      mode: "0664"
