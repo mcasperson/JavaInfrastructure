@@ -43,9 +43,9 @@
     template:
       src: "aprbuild.sh"
       dest: "/opt/aprbuild.sh"
-      owner: "{{wildfly_role}}"
-      group: "{{wildfly_role}}"
-      mode: 774
+      owner: "root"
+      group: "root"
+      mode: 0774
 
   - name: Build APR
     command: "/opt/aprbuild.sh"
