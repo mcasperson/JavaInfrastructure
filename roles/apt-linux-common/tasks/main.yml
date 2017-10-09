@@ -13,7 +13,7 @@
 
   - name: install useful packages
     apt:
-      name: wget,elinks,telnet,htop,mlocate,python-pip,vim,nano,jq,openjdk-8-jdk,unzip,maven,git,patch,zip,libunwind8
+      name: wget,elinks,telnet,htop,mlocate,python-pip,vim,nano,jq,openjdk-8-jdk,unzip,maven,git,patch,zip,libunwind8,libapr1,libapr1-dev,libtcnative-1
 
   - name: install Mono
     apt:
