@@ -1,2 +1,2 @@
 ---
-wildfly_role: "wildfly_standalone"
+wildfly_role: "wildfly11_standalone"
