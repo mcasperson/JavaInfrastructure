@@ -121,6 +121,6 @@
 
   - name: "Allow everyone to read the catalina.jar file"
     file:
-      state: file
+      state: directory
       path: "/opt/apache-tomcat-{{tomcat_version}}/lib"
       mode: "o+x"
