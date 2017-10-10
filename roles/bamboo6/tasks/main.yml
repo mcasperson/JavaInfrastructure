@@ -40,13 +40,13 @@
       group: root
       mode: 0755
 
-  - name: copy plugin
-    copy:
-        src: "/mnt/c/Users/matth/Octopus/OctopusBamboo/target/OctopusBamboo.jar"
-        dest: "/opt/{{bamboo6_directory}}/plugins/OctopusBamboo.jar"
-        owner: "{{bamboo_user}}"
-        group: "{{bamboo_user}}"
-        mode: 0644
+  - name: download octopus plugin
+    get_url:
+      url: "https://github.com/OctopusDeploy/Octopus-Bamboo/releases/download/1.0.4-SNAPSHOT/bamboo.jar"
+      dest: "/opt/{{bamboo6_directory}}/plugins/OctopusBamboo.jar"
+      owner: "{{bamboo_user}}"
+      group: "{{bamboo_user}}"
+      mode: 0644
 
   - name: start bamboo service
     service:
