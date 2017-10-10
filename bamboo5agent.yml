@@ -1,6 +1,41 @@
 ---
+- name: Linux Server
+  hosts:
+    - 127.0.0.1
+  become: false
+  gather_facts: false
+
+  roles:
+    - centos-7-server-instance
+
+  vars:
+    centos_ami: "ami-ae7bfdb8"
+    location: "virgina"
+    vpc_subnet:
+    assign_public_ip:
+    key_name: "DukeLegion"
+    instance_type: "m3.xlarge"
+    security_group: "WildFlyTomcat"
+    region: "us-east-1"
+    ec2_role:
+    domain_tag: "None"
+    application_tag: "Centos Bamboo Server"
+    name_tag: "Centos Bamboo Server"
+    environment_tag: "Test"
+    lifetime_tag: "Permanent"
+    owner_tag: "@matthew.casperson"
+
+- name: linux instance prep
+  hosts: centos_server
+  remote_user: centos
+  become: true
+  become_user: root
+
+  roles:
+    - yum-linux-common
+
 - name: bambooagent
-  hosts: tag_Appplication_Bamboo5Agent
+  hosts: centos_server
   remote_user: centos
   become: true
   become_user: root
