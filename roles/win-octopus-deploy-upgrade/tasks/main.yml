@@ -3,7 +3,7 @@
   win_package:
     path: https://s3.amazonaws.com/bamboo-support/Octopus.4.0.0-frontend-refact14728-x64.msi
     state: present
-    product_id: "{1D465F9B-FBF1-4ACF-B95C-5612D72F8125}"
+    product_id: "{B26C3341-1504-4724-A64B-D75979A010B1}"
     arguments: /quiet RUNMANAGERONEXIT=no
 
 - name: Install Octopus Deploy Server
