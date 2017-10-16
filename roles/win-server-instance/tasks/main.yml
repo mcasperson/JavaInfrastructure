@@ -40,6 +40,7 @@
   - name: Add Host to Inventory
     add_host:
       name: "{{ item.public_ip }}"
+      region: "{{ region }}"
       groups:
         - windows_server
         - java_server
