@@ -40,11 +40,10 @@
   - name: Add Host to Inventory
     add_host:
       name: "{{ item.public_ip }}"
-      instance_id: "{{ item.id }}"
       groups:
         - windows_server
         - java_server
-        - "{{location}}_server"
+      instance_id: "{{ item.id }}"
     with_items: "{{windows_server_ec2.instances}}"
 
   - name: Wait for WinRM to answer on all hosts
