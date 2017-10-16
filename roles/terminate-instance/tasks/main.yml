@@ -1,4 +1,11 @@
 ---
+- name: Assume AWS Role
+  sts_assume_role:
+    role_arn: "arn:aws:iam::968802670493:role/AnsibleWorker"
+    role_session_name: "AnsibleBuild"
+    region: "{{region}}"
+  register: assumed_role
+
 - name: Terminate the EC2 instance
   ec2:
     state: absent
@@ -7,3 +14,4 @@
     security_token: "{{ assumed_role.sts_creds.session_token }}"
     instance_ids: "{{instance_id}}"
     key_name: "{{key_name}}"
+    region: "{{region}}"
