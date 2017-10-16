@@ -7,3 +7,4 @@
     security_token: "{{ security_token }}"
     instance_ids: "{{ instance_id }}"
     region: "{{ region }}"
+    wait: True
