@@ -1,6 +1,9 @@
 #jinja2: newline_sequence:'\r\n'
 
-& "C:\Program Files\Octopus Deploy\Octopus\Octopus.Server.exe" configure --instance "OctopusServer" --storageConnectionString "Data Source=(local)\SQLEXPRESS;Initial Catalog=Octopus;Integrated Security=True"
+& "C:\Program Files\Octopus Deploy\Octopus\Octopus.Server.exe" create-instance --instance "OctopusServer" --config "C:\Octopus\OctopusServer.config"
+& "C:\Program Files\Octopus Deploy\Octopus\Octopus.Server.exe" configure --instance "OctopusServer" --home "C:\Octopus" --storageConnectionString "Data Source=(local)\SQLEXPRESS;Initial Catalog=Octopus;Integrated Security=True" --upgradeCheck "True" --upgradeCheckWithStatistics "True" --webAuthenticationMode "UsernamePassword" --webForceSSL "False" --webListenPrefixes "http://localhost:80/" --commsListenPort "10943" --serverNodeName "EC2AMAZ-SD3N2UO"
 & "C:\Program Files\Octopus Deploy\Octopus\Octopus.Server.exe" database --instance "OctopusServer" --create --grant "NT AUTHORITY\SYSTEM"
 & "C:\Program Files\Octopus Deploy\Octopus\Octopus.Server.exe" service --instance "OctopusServer" --stop
-& "C:\Program Files\Octopus Deploy\Octopus\Octopus.Server.exe" service --instance "OctopusServer" --install --reconfigure --start
+& "C:\Program Files\Octopus Deploy\Octopus\Octopus.Server.exe" admin --instance "OctopusServer" --username "{{octopus_admin_username}}" --email "a@a.com" --password "{{octopus_admin_password}}"
+& "C:\Program Files\Octopus Deploy\Octopus\Octopus.Server.exe" license --instance "OctopusServer" --licenseBase64 "PExpY2Vuc2UgU2lnbmF0dXJlPSJjMjZPY2dWY0l6TU83ZUZybUNnRWY1K21zdU5iejNsUE9aS1lzR0VXR0gxTTVlS1lvRmwyUURIMUN5bExsZUdXalJTUDUwSy85TXFoZDVaTmJUck4vQT09Ij4KICA8TGljZW5zZWRUbz5PY3RvcHVzPC9MaWNlbnNlZFRvPgogIDxMaWNlbnNlS2V5PjIzMTY1LTI5NTk1LTE1NDIxLTU4MTAyPC9MaWNlbnNlS2V5PgogIDxWZXJzaW9uPjIuMDwhLS0gTGljZW5zZSBTY2hlbWEgVmVyc2lvbiAtLT48L1ZlcnNpb24+CiAgPFZhbGlkRnJvbT4yMDE3LTEwLTE2PC9WYWxpZEZyb20+CiAgPFZhbGlkVG8+MjAxNy0xMS0zMDwvVmFsaWRUbz4KICA8UHJvamVjdExpbWl0PlVubGltaXRlZDwvUHJvamVjdExpbWl0PgogIDxNYWNoaW5lTGltaXQ+VW5saW1pdGVkPC9NYWNoaW5lTGltaXQ+CiAgPFVzZXJMaW1pdD5VbmxpbWl0ZWQ8L1VzZXJMaW1pdD4KPC9MaWNlbnNlPg=="
+& "C:\Program Files\Octopus Deploy\Octopus\Octopus.Server.exe" service --instance "OctopusServer" --install --reconfigure --start --dependOn "MSSQL$SQLEXPRESS"
