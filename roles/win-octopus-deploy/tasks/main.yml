@@ -77,7 +77,7 @@
       src: OctopusDeploy313.ps1
       dest: C:\Apps\OctopusDeploy313.ps1
 
-  - name: Install Octopus Deploy Server
+  - name: "Install Octopus Deploy Server with the script {{octopus_install_script}}"
     win_shell: "C:\\Apps\\{{octopus_install_script}}"
     args:
       creates: C:\Octopus
