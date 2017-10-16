@@ -47,7 +47,7 @@
     debug:
         msg: "{{choco_octopuscli}}"
 
-  - name: Install Octopus Deploy
+  - name: "Install Octopus Deploy version {{octopus_version}}"
     win_chocolatey:
       name: octopusdeploy
       state: present
