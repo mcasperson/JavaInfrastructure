@@ -1,9 +1,9 @@
 ---
 - name: Install Octopus MSI
   win_package:
-    path: https://s3.amazonaws.com/bamboo-support/Octopus.4.0.0-frontend-refact14728-x64.msi
+    path: "{{upgrade_msi}}"
     state: present
-    product_id: "{B26C3341-1504-4724-A64B-D75979A010B1}"
+    product_id: "{{upgrade_id}}"
     arguments: /quiet RUNMANAGERONEXIT=no
 
 - name: Install Octopus Deploy Server

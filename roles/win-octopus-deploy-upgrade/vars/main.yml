@@ -1,0 +1,3 @@
+---
+upgrade_msi: https://s3.amazonaws.com/bamboo-support/Octopus.4.0.0-frontend-refact14728-x64.msi
+upgrade_id: "{B26C3341-1504-4724-A64B-D75979A010B1}"
