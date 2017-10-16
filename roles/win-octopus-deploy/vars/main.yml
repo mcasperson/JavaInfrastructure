@@ -5,4 +5,4 @@ sql_install_user: sqlexpress_install
 octopus_version: ""
 octopus_tools_version: ""
 octopus_tentacle_version: ""
-octopus_install_script: OctopusDeploy.bat
+octopus_install_script: OctopusDeploy.ps1

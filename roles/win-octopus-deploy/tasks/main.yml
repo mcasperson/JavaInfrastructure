@@ -69,19 +69,18 @@
 
   - name: Copy Octopus Server Creation Script
     win_template:
-      src: OctopusDeploy.bat
-      dest: C:\Apps\OctopusDeploy.bat
+      src: OctopusDeploy.ps1
+      dest: C:\Apps\OctopusDeploy.ps1
 
   - name: Copy Octopus Server Creation Script
     win_template:
-      src: OctopusDeploy313.bat
-      dest: C:\Apps\OctopusDeploy313.bat
+      src: OctopusDeploy313.ps1
+      dest: C:\Apps\OctopusDeploy313.ps1
 
   - name: Install Octopus Deploy Server
     win_shell: "C:\\Apps\\{{octopus_install_script}}"
     args:
       creates: C:\Octopus
-      executable: cmd
     register: deploy_server
 
   - name: Copy Octopus API Key Create Script
