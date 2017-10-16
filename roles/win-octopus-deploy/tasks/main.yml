@@ -38,6 +38,14 @@
       name: octopustools
       state: present
       version: "{{octopus_tools_version}}"
+    register: choco_octopus
+    until: choco_octopus.msg.rc == 0
+    retries: 5
+    delay: 10
+
+  - name: Debug Chocolatey Output
+    debug:
+        msg: "{{choco_octopus}}"
 
   - name: Install Octopus Deploy
     win_chocolatey:
@@ -50,6 +58,10 @@
       name: octopusdeploy.tentacle
       state: present
       version: "{{octopus_version}}"
+    register: choco_tentacle
+    until: choco_tentacle.msg.rc == 0
+    retries: 5
+    delay: 10
 
   - name: Copy Octopus Server Creation Script
     win_template:
