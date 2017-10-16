@@ -39,7 +39,7 @@
       state: present
       version: "{{octopus_tools_version}}"
     register: choco_octopuscli
-    until: choco_octopuscli.msg.rc == 0
+    until: choco_octopuscli.rc == 0
     retries: 5
     delay: 10
 
@@ -53,7 +53,7 @@
       state: present
       version: "{{octopus_version}}"
     register: choco_octopusserver
-    until: choco_octopusserver.msg.rc == 0
+    until: choco_octopusserver.rc == 0
     retries: 5
     delay: 10
 
@@ -63,7 +63,7 @@
       state: present
       version: "{{octopus_version}}"
     register: choco_tentacle
-    until: choco_tentacle.msg.rc == 0
+    until: choco_tentacle.rc == 0
     retries: 5
     delay: 10
 
