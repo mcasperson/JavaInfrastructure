@@ -30,3 +30,4 @@
   roles:
     - win-octopus-deploy
     - win-octopus-deploy-upgrade
+    - win-e2e-tests
