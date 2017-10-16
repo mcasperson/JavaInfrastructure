@@ -4,3 +4,4 @@ sql_install_user: sqlexpress_install
 # Leave this blank, and override from the command line if required
 octopus_version: ""
 octopus_tools_version: ""
+octopus_tentacle_version: ""
