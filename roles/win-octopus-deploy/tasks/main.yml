@@ -38,20 +38,24 @@
       name: octopustools
       state: present
       version: "{{octopus_tools_version}}"
-    register: choco_octopus
-    until: choco_octopus.msg.rc == 0
+    register: choco_octopuscli
+    until: choco_octopuscli.msg.rc == 0
     retries: 5
     delay: 10
 
   - name: Debug Chocolatey Output
     debug:
-        msg: "{{choco_octopus}}"
+        msg: "{{choco_octopuscli}}"
 
   - name: Install Octopus Deploy
     win_chocolatey:
       name: octopusdeploy
       state: present
       version: "{{octopus_version}}"
+    register: choco_octopusserver
+    until: choco_octopusserver.msg.rc == 0
+    retries: 5
+    delay: 10
 
   - name: Install Octopus Deploy Tentacle
     win_chocolatey:
