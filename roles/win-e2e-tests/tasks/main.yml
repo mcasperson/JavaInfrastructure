@@ -27,3 +27,6 @@
       src: "{{item}}"
       dest: "C:\\E2ETests\\{{ item | regex_replace(role_path + '/templates','') | regex_replace('/', '\\\\') }}"
     with_items: "{{ lookup('pipe','find {{role_path}}/templates -type f').split('\n') }}"
+
+  - name: Run simple end to end test
+    win_shell: C:\E2ETests\hello-world-project.ps1
