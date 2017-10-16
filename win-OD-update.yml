@@ -32,3 +32,6 @@
     - win-octopus-deploy-upgrade
     - win-e2e-tests
     - terminate-instance
+
+  vars:
+    region: "us-east-1"
