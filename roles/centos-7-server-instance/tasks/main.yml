@@ -43,6 +43,7 @@
   - name: Add Host to Inventory
     add_host:
       name: "{{ item.public_ip }}"
+      instance_id: "{{ item.id }}"
       groups:
         - centos_server
         - linux_server

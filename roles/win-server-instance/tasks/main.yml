@@ -39,13 +39,17 @@
 
   - name: Add Host to Inventory
     add_host:
-      name: "{{ windows_server_ec2.instances[0].public_ip }}"
+      name: "{{ item.public_ip }}"
+      instance_id: "{{ item.id }}"
       groups:
         - windows_server
         - java_server
+        - "{{location}}_server"
+    with_items: "{{windows_server_ec2.instances}}"
 
   - name: Wait for WinRM to answer on all hosts
     wait_for:
       port: 5986
-      host: "{{ windows_server_ec2.instances[0].public_ip }}"
+      host: "{{ item.public_ip }}"
       timeout: 6000
+    with_items: "{{windows_server_ec2.instances}}"
