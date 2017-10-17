@@ -1,4 +1,5 @@
 #jinja2: newline_sequence:'\r\n'
+
 Start-Process -Wait -NoNewWindow -FilePath "C:\Program Files\Octopus Deploy\Octopus\Octopus.Server.exe" -ArgumentList "create-instance --instance `"OctopusServer`" --config `"C:\Octopus\OctopusServer.config`" --console"
 Start-Process -Wait -NoNewWindow -FilePath "C:\Program Files\Octopus Deploy\Octopus\Octopus.Server.exe" -ArgumentList "configure --instance `"OctopusServer`" --home `"C:\Octopus`" --storageConnectionString `"Data Source=(local)\SQLEXPRESS;Initial Catalog=OctopusDeploy;Integrated Security=True`" --upgradeCheck `"True`" --upgradeCheckWithStatistics `"True`" --webAuthenticationMode `"UsernamePassword`" --webForceSSL `"False`" --webListenPrefixes `"http://localhost:80/`" --commsListenPort `"10943`" --serverNodeName `"EC2AMAZ-T9GFGRA`"  --console"
 Start-Process -Wait -NoNewWindow -FilePath "C:\Program Files\Octopus Deploy\Octopus\Octopus.Server.exe" -ArgumentList "database --instance `"OctopusServer`" --create --grant `"NT AUTHORITY\SYSTEM`"  --console"
