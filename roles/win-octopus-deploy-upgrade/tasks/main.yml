@@ -6,5 +6,10 @@
     product_id: "{{upgrade_id}}"
     arguments: /quiet RUNMANAGERONEXIT=no
 
+- name: Copy Octopus Server Creation Script OctopusDeploy.ps1
+  win_template:
+    src: OctopusDeploy.ps1
+    dest: C:\Apps\OctopusDeployLatest.ps1
+
 - name: Install Octopus Deploy Server
-  win_shell: C:\Apps\OctopusDeploy.ps1
+  win_shell: C:\Apps\OctopusDeployLatest.ps1
