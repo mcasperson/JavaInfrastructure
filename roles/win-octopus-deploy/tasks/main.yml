@@ -82,6 +82,11 @@
       src: OctopusDeploy35.ps1
       dest: C:\Apps\OctopusDeploy35.ps1
 
+  - name: Copy Octopus Server Creation Script
+    win_template:
+      src: OctopusDeploy33.ps1
+      dest: C:\Apps\OctopusDeploy33.ps1
+
   - name: "Install Octopus Deploy Server with the script {{octopus_install_script}}"
     win_shell: "C:\\Apps\\{{octopus_install_script}}"
     args:
