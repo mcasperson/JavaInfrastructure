@@ -84,7 +84,13 @@
   - name: Install 7zip
     win_command: C:\Apps\7z1604-x64.exe /S /D=C:\7Zip
 
-
+  - name: Install IIS Web-Server with sub features and management tools
+    win_feature:
+      name: Web-Server
+      state: present
+      restart: True
+      include_sub_features: True
+      include_management_tools: True
 
 #  - name: Download SDK
 #    win_get_url:
