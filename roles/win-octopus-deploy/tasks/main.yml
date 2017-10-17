@@ -99,7 +99,7 @@
       - octopus_version != ''
       - octopus_version | version_compare('3.5', '<')
 
-  - name: "Install Octopus Deploy Server with the script {{octopus_install_script}}"
+  - name: "Install Octopus Deploy Server with the script"
     win_shell: "C:\\Apps\\OctopusDeploy.ps1"
     args:
       creates: C:\Octopus
