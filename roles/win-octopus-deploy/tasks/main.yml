@@ -67,29 +67,29 @@
     retries: 5
     delay: 60
 
-  - name: Copy Octopus Server Creation Script
+  - name: Copy Octopus Server Creation Script OctopusDeploy.ps1
     win_template:
       src: OctopusDeploy.ps1
       dest: C:\Apps\OctopusDeploy.ps1
     when: octopus_version eq 'latest' or octopus_version | version_compare('3.14', '>=')
 
-  - name: Copy Octopus Server Creation Script
+  - name: Copy Octopus Server Creation Script OctopusDeploy313.ps1
     win_template:
       src: OctopusDeploy313.ps1
       dest: C:\Apps\OctopusDeploy.ps1
     when: octopus_version ne 'latest' and octopus_version | version_compare('3.6', '>=') and octopus_version | version_compare('3.14', '<')
 
-  - name: Copy Octopus Server Creation Script
+  - name: Copy Octopus Server Creation Script OctopusDeploy35.ps1
     win_template:
       src: OctopusDeploy35.ps1
       dest: C:\Apps\OctopusDeploy.ps1
-    when: octopus_version ne 'latest' and octopus_version | version_compare('3.4', '>=') and octopus_version | version_compare('3.6', '<')
+    when: octopus_version ne 'latest' and octopus_version | version_compare('3.5', '>=') and octopus_version | version_compare('3.6', '<')
 
-  - name: Copy Octopus Server Creation Script
+  - name: Copy Octopus Server Creation Script OctopusDeploy33.ps1
     win_template:
-      src: OctopusDeploy33.ps1
+      src: OctopusDeploy34.ps1
       dest: C:\Apps\OctopusDeploy.ps1
-    when: octopus_version ne 'latest' and octopus_version | version_compare('3.4', '<')
+    when: octopus_version ne 'latest' and octopus_version | version_compare('3.5', '<')
 
   - name: "Install Octopus Deploy Server with the script {{octopus_install_script}}"
     win_shell: "C:\\Apps\\OctopusDeploy.ps1"
