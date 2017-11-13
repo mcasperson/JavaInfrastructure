@@ -5,9 +5,9 @@
     dest: "{{ nexus_download_dir }}/{{ nexus_package }}"
     force: no
   register: nexus_download
-  until: nexus_download.rc == 0
+  until: nexus_download | succeeded
   retries: 5
-  delay: 60
+  delay: 10
 
 - name: Ensure Nexus o/s group exists
   group:

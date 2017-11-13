@@ -15,7 +15,7 @@
     vpc_subnet:
     assign_public_ip:
     key_name: "DukeLegion"
-    instance_type: "m3.medium"
+    instance_type: "m3.xlarge"
     security_group: "WildFlyTomcat"
     region: "us-east-1"
     ec2_role:
@@ -25,7 +25,7 @@
     environment_tag: "Test"
     lifetime_tag: "Permanent"
     owner_tag: "@matthew.casperson"
-    scheduler: "ec2-startstop"
+    "scheduler:ec2-startstop": "true"
 
 - name: linux instance prep
   hosts: centos_server

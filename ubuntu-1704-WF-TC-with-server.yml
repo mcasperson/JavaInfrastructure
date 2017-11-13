@@ -24,7 +24,7 @@
     environment_tag: "Test"
     lifetime_tag: "Permanent"
     owner_tag: "@matthew.casperson"
-    scheduler: "ec2-startstop"
+    "scheduler:ec2-startstop": "true"
 
 - name: linux instance prep
   hosts: ubuntu_server
