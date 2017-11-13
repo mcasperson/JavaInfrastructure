@@ -21,7 +21,7 @@
     ec2_role:
     domain_tag: "None"
     application_tag: "Nexus Server"
-    name_tag: "Centos Bamboo Server"
+    name_tag: "Nexus Server"
     environment_tag: "Test"
     lifetime_tag: "Permanent"
     owner_tag: "@matthew.casperson"
