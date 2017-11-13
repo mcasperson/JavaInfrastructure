@@ -35,6 +35,7 @@
         Name: Octopus Deploy
         OwnerContact: "@matthew.casperson"
         Source: Ansible
+        scheduler: "ec2-startstop"
     register: windows_server_ec2
 
   - name: Add Host to Inventory
