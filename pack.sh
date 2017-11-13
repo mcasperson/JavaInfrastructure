@@ -1,3 +1,3 @@
 #!/bin/bash
 rm ../JavaAnsible*.tar.gz
-tar -czf ../JavaAnsible.0.0.0.5.tar.gz . --exclude='.git' --exclude='.idea'
+tar -cz --exclude='.git' --exclude='.idea' -f ../JavaAnsible.0.0.0.49.tar.gz .
