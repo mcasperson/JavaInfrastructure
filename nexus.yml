@@ -12,7 +12,7 @@
   vars:
     centos_ami: "ami-ae7bfdb8"
     location: "virgina"
-    vpc_subnet:
+    vpc_subnet: "subnet-8a5a9cd7"
     assign_public_ip:
     key_name: "DukeLegion"
     instance_type: "m3.xlarge"
