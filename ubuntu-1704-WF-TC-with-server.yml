@@ -11,7 +11,7 @@
   vars:
     ubuntu_ami: "ami-19d7f60f"
     location: "virgina"
-    vpc_subnet:
+    vpc_subnet: "subnet-8a5a9cd7"
     assign_public_ip:
     key_name: "DukeLegion"
     instance_type: "m3.2xlarge"
@@ -24,7 +24,6 @@
     environment_tag: "Test"
     lifetime_tag: "Permanent"
     owner_tag: "@matthew.casperson"
-    "scheduler:ec2-startstop": "true"
 
 - name: linux instance prep
   hosts: ubuntu_server

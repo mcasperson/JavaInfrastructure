@@ -42,6 +42,7 @@
         Source: Ansible
         OS: ubuntu
         Purpose: DukeLegion
+        "scheduler:ec2-startstop": "true"
     register: linux_server_ec2
 
   - name: Add Host to Inventory
