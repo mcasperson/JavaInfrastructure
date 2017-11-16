@@ -69,9 +69,18 @@
 
   - name: Copy Octopus Server Creation Script OctopusDeploy.ps1
     win_template:
-      src: OctopusDeploy.ps1
+      src: OctopusDeploy4.ps1
       dest: C:\Apps\OctopusDeploy.ps1
-    when: octopus_version == '' or (octopus_version | version_compare('3.14', '>='))
+    when: octopus_version == '' or (octopus_version | version_compare('4.0', '>='))
+
+  - name: Copy Octopus Server Creation Script OctopusDeploy.ps1
+    win_template:
+      src: OctopusDeploy314.ps1
+      dest: C:\Apps\OctopusDeploy.ps1
+    when:
+      - octopus_version == ''
+      - octopus_version | version_compare('3.14', '>=')
+      - octopus_version | version_compare('4.0', '<')
 
   - name: Copy Octopus Server Creation Script OctopusDeploy313.ps1
     win_template:
@@ -114,6 +123,10 @@
     win_shell: C:\Apps\ApiKey.ps1
     register: api_key
 
+  - name: Debug API Key
+    debug:
+        msg: "{{api_key}}"
+
   - name: Copy Octopus Environment Create Script
     win_template:
       src: OctopusEnvironment.ps1
@@ -121,7 +134,6 @@
 
   - name: Create Environment
     win_shell: C:\Apps\OctopusEnvironment.ps1
-    register: create_environment
 
   - name: Copy Octopus Tentacle Install Script
     win_template:
@@ -132,7 +144,6 @@
     win_shell: C:\Apps\OctopusTentacle.ps1
     args:
       creates: C:\Octopus\Applications
-    register: create_tentacle
 
   - name: Open Firewall For Server
     win_shell: netsh advfirewall firewall add rule name="Octopus Deploy" dir=in action=allow protocol=TCP localport=80 profile=public
