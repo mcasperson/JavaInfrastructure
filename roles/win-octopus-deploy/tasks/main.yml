@@ -78,7 +78,7 @@
       src: OctopusDeploy314.ps1
       dest: C:\Apps\OctopusDeploy.ps1
     when:
-      - octopus_version == ''
+      - octopus_version != ''
       - octopus_version | version_compare('3.14', '>=')
       - octopus_version | version_compare('4.0', '<')
 
