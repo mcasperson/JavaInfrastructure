@@ -5,6 +5,12 @@
   - name: Configure Mono
     command: "echo \"deb http://download.mono-project.com/repo/ubuntu xenial main\" | tee /etc/apt/sources.list.d/mono-official.list"
 
+  - name: Configure Docker
+    command: "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -"
+
+  - name: Configure Docker
+    command: "sudo add-apt-repository \"deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\""
+
   - name: Update and upgrade apt packages
     apt:
       upgrade: yes
@@ -14,6 +20,10 @@
   - name: install useful packages
     apt:
       name: wget,elinks,telnet,htop,mlocate,python-pip,vim,nano,jq,openjdk-8-jdk,unzip,maven,git,patch,zip,libunwind8,libapr1,libapr1-dev,libtcnative-1
+
+  - name: install docker packages
+    apt:
+      name: apt-transport-https,ca-certificates,curl,software-properties-common,docker-ce
 
   - name: install Mono
     apt:
