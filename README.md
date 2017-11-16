@@ -21,8 +21,8 @@ servers and CI servers.
 |13443 | EAP 6 Standalone HTTPS |
 |13080 | EAP 6 Slave HTTP |
 |13443 | EAP 6 Slave HTTPS |
-|14990 | EAP 6 Standalone Admin Console |
-|14999 | EAP 6 Standalone Admin |
+|14490 | EAP 6 Standalone Admin Console |
+|14499 | EAP 6 Standalone Admin |
 |14080 | EAP 7 Standalone HTTP |
 |14443 | EAP 7 Standalone HTTPS |
 |15080 | EAP 7 Slave HTTP |
