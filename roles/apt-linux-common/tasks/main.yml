@@ -6,10 +6,10 @@
     command: "echo \"deb http://download.mono-project.com/repo/ubuntu xenial main\" | tee /etc/apt/sources.list.d/mono-official.list"
 
   - name: Configure Docker
-    command: "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -"
+    command: "apt-key adv --fetch-keys https://download.docker.com/linux/ubuntu/gpg"
 
   - name: Configure Docker
-    command: "sudo add-apt-repository \"deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\""
+    command: "add-apt-repository \"deb [arch=amd64] https://download.docker.com/linux/ubuntu zesty stable\""
 
   - name: Update and upgrade apt packages
     apt:

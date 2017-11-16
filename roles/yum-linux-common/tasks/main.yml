@@ -40,11 +40,13 @@
     yum:
       name: mono-devel
 
-  - name: Add docker repo
-    yum_repository:
-      name: docker
-      description: Docker repository
-      baseurl: https://download.docker.com/linux/centos/docker-ce.repo
+  - name: Install Docker repo
+    template:
+      src: "docker-ce.repo"
+      dest: "/etc/yum.repos.d/docker-ce.repo"
+      owner: "root"
+      group: "root"
+      mode: 0644
 
   - name: install docker
     yum:
