@@ -24,3 +24,15 @@
       src: /opt/dotnet/dotnet
       dest: /usr/local/bin/dotnet
       state: link
+
+  - name: create docker group
+    group:
+      name: docker
+      state: present
+
+  - name: "Adding user {{ansible_user}} to docker group"
+    user:
+      name: "{{ansible_user}}"
+      group: docker
+      groups: docker
+      append: yes
