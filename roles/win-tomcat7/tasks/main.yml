@@ -44,3 +44,9 @@
     args: '--new-window http://localhost:39080/'
     directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
     icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
+
+- name: Open Firewall For Tentacle
+  win_shell: "netsh advfirewall firewall add rule name=\"Tomcat 7\" dir=in action=allow protocol=TCP localport={{tomcat_7_http_port}} profile=public"
+
+- name: Open Firewall For Tentacle
+  win_shell: "netsh advfirewall firewall add rule name=\"Tomcat 7\" dir=in action=allow protocol=TCP localport={{tomcat_7_https_port}} profile=public"
