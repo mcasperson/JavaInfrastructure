@@ -70,6 +70,9 @@
       mode: 0755
     when: '"ubuntu_server" in group_names'
 
+  - name: enable debian tomcat service
+    command: "systemctl enable {{tomcat_user}}"
+
   - name: Add setenv.sh
     template:
       src: "{{playbook_dir}}/templates/tomcat/setenv.sh"
