@@ -17,8 +17,8 @@ servers and CI servers.
 |12080 | Wildfly 10 Slave HTTP |
 |12443 | Wildfly 10 Slave HTTPS |
 |12990 | Wildfly 10 Standalone Admin |
-|13080 | EAP 6 Standalone HTTP |
-|13443 | EAP 6 Standalone HTTPS |
+|12580 | EAP 6 Standalone HTTP |
+|12943 | EAP 6 Standalone HTTPS |
 |13080 | EAP 6 Slave HTTP |
 |13443 | EAP 6 Slave HTTPS |
 |14490 | EAP 6 Standalone Admin Console |
