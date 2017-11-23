@@ -16,9 +16,9 @@ make
 make install
 
 cd /tmp
-wget http://apache.mirror.amaze.com.au/tomcat/tomcat-connectors/native/1.2.14/source/tomcat-native-1.2.14-src.tar.gz
-tar -zxvf tomcat-native-1.2.14-src.tar.gz
-cd tomcat-native-1.2.14-src/native
+wget http://mirror.ventraip.net.au/apache/tomcat/tomcat-connectors/native/1.2.16/source/tomcat-native-1.2.16-src.tar.gz
+tar -zxvf tomcat-native-1.2.16-src.tar.gz
+cd tomcat-native-1.2.16-src/native
 ./configure --with-apr=/usr/local/apr --with-java-home=/usr/lib/jvm/java-1.8.0-openjdk
 make
 make install
