@@ -41,6 +41,20 @@
   win_shortcut:
     src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
     dest: '%PUBLIC%\Desktop\Tomcat9.lnk'
-    args: '--new-window http://localhost:40080/'
+    args: "--new-window http://localhost:{{tomcat_9_http_port}}/"
     directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
     icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
+
+- name: Add Tomcat Shortcut
+  win_shortcut:
+    src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
+    dest: '%PUBLIC%\Desktop\Tomcat9 HTTPS.lnk'
+    args: "--new-window https://localhost:{{tomcat_9_https_port}}/"
+    directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
+    icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
+
+- name: Open Firewall For Tentacle
+  win_shell: "netsh advfirewall firewall add rule name=\"Tomcat 9\" dir=in action=allow protocol=TCP localport={{tomcat_9_https_port}} profile=public"
+
+- name: Open Firewall For Tentacle
+  win_shell: "netsh advfirewall firewall add rule name=\"Tomcat 9\" dir=in action=allow protocol=TCP localport={{tomcat_9_http_port}} profile=public"

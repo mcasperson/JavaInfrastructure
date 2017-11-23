@@ -41,7 +41,15 @@
   win_shortcut:
     src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
     dest: '%PUBLIC%\Desktop\Tomcat7.lnk'
-    args: '--new-window http://localhost:39080/'
+    args: "--new-window http://localhost:{{tomcat_7_http_port}}/"
+    directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
+    icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
+
+- name: Add Tomcat Shortcut
+  win_shortcut:
+    src: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe'
+    dest: '%PUBLIC%\Desktop\Tomcat7 HTTPS.lnk'
+    args: "--new-window http://localhost:{{tomcat_7_https_port}}/"
     directory: '%PROGRAMFILES(x86)%\Google\Chrome\Application'
     icon: '%PROGRAMFILES(x86)%\Google\Chrome\Application\chrome.exe,0'
 
