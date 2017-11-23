@@ -52,6 +52,12 @@
     yum:
       name: docker-ce
 
+  - name: Start Docker
+    service:
+      name: docker
+      enabled: yes
+      state: started
+
   - name: Set JAVA_HOME
     lineinfile: dest=/etc/environment state=present regexp='^JAVA_HOME' line='JAVA_HOME=/usr/lib/jvm/jre-1.8.0'
 
