@@ -1,0 +1,33 @@
+---
+# This playbook creates a Windows Server instance in AWS and installs:
+# Octopus Deploy
+# WildFly Standalone
+# Wildfly Domain Controller and Slave
+- name: Octopus Deploy Windows Server
+  hosts:
+    - 127.0.0.1
+  become: false
+  gather_facts: false
+
+  roles:
+    - win-server-instance
+
+  vars:
+    region: "us-east-1"
+
+- name: Windows Instance Prep
+  hosts: windows_server
+  become: false
+  gather_facts: false
+
+  roles:
+    - win-common
+
+- name: Octopus Deploy
+  hosts: windows_server
+  become: false
+
+  roles:
+    - win-octopus-deploy
+    - win-octopus-deploy-upgrade
+    - win-e2e-tests
