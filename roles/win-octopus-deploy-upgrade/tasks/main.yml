@@ -8,7 +8,7 @@
 
 - name: Copy Octopus Server Creation Script OctopusDeploy.ps1
   win_template:
-    src: OctopusDeploy.ps1
+    src: OctopusDeploy4.ps1
     dest: C:\Apps\OctopusDeployLatest.ps1
 
 - name: Install Octopus Deploy Server
