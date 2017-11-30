@@ -6,19 +6,10 @@
     product_id: "{{upgrade_id}}"
     arguments: /quiet RUNMANAGERONEXIT=no
 
-#- name: Copy Octopus Server Creation Script OctopusDeploy.ps1
-#  win_template:
-#    src: OctopusDeploy4.ps1
-#    dest: C:\Apps\OctopusDeployLatest.ps1
+- name: Copy Octopus Server Creation Script OctopusDeploy.ps1
+  win_template:
+    src: StartInstance.ps1
+    dest: C:\Apps\StartInstance.ps1
 
-#- name: Copy Octopus Master Key Extraction Script
-#  win_template:
-#    src: GetMasterKey.ps1
-#    dest: C:\Apps\GetMasterKey.ps1
-
-#- name: Get master key
-#  win_shell: C:\Apps\GetMasterKey.ps1
-#  register: master_key
-
-#- name: Install Octopus Deploy Server
-#  win_shell: C:\Apps\OctopusDeployLatest.ps1
+- name: Start the instance
+  win_shell: C:\Apps\StartInstance.ps1
