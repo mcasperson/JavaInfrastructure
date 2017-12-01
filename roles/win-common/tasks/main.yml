@@ -92,6 +92,38 @@
       include_sub_features: True
       include_management_tools: True
 
+  - name: Download AWS Client
+    win_get_url:
+      url: "https://s3.amazonaws.com/bamboo-support/AWSCLI64.msi"
+      dest: C:\Apps\AWSCLI64.msi
+
+  - name: Install AWS Client
+    win_msi:
+      path: C:\Apps\AWSCLI64.msi
+      wait: true
+
+  - name: Download SQL Server Express 2016
+    win_get_url:
+      url: "https://s3.amazonaws.com/bamboo-support/SQLEXPR_x64_ENU.exe"
+      dest: C:\Apps\SQLEXPR_x64_ENU.exe
+
+  - name: Extract SQL Server Express
+    win_command: C:\Apps\SQLEXPR_x64_ENU.exe SQLEXPR_x64_ENU.exe /q /x:C:\Apps\SqlServerExpress
+    args:
+      creates: C:\Apps\SqlServerExpress
+
+  - name: Copy SQL Server Install Script
+    win_template:
+      src: SQLInstall.ps1
+      dest: C:\Apps\SQLInstall.ps1
+
+  # You can find logs of the attempted installs at
+  # C:\Program Files\Microsoft SQL Server\130\Setup Bootstrap\Log
+  - name: Install SQL Express
+    win_shell: C:\Apps\SQLInstall.ps1
+    args:
+      creates: C:\Program Files\Microsoft SQL Server\MSSQL13.SQLEXPRESS
+
 #  - name: Download SDK
 #    win_get_url:
 #      url: "https://sdkrepo.atlassian.com/win-signed/sdk-installer-6.2.14.exe"
