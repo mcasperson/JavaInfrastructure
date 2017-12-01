@@ -124,6 +124,21 @@
     args:
       creates: C:\Program Files\Microsoft SQL Server\MSSQL13.SQLEXPRESS
 
+  - name: Download SQL Server Express 2016
+    win_get_url:
+     url: "http://bamboo-support.s3.amazonaws.com/SSMS-Setup-ENU.exe"
+     dest: C:\Apps\SSMS-Setup-ENU.exe
+
+  - name: Copy SSMS Server Install Script
+    win_template:
+      src: SSMSInstall.ps1
+      dest: C:\Apps\SSMSInstall.ps1
+
+  # You can find logs of the attempted installs at
+  # C:\Program Files\Microsoft SQL Server\130\Setup Bootstrap\Log
+  - name: Install SQL Server Management Studio
+    win_shell: C:\Apps\SSMSInstall.ps1
+
 #  - name: Download SDK
 #    win_get_url:
 #      url: "https://sdkrepo.atlassian.com/win-signed/sdk-installer-6.2.14.exe"
