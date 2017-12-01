@@ -1,0 +1,3 @@
+---
+sql_instance_name: SQLEXPRESS
+sql_install_user: sqlexpress_install
