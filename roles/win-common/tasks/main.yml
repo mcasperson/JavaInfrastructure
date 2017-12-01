@@ -124,7 +124,7 @@
     args:
       creates: C:\Program Files\Microsoft SQL Server\MSSQL13.SQLEXPRESS
 
-  - name: Download SQL Server Express 2016
+  - name: Download SSMS
     win_get_url:
      url: "http://bamboo-support.s3.amazonaws.com/SSMS-Setup-ENU.exe"
      dest: C:\Apps\SSMS-Setup-ENU.exe
