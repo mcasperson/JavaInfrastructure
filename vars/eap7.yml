@@ -1,6 +1,6 @@
 ---
 wildfly_download: https://s3.amazonaws.com/bamboo-support/jboss-eap-7.1.0.Beta.tar.gz
-wildfly_download_zip: https://s3.amazonaws.com/bamboo-support/jboss-eap-7.1.0.Beta.zip
+wildfly_download_zip: http://bamboo-support.s3.amazonaws.com/jboss-eap-7.1.0.zip
 wildfly_versioned_dir: jboss-eap-7.1
 wildfly_standalone_port_offset: 6000
 wildfly_slave_port_offset: 7000
