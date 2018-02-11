@@ -222,3 +222,11 @@ Set-Item -Path "WSMan:\localhost\Service\Auth\CredSSP" -Value $true
 ```
 pip install --upgrade 'pywinrm[credssp]'
 ```
+
+### MacOS
+
+It may be necessary to run 
+```
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+```
+before deploying these playbooks o MacOS. See https://github.com/ansible/ansible/issues/32499 for details.
