@@ -222,3 +222,19 @@ Set-Item -Path "WSMan:\localhost\Service\Auth\CredSSP" -Value $true
 ```
 pip install --upgrade 'pywinrm[credssp]'
 ```
+
+### MacOS
+
+It may be necessary to run 
+```
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+```
+before deploying these playbooks o MacOS. See https://github.com/ansible/ansible/issues/32499 for details.
+
+You may also need to install the pip libraries like this:
+
+```
+sudo /usr/bin/python -m pip install requests-credssp --user python
+```
+
+This ensures that the built in python version is the one that is used to install the libraries.

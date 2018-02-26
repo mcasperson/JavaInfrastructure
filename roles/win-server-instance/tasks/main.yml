@@ -58,3 +58,7 @@
       host: "{{ item.public_ip }}"
       timeout: 6000
     with_items: "{{windows_server_ec2.instances}}"
+
+  - name: Sleep for a bit
+    pause:
+      seconds: 30
