@@ -92,6 +92,14 @@
       include_sub_features: True
       include_management_tools: True
 
+  - name: Install Remote Access to enable the Web Application Proxy
+    win_feature:
+      name: Remote-Access
+      state: present
+      restart: False
+      include_sub_features: True
+      include_management_tools: True
+
   - name: Download AWS Client
     win_get_url:
       url: "https://s3.amazonaws.com/bamboo-support/AWSCLI64.msi"
