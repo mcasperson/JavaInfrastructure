@@ -92,9 +92,9 @@
       include_sub_features: True
       include_management_tools: True
 
-  - name: Install Remote Access to enable the Web Application Proxy
+  - name: Install Active Directory features
     win_feature:
-      name: Remote-Access
+      name: AD-Domain-Services
       state: present
       restart: False
       include_sub_features: True
