@@ -1,7 +1,7 @@
 ---
 
   - name: Install Slave Service
-    win_command: "{{wildfly_install_dir}}\\bin\\service\\service.bat install /jbossuser {{wildfly_admin_user}} /jbosspass {{wildfly_admin_password}} /controller localhost:{{wildfly_domaincontroller_management_http_port}} /startup /name \"{{wildfly_slave_service}}\" /host /hostconfig host-slave-local.xml"
+    win_command: "{{wildfly_install_dir}}\\bin\\service.bat install /jbossuser {{wildfly_admin_user}} /jbosspass {{wildfly_admin_password}} /controller localhost:{{wildfly_domaincontroller_management_http_port}} /startup /name \"{{wildfly_slave_service}}\" /host /hostconfig host-slave-local.xml"
 
   - name: Start Slave Service
     win_service:
