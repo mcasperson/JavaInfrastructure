@@ -1,6 +1,6 @@
 ---
   - name: Install Slave Service
-    win_command: "{{wildfly_install_dir}}\\bin\\service\\service.bat install /jbossuser {{wildfly_admin_user}} /jbosspass {{wildfly_admin_password}} /controller localhost:15990 /startup /name \"{{wildfly_standalone_service}}\""
+    win_command: "{{wildfly_install_dir}}\\bin\\service.bat install /jbossuser {{wildfly_admin_user}} /jbosspass {{wildfly_admin_password}} /controller localhost:15990 /startup /name \"{{wildfly_standalone_service}}\""
 
   - name: Start Standalone Service
     win_service:
